@@ -333,107 +333,51 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "iclr:SET23A03L02"
+		(symbol "SMBJ3V3:SMBJ3V3-E3_52"
+			(pin_names
+				(offset 0.254)
+			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "D1"
-				(at 8.636 6.35 0)
+			(property "Reference" "CR"
+				(at 5.08 4.445 0)
 				(effects
 					(font
-						(size 1.27 1.27)
+						(size 1.524 1.524)
 					)
 				)
 			)
-			(property "Value" "SET23A03L02"
-				(at 9.144 4.064 0)
+			(property "Value" "SMBJ3V3-E3/52"
+				(at 5.08 -3.81 0)
 				(effects
 					(font
-						(size 1.27 1.27)
+						(size 1.524 1.524)
 					)
 				)
 			)
-			(property "Footprint" "SOT95P230X109-3N"
-				(at 24.13 -94.92 0)
+			(property "Footprint" "CR_V3-E3/52_VIS"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.mouser.co.uk/datasheet/3/508/1/SET23AXXL02_1.pdf"
-				(at 24.13 -194.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Description" "ESD Protection Diodes / TVS Diodes TVS ESD SOIC-08 3.3V 76.8V"
-				(at 3.302 12.192 0)
-				(effects
-					(font
-						(size 1.27 1.27)
+						(italic yes)
 					)
 					(hide yes)
 				)
 			)
-			(property "Height" "1.09"
-				(at 24.13 -394.92 0)
+			(property "Datasheet" "https://www.vishay.com/doc?88940"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
+						(italic yes)
 					)
-					(justify left top)
 					(hide yes)
 				)
 			)
-			(property "Mouser Part Number" "603-SET23A03L02"
-				(at 24.13 -494.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/YAGEO/SET23A03L02?qs=DRkmTr78QASD5DRaK8Y6sQ%3D%3D"
-				(at 24.13 -594.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Name" "YAGEO"
-				(at 24.13 -694.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "Manufacturer_Part_Number" "SET23A03L02"
-				(at 24.13 -794.92 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left top)
-					(hide yes)
-				)
-			)
-			(property "SpiceModel" ""
-				(at 27.94 16.764 0)
+			(property "Description" ""
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -441,8 +385,16 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Library" "${ICLR_HW}/spice/set23a03l02.lib"
-				(at 9.398 -17.018 0)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "SMBJ3V3-E3/52"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -450,8 +402,8 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Name" "SET23A03L02_2CH"
-				(at 9.398 -11.938 0)
+			(property "ki_fp_filters" "CR_V3-E3/52_VIS"
+				(at 0 0 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -459,31 +411,13 @@
 					(hide yes)
 				)
 			)
-			(property "Sim.Device" "SUBCKT"
-				(at 9.398 -19.05 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Sim.Pins" "1=1 2=2 3=3"
-				(at 9.144 -14.732 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SET23A03L02_0_1"
+			(symbol "SMBJ3V3-E3_52_1_1"
 				(polyline
 					(pts
-						(xy 6.35 1.016) (xy 6.604 0.762) (xy 6.604 -0.762) (xy 6.858 -1.016)
+						(xy 2.54 0) (xy 3.4798 0)
 					)
 					(stroke
-						(width 0)
+						(width 0.2032)
 						(type default)
 					)
 					(fill
@@ -492,35 +426,10 @@
 				)
 				(polyline
 					(pts
-						(xy 6.35 -4.064) (xy 6.604 -4.318) (xy 6.604 -5.842) (xy 6.858 -6.096)
+						(xy 3.175 0) (xy 3.81 0)
 					)
 					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "SET23A03L02_1_1"
-				(rectangle
-					(start 5.08 2.54)
-					(end 12.7 -7.62)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(polyline
-					(pts
-						(xy 5.08 0) (xy 9.652 0) (xy 9.652 -2.54)
-					)
-					(stroke
-						(width 0)
+						(width 0.2032)
 						(type default)
 					)
 					(fill
@@ -529,10 +438,10 @@
 				)
 				(polyline
 					(pts
-						(xy 5.08 -5.08) (xy 9.652 -5.08) (xy 9.652 -2.54) (xy 12.7 -2.54)
+						(xy 3.81 1.905) (xy 3.81 -1.905)
 					)
 					(stroke
-						(width 0)
+						(width 0.2032)
 						(type default)
 					)
 					(fill
@@ -541,49 +450,55 @@
 				)
 				(polyline
 					(pts
-						(xy 8.128 1.016) (xy 8.128 -1.016) (xy 6.604 0) (xy 8.128 1.016)
+						(xy 3.81 -1.905) (xy 6.35 0)
 					)
 					(stroke
-						(width 0)
-						(type solid)
+						(width 0.2032)
+						(type default)
 					)
 					(fill
-						(type outline)
+						(type none)
 					)
 				)
 				(polyline
 					(pts
-						(xy 8.128 -4.064) (xy 8.128 -6.096) (xy 6.604 -5.08) (xy 8.128 -4.064)
+						(xy 6.35 0) (xy 3.81 1.905)
 					)
 					(stroke
-						(width 0)
-						(type solid)
+						(width 0.2032)
+						(type default)
 					)
 					(fill
-						(type outline)
+						(type none)
 					)
 				)
-				(pin passive line
+				(polyline
+					(pts
+						(xy 6.35 0) (xy 7.62 0)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.35 -1.905) (xy 6.35 1.905)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
 					(at 0 0 0)
-					(length 5.08)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -5.08 0)
-					(length 5.08)
+					(length 2.54)
 					(name ""
 						(effects
 							(font
@@ -599,9 +514,9 @@
 						)
 					)
 				)
-				(pin passive line
-					(at 17.78 -2.54 180)
-					(length 5.08)
+				(pin unspecified line
+					(at 10.16 0 180)
+					(length 2.54)
 					(name ""
 						(effects
 							(font
@@ -609,7 +524,129 @@
 							)
 						)
 					)
-					(number "3"
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "SMBJ3V3-E3_52_1_2"
+				(polyline
+					(pts
+						(xy -1.905 3.81) (xy 1.905 3.81)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 6.35) (xy -1.905 3.81)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 6.35) (xy 0 7.62)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 3.175) (xy 0 3.81)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0 3.4798)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 6.35) (xy -1.905 6.35)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 3.81) (xy 0 6.35)
+					)
+					(stroke
+						(width 0.2032)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin unspecified line
+					(at 0 10.16 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin unspecified line
+					(at 0 0 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -879,6 +916,16 @@
 	)
 	(wire
 		(pts
+			(xy 129.54 86.36) (xy 133.35 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "677c985b-e4e1-433c-8e32-5042f52fabbf")
+	)
+	(wire
+		(pts
 			(xy 191.77 62.23) (xy 191.77 63.5)
 		)
 		(stroke
@@ -889,13 +936,13 @@
 	)
 	(wire
 		(pts
-			(xy 124.46 63.5) (xy 132.08 63.5)
+			(xy 143.51 86.36) (xy 149.86 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9b534912-5caf-4cb8-848d-0ca72e46b011")
+		(uuid "c0d57422-562b-4d94-a2e0-6786d3970f53")
 	)
 	(wire
 		(pts
@@ -909,17 +956,6 @@
 	)
 	(hierarchical_label "ServoPWM"
 		(shape input)
-		(at 124.46 63.5 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "35589d69-35f5-4d8f-9b37-d6f3e6395249")
-	)
-	(hierarchical_label "ServoPWM"
-		(shape input)
 		(at 191.77 62.23 90)
 		(effects
 			(font
@@ -928,6 +964,17 @@
 			(justify left)
 		)
 		(uuid "b998b470-ea22-4d34-bc04-dd7485301aee")
+	)
+	(hierarchical_label "ServoPWM"
+		(shape input)
+		(at 149.86 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c38704ba-000a-4b14-ad7e-c860f8ce0431")
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x03_Pin")
@@ -1141,16 +1188,16 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 149.86 66.04 0)
+		(at 129.54 86.36 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "58927d25-5f4a-4c35-9767-5dc6bc6a07df")
-		(property "Reference" "#PWR046"
-			(at 149.86 72.39 0)
+		(uuid "5ab7e0ba-c396-4d0d-b25b-d77f49cafd7b")
+		(property "Reference" "#PWR0132"
+			(at 129.54 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1159,7 +1206,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 149.86 71.12 0)
+			(at 129.54 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1167,7 +1214,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 149.86 66.04 0)
+			(at 129.54 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1176,7 +1223,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 149.86 66.04 0)
+			(at 129.54 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1185,7 +1232,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 149.86 66.04 0)
+			(at 129.54 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1194,160 +1241,65 @@
 			)
 		)
 		(pin "1"
-			(uuid "fc4dba20-fa34-4b26-ba8d-395d04f5b7e6")
+			(uuid "e773f215-9c45-4583-8826-132c5cdf6fdb")
 		)
 		(instances
-			(project ""
+			(project "Reggie"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "#PWR046")
+					(reference "#PWR0132")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "iclr:SET23A03L02")
-		(at 132.08 63.5 0)
+		(lib_id "SMBJ3V3:SMBJ3V3-E3_52")
+		(at 133.35 86.36 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "8e255c75-7750-42f3-9158-b7ccada84751")
-		(property "Reference" "D3"
-			(at 140.97 55.88 0)
+		(uuid "5c87943e-e572-4b8e-a770-574c71993dcf")
+		(property "Reference" "CR1"
+			(at 138.43 80.01 0)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1.524 1.524)
 				)
 			)
 		)
-		(property "Value" "SET23A03L02"
-			(at 140.97 58.42 0)
+		(property "Value" "SMBJ3V3-E3/52"
+			(at 138.43 82.55 0)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 1.524 1.524)
 				)
 			)
 		)
-		(property "Footprint" "SOT95P230X109-3N"
-			(at 156.21 158.42 0)
+		(property "Footprint" "CR_V3-E3/52_VIS"
+			(at 133.35 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://www.mouser.co.uk/datasheet/3/508/1/SET23AXXL02_1.pdf"
-			(at 156.21 258.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Description" "ESD Protection Diodes / TVS Diodes TVS ESD SOIC-08 3.3V 76.8V"
-			(at 135.382 51.308 0)
-			(effects
-				(font
-					(size 1.27 1.27)
+					(italic yes)
 				)
 				(hide yes)
 			)
 		)
-		(property "Height" "1.09"
-			(at 156.21 458.42 0)
+		(property "Datasheet" "https://www.vishay.com/doc?88940"
+			(at 133.35 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Part Number" "603-SET23A03L02"
-			(at 156.21 558.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Mouser Price/Stock" "https://www.mouser.co.uk/ProductDetail/YAGEO/SET23A03L02?qs=DRkmTr78QASD5DRaK8Y6sQ%3D%3D"
-			(at 156.21 658.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Name" "YAGEO"
-			(at 156.21 758.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer_Part_Number" "SET23A03L02"
-			(at 156.21 858.42 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(property "SpiceModel" ""
-			(at 160.02 46.736 0)
-			(effects
-				(font
-					(size 1.27 1.27)
+					(italic yes)
 				)
 				(hide yes)
 			)
 		)
-		(property "Sim.Library" "${ICLR_HW}/spice/set23a03l02.lib"
-			(at 141.478 80.518 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Name" "SET23A03L02_2CH"
-			(at 141.478 75.438 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Device" "SUBCKT"
-			(at 141.478 82.55 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Sim.Pins" "1=1 2=2 3=3"
-			(at 141.224 78.232 0)
+		(property "Description" ""
+			(at 133.35 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1356,18 +1308,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "33e9e26e-f034-4d53-b515-5b932d80dd87")
+			(uuid "08e6baf4-350f-481f-aba8-4e344cabb6fc")
 		)
 		(pin "1"
-			(uuid "24f81072-b35b-451a-945f-a19dff110163")
-		)
-		(pin "3"
-			(uuid "3568f526-9a0d-47f3-b839-1f5c78f3ea21")
+			(uuid "355d243f-fd23-4999-abac-86ff6291dd2e")
 		)
 		(instances
 			(project ""
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "D3")
+					(reference "CR1")
 					(unit 1)
 				)
 			)
