@@ -894,6 +894,16 @@
 		)
 		(uuid "0dc503c6-b961-49a2-9e78-478415a3ed1d")
 	)
+	(text "New TVS\nhttps://www.mouser.co.uk/datasheet/3/819/1/CPDF3V3UP-HF%20RevB420008.pdf "
+		(exclude_from_sim no)
+		(at 133.096 74.676 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "9d8accbb-47fb-4c77-a542-84fcfbf0ec8f")
+	)
 	(wire
 		(pts
 			(xy 185.42 72.39) (xy 185.42 73.66)
@@ -1059,7 +1069,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2cfe0966-533e-4f74-acca-a86c24b7262b")
-		(property "Reference" "R19"
+		(property "Reference" "R20"
 			(at 194.31 66.0399 0)
 			(effects
 				(font
@@ -1113,7 +1123,7 @@
 		(instances
 			(project ""
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "R19")
+					(reference "R20")
 					(unit 1)
 				)
 			)
@@ -1129,7 +1139,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3e574895-0727-4ce4-8bca-a062e2f3552a")
-		(property "Reference" "#PWR016"
+		(property "Reference" "#PWR051"
 			(at 190.5 76.2 0)
 			(effects
 				(font
@@ -1180,7 +1190,7 @@
 		(instances
 			(project ""
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "#PWR016")
+					(reference "#PWR051")
 					(unit 1)
 				)
 			)
@@ -1196,7 +1206,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5ab7e0ba-c396-4d0d-b25b-d77f49cafd7b")
-		(property "Reference" "#PWR0132"
+		(property "Reference" "#PWR049"
 			(at 129.54 92.71 0)
 			(effects
 				(font
@@ -1246,7 +1256,7 @@
 		(instances
 			(project "Reggie"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "#PWR0132")
+					(reference "#PWR049")
 					(unit 1)
 				)
 			)
@@ -1270,7 +1280,7 @@
 				)
 			)
 		)
-		(property "Value" "SMBJ3V3-E3/52"
+		(property "Value" "CPDF3V3UP-HF"
 			(at 138.43 82.55 0)
 			(effects
 				(font
@@ -1332,7 +1342,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cb2f6549-652f-4029-925d-791180517c60")
-		(property "Reference" "#PWR028"
+		(property "Reference" "#PWR050"
 			(at 185.42 76.2 0)
 			(effects
 				(font
@@ -1382,7 +1392,7 @@
 		(instances
 			(project ""
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "#PWR028")
+					(reference "#PWR050")
 					(unit 1)
 				)
 			)

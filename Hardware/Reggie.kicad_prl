@@ -53,6 +53,7 @@
     "zone_display_mode": 0
   },
   "git": {
+    "repo_password": "",
     "repo_type": "",
     "repo_username": "",
     "ssh_key": ""
@@ -102,7 +103,7 @@
       10,
       10,
       10,
-      62
+      94
     ],
     "custom_group_rules": [],
     "expanded_rows": [],

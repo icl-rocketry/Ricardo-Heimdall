@@ -1767,7 +1767,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "00000000-0000-0000-0000-000061946eb3")
-		(property "Reference" "#PWR026"
+		(property "Reference" "#PWR025"
 			(at 134.62 105.41 0)
 			(effects
 				(font
@@ -1817,7 +1817,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "#PWR026")
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -1833,7 +1833,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "00000000-0000-0000-0000-000061946eb9")
-		(property "Reference" "#PWR024"
+		(property "Reference" "#PWR023"
 			(at 124.46 72.39 0)
 			(effects
 				(font
@@ -1883,7 +1883,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "#PWR024")
+					(reference "#PWR023")
 					(unit 1)
 				)
 			)
@@ -1985,7 +1985,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "06b0d844-1c7a-43fd-b8a5-ad8e34e13aac")
-		(property "Reference" "C16"
+		(property "Reference" "C15"
 			(at 129.54 69.8562 0)
 			(effects
 				(font
@@ -2039,7 +2039,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "C16")
+					(reference "C15")
 					(unit 1)
 				)
 			)
@@ -2128,7 +2128,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "49208f5a-f73e-42f1-9d7d-382d975bd991")
-		(property "Reference" "#PWR027"
+		(property "Reference" "#PWR026"
 			(at 177.8 95.25 0)
 			(effects
 				(font
@@ -2178,7 +2178,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "#PWR027")
+					(reference "#PWR026")
 					(unit 1)
 				)
 			)
@@ -2194,7 +2194,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "759646bf-5c31-420e-aff7-2c1a28ce32e1")
-		(property "Reference" "C15"
+		(property "Reference" "C14"
 			(at 114.3 69.85 0)
 			(effects
 				(font
@@ -2248,7 +2248,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "C15")
+					(reference "C14")
 					(unit 1)
 				)
 			)
@@ -2263,7 +2263,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c0a35b75-0e83-4311-add3-5a3930110d30")
-		(property "Reference" "R8"
+		(property "Reference" "R10"
 			(at 118.11 93.98 0)
 			(effects
 				(font
@@ -2317,7 +2317,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "R8")
+					(reference "R10")
 					(unit 1)
 				)
 			)
@@ -2333,7 +2333,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c363df37-be76-44cd-846e-5e1010ee0d3e")
-		(property "Reference" "R10"
+		(property "Reference" "R12"
 			(at 162.56 92.71 0)
 			(effects
 				(font
@@ -2387,7 +2387,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "R10")
+					(reference "R12")
 					(unit 1)
 				)
 			)
@@ -2403,7 +2403,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c4e42d16-8dbe-42af-a61a-faa72b95fe53")
-		(property "Reference" "R9"
+		(property "Reference" "R11"
 			(at 162.56 82.55 0)
 			(effects
 				(font
@@ -2457,7 +2457,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "R9")
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -2473,7 +2473,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c905e3f6-13b1-4d5f-8bb5-930cfa107996")
-		(property "Reference" "C17"
+		(property "Reference" "C16"
 			(at 171.45 82.55 90)
 			(effects
 				(font
@@ -2525,7 +2525,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "C17")
+					(reference "C16")
 					(unit 1)
 				)
 			)
@@ -2541,7 +2541,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d85aebac-c325-42de-8c8e-5349542a2954")
-		(property "Reference" "#PWR025"
+		(property "Reference" "#PWR024"
 			(at 124.46 80.01 0)
 			(effects
 				(font
@@ -2591,7 +2591,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "#PWR025")
+					(reference "#PWR024")
 					(unit 1)
 				)
 			)
@@ -2607,7 +2607,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "deb2b25e-9fb0-448e-88c5-95a67db1d371")
-		(property "Reference" "JP1"
+		(property "Reference" "JP3"
 			(at 157.48 82.55 0)
 			(effects
 				(font
@@ -2659,7 +2659,7 @@
 		(instances
 			(project "RicardoTemplate"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061942b9a"
-					(reference "JP1")
+					(reference "JP3")
 					(unit 1)
 				)
 			)
