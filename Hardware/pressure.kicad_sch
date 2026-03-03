@@ -5255,7 +5255,7 @@
 				)
 			)
 		)
-		(property "Footprint" "QFN40P300X300X80-21N-D"
+		(property "Footprint" "iclr:QFN40P300X300X80-21N-D"
 			(at 163.5 95.25 0)
 			(effects
 				(font

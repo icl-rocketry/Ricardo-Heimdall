@@ -884,17 +884,7 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Need to find new package for 1 TVS\n- https://www.yageogroup.com/content/datasheet/asset/file/SET23AXXL02_1\n- https://www.mccsemi.com/pdf/Products/SM3.3H(SOT-23).pdf"
-		(exclude_from_sim no)
-		(at 140.462 46.736 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "0dc503c6-b961-49a2-9e78-478415a3ed1d")
-	)
-	(text "New TVS\nhttps://www.mouser.co.uk/datasheet/3/819/1/CPDF3V3UP-HF%20RevB420008.pdf "
+	(text "Current TVS\nhttps://www.mouser.co.uk/datasheet/3/819/1/CPDF3V3UP-HF%20RevB420008.pdf "
 		(exclude_from_sim no)
 		(at 133.096 74.676 0)
 		(effects
@@ -1014,7 +1004,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Molex:Molex_Nano-Fit_105313-xx03_1x03_P2.50mm_Horizontal"
 			(at 201.93 73.66 0)
 			(effects
 				(font
@@ -1288,7 +1278,7 @@
 				)
 			)
 		)
-		(property "Footprint" "CR_V3-E3/52_VIS"
+		(property "Footprint" "Diode_SMD:DIOM2512X90N"
 			(at 133.35 86.36 0)
 			(effects
 				(font

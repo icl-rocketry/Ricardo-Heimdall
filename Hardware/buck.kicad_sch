@@ -2105,6 +2105,16 @@
 		)
 		(uuid "d93de1ba-955d-469b-8362-d9d68c38de31")
 	)
+	(text "Vref = 0.6V\nThe resistor pair here to boost the voltage to 6V or 7.38V"
+		(exclude_from_sim no)
+		(at 136.906 48.514 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "db0f83c0-2066-4fbb-b234-243723a3490f")
+	)
 	(text "RC Snubber"
 		(exclude_from_sim no)
 		(at 178.816 99.314 0)
@@ -2115,14 +2125,14 @@
 		)
 		(uuid "e0995ef5-35a9-4c76-95a8-2b8b33330ce6")
 	)
-	(text_box "Remove this resistor for 8.4V mode"
+	(text_box "Remove this resistor for 7.4V mode"
 		(exclude_from_sim no)
 		(at 132.08 52.07 0)
 		(size 12.7 7.62)
 		(margins 0.9524 0.9524 0.9524 0.9524)
 		(stroke
 			(width -0.0001)
-			(type default)
+			(type solid)
 		)
 		(fill
 			(type none)
