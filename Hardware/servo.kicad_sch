@@ -333,31 +333,36 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "SMBJ3V3:SMBJ3V3-E3_52"
+		(symbol "iclr:CPDF3V3UP-HF"
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0.254)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(property "Reference" "CR"
-				(at 5.08 4.445 0)
+			(property "Reference" "CR2"
+				(at -2.286 -5.842 0)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "SMBJ3V3-E3/52"
-				(at 5.08 -3.81 0)
+			(property "Value" "CPDF3V3UP-HF"
+				(at -7.62 -3.556 0)
 				(effects
 					(font
 						(size 1.524 1.524)
 					)
+					(justify left)
 				)
 			)
-			(property "Footprint" "CR_V3-E3/52_VIS"
-				(at 0 0 0)
+			(property "Footprint" "iclr:CPD"
+				(at 6.35 -8.89 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -366,8 +371,8 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "https://www.vishay.com/doc?88940"
-				(at 0 0 0)
+			(property "Datasheet" "https://www.mouser.co.uk/datasheet/3/819/1/CPDF3V3UP-HF%20RevB420008.pdf"
+				(at 1.778 -12.954 0)
 				(effects
 					(font
 						(size 1.27 1.27)
@@ -385,36 +390,24 @@
 					(hide yes)
 				)
 			)
-			(property "ki_locked" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "SMBJ3V3-E3/52"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "CR_V3-E3/52_VIS"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SMBJ3V3-E3_52_1_1"
+			(symbol "CPDF3V3UP-HF_1_1"
 				(polyline
 					(pts
-						(xy 2.54 0) (xy 3.4798 0)
+						(xy -1.27 -1.27) (xy -1.27 1.27) (xy 0.635 0) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+						(color 132 0 0 1)
+					)
+					(fill
+						(type color)
+						(color 132 0 0 1)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.27) (xy 0 1.27)
 					)
 					(stroke
 						(width 0.2032)
@@ -426,7 +419,7 @@
 				)
 				(polyline
 					(pts
-						(xy 3.175 0) (xy 3.81 0)
+						(xy 0.635 -1.27) (xy 0.635 1.27)
 					)
 					(stroke
 						(width 0.2032)
@@ -438,7 +431,7 @@
 				)
 				(polyline
 					(pts
-						(xy 3.81 1.905) (xy 3.81 -1.905)
+						(xy 1.27 -1.27) (xy 0.635 -1.27)
 					)
 					(stroke
 						(width 0.2032)
@@ -448,76 +441,10 @@
 						(type none)
 					)
 				)
-				(polyline
-					(pts
-						(xy 3.81 -1.905) (xy 6.35 0)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 6.35 0) (xy 3.81 1.905)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 6.35 0) (xy 7.62 0)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 6.35 -1.905) (xy 6.35 1.905)
-					)
-					(stroke
-						(width 0.2032)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin unspecified line
-					(at 0 0 0)
-					(length 2.54)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin unspecified line
-					(at 10.16 0 180)
-					(length 2.54)
-					(name ""
+				(pin passive line
+					(at -2.54 0 0)
+					(length 1.27)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -532,8 +459,26 @@
 						)
 					)
 				)
+				(pin passive line
+					(at 2.54 0 180)
+					(length 1.905)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
 			)
-			(symbol "SMBJ3V3-E3_52_1_2"
+			(symbol "CPDF3V3UP-HF_1_2"
 				(polyline
 					(pts
 						(xy -1.905 3.81) (xy 1.905 3.81)
@@ -884,16 +829,6 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "Current TVS\nhttps://www.mouser.co.uk/datasheet/3/819/1/CPDF3V3UP-HF%20RevB420008.pdf "
-		(exclude_from_sim no)
-		(at 133.096 74.676 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "9d8accbb-47fb-4c77-a542-84fcfbf0ec8f")
-	)
 	(wire
 		(pts
 			(xy 185.42 72.39) (xy 185.42 73.66)
@@ -916,7 +851,7 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 86.36) (xy 133.35 86.36)
+			(xy 158.75 73.66) (xy 161.29 73.66)
 		)
 		(stroke
 			(width 0)
@@ -936,7 +871,7 @@
 	)
 	(wire
 		(pts
-			(xy 143.51 86.36) (xy 149.86 86.36)
+			(xy 166.37 73.66) (xy 168.91 73.66)
 		)
 		(stroke
 			(width 0)
@@ -967,7 +902,7 @@
 	)
 	(hierarchical_label "ServoPWM"
 		(shape input)
-		(at 149.86 86.36 0)
+		(at 168.91 73.66 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1188,7 +1123,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 129.54 86.36 0)
+		(at 158.75 73.66 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1197,7 +1132,7 @@
 		(fields_autoplaced yes)
 		(uuid "5ab7e0ba-c396-4d0d-b25b-d77f49cafd7b")
 		(property "Reference" "#PWR049"
-			(at 129.54 92.71 0)
+			(at 158.75 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1206,7 +1141,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 129.54 91.44 0)
+			(at 158.75 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1214,7 +1149,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 129.54 86.36 0)
+			(at 158.75 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1223,7 +1158,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 129.54 86.36 0)
+			(at 158.75 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1232,7 +1167,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 129.54 86.36 0)
+			(at 158.75 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1253,17 +1188,17 @@
 		)
 	)
 	(symbol
-		(lib_id "SMBJ3V3:SMBJ3V3-E3_52")
-		(at 133.35 86.36 0)
+		(lib_id "iclr:CPDF3V3UP-HF")
+		(at 163.83 73.66 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(fields_autoplaced yes)
-		(uuid "5c87943e-e572-4b8e-a770-574c71993dcf")
+		(uuid "786858d4-e42d-4aeb-9eaa-d5e14fe3ae83")
 		(property "Reference" "CR1"
-			(at 138.43 80.01 0)
+			(at 163.8808 67.31 0)
 			(effects
 				(font
 					(size 1.524 1.524)
@@ -1271,15 +1206,15 @@
 			)
 		)
 		(property "Value" "CPDF3V3UP-HF"
-			(at 138.43 82.55 0)
+			(at 163.8808 69.85 0)
 			(effects
 				(font
 					(size 1.524 1.524)
 				)
 			)
 		)
-		(property "Footprint" "Diode_SMD:DIOM2512X90N"
-			(at 133.35 86.36 0)
+		(property "Footprint" "iclr:CPD"
+			(at 170.18 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1288,8 +1223,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.vishay.com/doc?88940"
-			(at 133.35 86.36 0)
+		(property "Datasheet" "https://www.mouser.co.uk/datasheet/3/819/1/CPDF3V3UP-HF%20RevB420008.pdf"
+			(at 165.608 86.614 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1299,7 +1234,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 133.35 86.36 0)
+			(at 163.83 73.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1308,10 +1243,10 @@
 			)
 		)
 		(pin "2"
-			(uuid "08e6baf4-350f-481f-aba8-4e344cabb6fc")
+			(uuid "f2d88faf-5491-429d-a88a-276fb64317ba")
 		)
 		(pin "1"
-			(uuid "355d243f-fd23-4999-abac-86ff6291dd2e")
+			(uuid "390a03aa-8dfe-4c0e-98a3-27d3e57526a7")
 		)
 		(instances
 			(project ""
