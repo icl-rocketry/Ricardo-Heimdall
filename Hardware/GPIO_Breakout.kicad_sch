@@ -887,7 +887,7 @@
 		)
 		(uuid "c8ffd075-4835-4e7c-a551-c581c5afacc6")
 	)
-	(hierarchical_label "GPIO39"
+	(hierarchical_label "GPIO13"
 		(shape bidirectional)
 		(at 82.55 52.07 0)
 		(effects
@@ -898,7 +898,7 @@
 		)
 		(uuid "245dd27d-c258-4cdf-a001-672b11a76fc9")
 	)
-	(hierarchical_label "GPIO16"
+	(hierarchical_label "GPIO4"
 		(shape bidirectional)
 		(at 114.3 54.61 180)
 		(effects
@@ -909,7 +909,7 @@
 		)
 		(uuid "338dd2df-0d31-468c-b2cf-3f0a28eeb1df")
 	)
-	(hierarchical_label "GPIO13"
+	(hierarchical_label "GPIO2"
 		(shape bidirectional)
 		(at 52.07 52.07 180)
 		(effects
@@ -920,7 +920,7 @@
 		)
 		(uuid "39e7f799-a57a-4c00-bba1-6fc51005913a")
 	)
-	(hierarchical_label "GPIO14"
+	(hierarchical_label "GPIO1"
 		(shape bidirectional)
 		(at 52.07 54.61 180)
 		(effects
@@ -931,7 +931,7 @@
 		)
 		(uuid "5db13d36-6438-4750-900e-565be908a380")
 	)
-	(hierarchical_label "GPIO4"
+	(hierarchical_label "GPIO1"
 		(shape bidirectional)
 		(at 114.3 41.91 180)
 		(effects
@@ -942,7 +942,7 @@
 		)
 		(uuid "7a1aaf90-1bd6-4594-bad3-53b8b632c7e8")
 	)
-	(hierarchical_label "GPIO39"
+	(hierarchical_label "GPIO15"
 		(shape bidirectional)
 		(at 114.3 57.15 180)
 		(effects
@@ -953,7 +953,7 @@
 		)
 		(uuid "7e045b41-95de-4d80-b47f-af46506f93f6")
 	)
-	(hierarchical_label "GPIO16"
+	(hierarchical_label "GPIO14"
 		(shape bidirectional)
 		(at 82.55 49.53 0)
 		(effects
@@ -964,7 +964,7 @@
 		)
 		(uuid "9c5cf764-7a4c-4a2e-9394-356a36a7e7e1")
 	)
-	(hierarchical_label "GPIO13"
+	(hierarchical_label "GPIO2"
 		(shape bidirectional)
 		(at 114.3 44.45 180)
 		(effects
@@ -975,7 +975,7 @@
 		)
 		(uuid "b5cc4e8e-bee2-4ec5-871a-e8a9e19861d1")
 	)
-	(hierarchical_label "GPIO14"
+	(hierarchical_label "GPIO13"
 		(shape bidirectional)
 		(at 114.3 46.99 180)
 		(effects
@@ -1008,7 +1008,7 @@
 		)
 		(uuid "ebfd0fc7-eff8-462b-8099-1142bdd32d5b")
 	)
-	(hierarchical_label "GPIO15"
+	(hierarchical_label "GPIO14"
 		(shape bidirectional)
 		(at 114.3 52.07 180)
 		(effects
