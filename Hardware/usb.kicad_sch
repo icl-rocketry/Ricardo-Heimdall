@@ -1734,6 +1734,16 @@
 	)
 	(wire
 		(pts
+			(xy 167.64 92.71) (xy 165.1 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f06a525-8541-4a9e-bb52-43635887c849")
+	)
+	(wire
+		(pts
 			(xy 96.52 127) (xy 96.52 130.81)
 		)
 		(stroke
@@ -1761,6 +1771,16 @@
 			(type default)
 		)
 		(uuid "240e07e1-770b-4b27-894f-29fd601c924d")
+	)
+	(wire
+		(pts
+			(xy 149.86 92.71) (xy 152.4 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29eee38b-ed72-49c6-942c-a4d7f1f7f776")
 	)
 	(wire
 		(pts
@@ -1821,6 +1841,16 @@
 			(type default)
 		)
 		(uuid "8c6a821f-8e19-48f3-8f44-9b340f7689bc")
+	)
+	(wire
+		(pts
+			(xy 149.86 92.71) (xy 149.86 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6103a46-df64-460d-ae1d-b3e95fa7948c")
 	)
 	(wire
 		(pts
@@ -1901,6 +1931,16 @@
 			(type default)
 		)
 		(uuid "ec31c074-17b2-48e1-ab01-071acad3fa04")
+	)
+	(wire
+		(pts
+			(xy 167.64 95.25) (xy 167.64 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ecc98cc1-3603-4c60-bebd-417b38b99ac9")
 	)
 	(wire
 		(pts
@@ -2013,7 +2053,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061988bf8")
-		(property "Reference" "#PWR029"
+		(property "Reference" "#PWR0603"
 			(at 133.35 96.52 0)
 			(effects
 				(font
@@ -2062,9 +2102,9 @@
 			(uuid "6802d67a-ee6e-45f4-b9c7-e19435a0f2f8")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "#PWR029")
+					(reference "#PWR0603")
 					(unit 1)
 				)
 			)
@@ -2079,7 +2119,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061988c01")
-		(property "Reference" "R14"
+		(property "Reference" "R602"
 			(at 129.54 100.33 90)
 			(effects
 				(font
@@ -2087,7 +2127,7 @@
 				)
 			)
 		)
-		(property "Value" "5.1k"
+		(property "Value" "5.1kΩ"
 			(at 129.54 102.6414 90)
 			(effects
 				(font
@@ -2129,9 +2169,9 @@
 			(uuid "bff175d8-2e40-4e60-8883-cfa3ac53a5f9")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "R14")
+					(reference "R602")
 					(unit 1)
 				)
 			)
@@ -2146,7 +2186,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061988c0e")
-		(property "Reference" "R13"
+		(property "Reference" "R601"
 			(at 123.19 89.0016 90)
 			(effects
 				(font
@@ -2154,7 +2194,7 @@
 				)
 			)
 		)
-		(property "Value" "5.1k"
+		(property "Value" "5.1kΩ"
 			(at 123.19 91.313 90)
 			(effects
 				(font
@@ -2196,9 +2236,9 @@
 			(uuid "03eee002-78af-410b-bdc3-31147203b477")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "R13")
+					(reference "R601")
 					(unit 1)
 				)
 			)
@@ -2213,7 +2253,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061988c18")
-		(property "Reference" "#PWR027"
+		(property "Reference" "#PWR0601"
 			(at 96.52 137.16 0)
 			(effects
 				(font
@@ -2261,9 +2301,9 @@
 			(uuid "f6e4e2ae-07f3-455f-b6fc-3773751223c6")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "#PWR027")
+					(reference "#PWR0601")
 					(unit 1)
 				)
 			)
@@ -2278,7 +2318,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061988c49")
-		(property "Reference" "J2"
+		(property "Reference" "J601"
 			(at 103.0478 82.1182 0)
 			(effects
 				(font
@@ -2373,9 +2413,9 @@
 			(uuid "7b836b8f-e2f7-4a02-aaea-5f5f23bb6c5e")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "J2")
+					(reference "J601")
 					(unit 1)
 				)
 			)
@@ -2390,7 +2430,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061988c86")
-		(property "Reference" "#PWR031"
+		(property "Reference" "#PWR0605"
 			(at 132.08 151.13 0)
 			(effects
 				(font
@@ -2438,9 +2478,9 @@
 			(uuid "5adfa564-011e-4a12-8859-deffc2a0e089")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "#PWR031")
+					(reference "#PWR0605")
 					(unit 1)
 				)
 			)
@@ -2455,7 +2495,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061988c8c")
-		(property "Reference" "D2"
+		(property "Reference" "D601"
 			(at 137.287 138.5316 0)
 			(effects
 				(font
@@ -2514,9 +2554,9 @@
 			(uuid "e99c92ed-a3d1-4b5e-9be9-ad8c1c3e2068")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "D2")
+					(reference "D601")
 					(unit 1)
 				)
 			)
@@ -2531,7 +2571,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061a236c4")
-		(property "Reference" "#PWR028"
+		(property "Reference" "#PWR0602"
 			(at 116.84 88.9 0)
 			(effects
 				(font
@@ -2541,7 +2581,7 @@
 			)
 		)
 		(property "Value" "VBUS"
-			(at 117.221 81.8388 90)
+			(at 114.3 80.772 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2580,9 +2620,9 @@
 			(uuid "9aa99eb0-7cee-4396-b81d-a9612075f311")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "#PWR028")
+					(reference "#PWR0602")
 					(unit 1)
 				)
 			)
@@ -2593,11 +2633,11 @@
 		(at 52.07 99.06 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061ab7cb8")
-		(property "Reference" "TP3"
+		(property "Reference" "TP601"
 			(at 56.8452 97.8916 90)
 			(effects
 				(font
@@ -2646,9 +2686,9 @@
 			(uuid "7d1b7618-f8de-4b3d-aa8b-046586bd73a9")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "TP3")
+					(reference "TP601")
 					(unit 1)
 				)
 			)
@@ -2659,11 +2699,11 @@
 		(at 52.07 104.14 270)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061ab87f3")
-		(property "Reference" "TP4"
+		(property "Reference" "TP602"
 			(at 56.8452 102.9716 90)
 			(effects
 				(font
@@ -2712,9 +2752,9 @@
 			(uuid "0822c170-c52f-4a24-9f2e-dc0082caf2a3")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "TP4")
+					(reference "TP602")
 					(unit 1)
 				)
 			)
@@ -2729,7 +2769,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061b104ea")
-		(property "Reference" "LED6"
+		(property "Reference" "D602"
 			(at 162.56 87.503 0)
 			(effects
 				(font
@@ -2737,7 +2777,7 @@
 				)
 			)
 		)
-		(property "Value" "WHITE_LED"
+		(property "Value" "LED_WHITE"
 			(at 162.56 89.8144 0)
 			(effects
 				(font
@@ -2779,9 +2819,9 @@
 			(uuid "cfddbd95-bad4-4676-b489-0166e48bd76e")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "LED6")
+					(reference "D602")
 					(unit 1)
 				)
 			)
@@ -2796,7 +2836,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061b104f0")
-		(property "Reference" "R15"
+		(property "Reference" "R603"
 			(at 154.94 95.3516 90)
 			(effects
 				(font
@@ -2804,7 +2844,7 @@
 				)
 			)
 		)
-		(property "Value" "5.1k"
+		(property "Value" "5.1kΩ"
 			(at 154.94 97.663 90)
 			(effects
 				(font
@@ -2846,9 +2886,9 @@
 			(uuid "658fe9ab-a4e5-4dbe-b15c-2b71b08637ef")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "R15")
+					(reference "R603")
 					(unit 1)
 				)
 			)
@@ -2856,15 +2896,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 165.1 92.71 90)
+		(at 167.64 95.25 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061b11f2f")
-		(property "Reference" "#PWR033"
-			(at 171.45 92.71 0)
+		(property "Reference" "#PWR0607"
+			(at 167.64 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2873,7 +2913,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 168.3512 92.583 90)
+			(at 169.672 99.06 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2882,7 +2922,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 165.1 92.71 0)
+			(at 167.64 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2891,7 +2931,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 165.1 92.71 0)
+			(at 167.64 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2900,7 +2940,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 165.1 92.71 0)
+			(at 167.64 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2912,9 +2952,9 @@
 			(uuid "7d7486ae-aeaa-4bbe-ab12-2142f8812c98")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "#PWR033")
+					(reference "#PWR0607")
 					(unit 1)
 				)
 			)
@@ -2922,15 +2962,15 @@
 	)
 	(symbol
 		(lib_id "power:VBUS")
-		(at 152.4 92.71 90)
+		(at 149.86 90.17 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "00000000-0000-0000-0000-000061b168a6")
-		(property "Reference" "#PWR032"
-			(at 156.21 92.71 0)
+		(property "Reference" "#PWR0606"
+			(at 149.86 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2939,7 +2979,7 @@
 			)
 		)
 		(property "Value" "VBUS"
-			(at 149.1488 92.329 90)
+			(at 150.241 86.9188 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2948,7 +2988,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 152.4 92.71 0)
+			(at 149.86 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2957,7 +2997,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 152.4 92.71 0)
+			(at 149.86 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2966,7 +3006,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VBUS\""
-			(at 152.4 92.71 0)
+			(at 149.86 90.17 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2978,9 +3018,9 @@
 			(uuid "af236b67-2378-48e2-b559-027c97a398ae")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "#PWR032")
+					(reference "#PWR0606")
 					(unit 1)
 				)
 			)
@@ -2995,7 +3035,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c2f1504f-2289-4262-813c-3fe84e327bb6")
-		(property "Reference" "#PWR030"
+		(property "Reference" "#PWR0604"
 			(at 132.08 132.08 0)
 			(effects
 				(font
@@ -3044,9 +3084,9 @@
 			(uuid "9109b88f-7296-4b98-9c29-621d9e49a439")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/00000000-0000-0000-0000-000061925999"
-					(reference "#PWR030")
+					(reference "#PWR0604")
 					(unit 1)
 				)
 			)

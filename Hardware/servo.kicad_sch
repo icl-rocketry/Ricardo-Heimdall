@@ -209,130 +209,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:R"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "R"
-				(at 2.032 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "R"
-				(at 0 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at -1.778 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Resistor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "R res resistor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "R_*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "R_0_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "R_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "iclr:CPDF3V3UP-HF"
 			(pin_numbers
 				(hide yes)
@@ -861,7 +737,7 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 62.23) (xy 191.77 63.5)
+			(xy 191.77 68.58) (xy 191.77 71.12)
 		)
 		(stroke
 			(width 0)
@@ -891,7 +767,7 @@
 	)
 	(hierarchical_label "ServoPWM"
 		(shape input)
-		(at 191.77 62.23 90)
+		(at 191.77 68.58 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -921,7 +797,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1604992e-1027-4f08-8089-d810595d1ab7")
-		(property "Reference" "J3"
+		(property "Reference" "J1101"
 			(at 203.2 72.3899 0)
 			(effects
 				(font
@@ -930,7 +806,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "ServoConnector1"
+		(property "Value" "1053131103"
 			(at 203.2 74.9299 0)
 			(effects
 				(font
@@ -976,79 +852,9 @@
 			(uuid "a1316321-de1a-4521-909f-720c73833b44")
 		)
 		(instances
-			(project ""
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "J3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R")
-		(at 191.77 67.31 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "2cfe0966-533e-4f74-acca-a86c24b7262b")
-		(property "Reference" "R20"
-			(at 194.31 66.0399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "165"
-			(at 194.31 68.5799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 189.992 67.31 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 191.77 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor"
-			(at 191.77 67.31 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "e31f044c-4102-44a7-ad12-6b54b474e2ad")
-		)
-		(pin "2"
-			(uuid "7a8501db-9343-42b7-afcf-04951c7e0c3b")
-		)
-		(instances
-			(project ""
-				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "R20")
+					(reference "J1101")
 					(unit 1)
 				)
 			)
@@ -1064,7 +870,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3e574895-0727-4ce4-8bca-a062e2f3552a")
-		(property "Reference" "#PWR051"
+		(property "Reference" "#PWR01103"
 			(at 190.5 76.2 0)
 			(effects
 				(font
@@ -1113,9 +919,9 @@
 			(uuid "42f423cd-234f-4fa1-97fa-62bcb908a80a")
 		)
 		(instances
-			(project ""
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "#PWR051")
+					(reference "#PWR01103")
 					(unit 1)
 				)
 			)
@@ -1131,7 +937,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5ab7e0ba-c396-4d0d-b25b-d77f49cafd7b")
-		(property "Reference" "#PWR049"
+		(property "Reference" "#PWR01101"
 			(at 158.75 80.01 0)
 			(effects
 				(font
@@ -1179,9 +985,9 @@
 			(uuid "e773f215-9c45-4583-8826-132c5cdf6fdb")
 		)
 		(instances
-			(project "Reggie"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "#PWR049")
+					(reference "#PWR01101")
 					(unit 1)
 				)
 			)
@@ -1197,7 +1003,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "786858d4-e42d-4aeb-9eaa-d5e14fe3ae83")
-		(property "Reference" "CR1"
+		(property "Reference" "D1101"
 			(at 163.8808 67.31 0)
 			(effects
 				(font
@@ -1249,9 +1055,9 @@
 			(uuid "390a03aa-8dfe-4c0e-98a3-27d3e57526a7")
 		)
 		(instances
-			(project ""
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "CR1")
+					(reference "D1101")
 					(unit 1)
 				)
 			)
@@ -1267,7 +1073,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cb2f6549-652f-4029-925d-791180517c60")
-		(property "Reference" "#PWR050"
+		(property "Reference" "#PWR01102"
 			(at 185.42 76.2 0)
 			(effects
 				(font
@@ -1315,9 +1121,9 @@
 			(uuid "30c2f056-0460-45cd-8331-daca933058d6")
 		)
 		(instances
-			(project ""
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/55ab0687-c91f-4545-a2ea-e93947dc2af8"
-					(reference "#PWR050")
+					(reference "#PWR01102")
 					(unit 1)
 				)
 			)

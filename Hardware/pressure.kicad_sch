@@ -3909,7 +3909,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "09b3892e-20c1-4b54-b35f-4fb3ca4db9b0")
-		(property "Reference" "#PWR062"
+		(property "Reference" "#PWR0813"
 			(at 182.88 72.39 0)
 			(effects
 				(font
@@ -3957,9 +3957,9 @@
 			(uuid "d48d594f-9920-4a79-980f-9a3c535e92a4")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR062")
+					(reference "#PWR0813")
 					(unit 1)
 				)
 			)
@@ -3974,7 +3974,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "0dd8854d-67e0-4bb8-be1f-70718d50e83b")
-		(property "Reference" "#PWR060"
+		(property "Reference" "#PWR0811"
 			(at 180.34 45.72 0)
 			(effects
 				(font
@@ -4022,9 +4022,9 @@
 			(uuid "01929436-d915-4b93-abb9-b11f679edf28")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR060")
+					(reference "#PWR0811")
 					(unit 1)
 				)
 			)
@@ -4035,11 +4035,11 @@
 		(at 171.45 134.112 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "115d5693-b1e1-41ab-b54b-b44830b69a6c")
-		(property "Reference" "JP9"
+		(property "Reference" "JP806"
 			(at 171.45 129.032 0)
 			(effects
 				(font
@@ -4090,9 +4090,9 @@
 			(uuid "274b9bf8-1ae9-4fc2-bd83-153e310fe6ec")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP9")
+					(reference "JP806")
 					(unit 1)
 				)
 			)
@@ -4103,11 +4103,11 @@
 		(at 185.42 106.68 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "1253e664-88ec-4640-b4d2-5c4974c14016")
-		(property "Reference" "JP11"
+		(property "Reference" "JP808"
 			(at 185.42 104.14 90)
 			(effects
 				(font
@@ -4163,9 +4163,9 @@
 			(uuid "b663bed7-7b17-4931-842d-b7213fffe9b8")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP11")
+					(reference "JP808")
 					(unit 1)
 				)
 			)
@@ -4180,7 +4180,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "16521795-4b4b-4f62-9a09-0b71a6c71d01")
-		(property "Reference" "#PWR061"
+		(property "Reference" "#PWR0812"
 			(at 180.34 110.49 0)
 			(effects
 				(font
@@ -4228,9 +4228,9 @@
 			(uuid "22f1c57c-cdfa-4c04-a763-0ede82fb0d16")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR061")
+					(reference "#PWR0812")
 					(unit 1)
 				)
 			)
@@ -4247,7 +4247,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "18586574-5c52-4e44-85f0-6eb2605d0d69")
-		(property "Reference" "#PWR056"
+		(property "Reference" "#PWR0805"
 			(at 60.96 120.65 0)
 			(effects
 				(font
@@ -4296,9 +4296,9 @@
 			(uuid "3139a336-6059-48ff-9ebc-cbc93ac2bd9a")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR056")
+					(reference "#PWR0805")
 					(unit 1)
 				)
 			)
@@ -4314,7 +4314,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "1b02b0a0-bfb4-425e-9c81-715d1f1ca4b6")
-		(property "Reference" "#PWR057"
+		(property "Reference" "#PWR0806"
 			(at 124.206 105.156 0)
 			(effects
 				(font
@@ -4362,9 +4362,9 @@
 			(uuid "adee64a0-6ac9-4665-8038-429167e43a2e")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR057")
+					(reference "#PWR0806")
 					(unit 1)
 				)
 			)
@@ -4375,11 +4375,11 @@
 		(at 171.45 69.342 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "22c7b3b3-bfe0-4e8b-bc49-7bd7af55c787")
-		(property "Reference" "JP8"
+		(property "Reference" "JP805"
 			(at 171.45 64.262 0)
 			(effects
 				(font
@@ -4430,9 +4430,9 @@
 			(uuid "3ed3a13c-3ebc-4dac-9125-594a73578141")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP8")
+					(reference "JP805")
 					(unit 1)
 				)
 			)
@@ -4443,11 +4443,11 @@
 		(at 161.036 126.238 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "241665d3-6478-4b20-8b4d-21460cac1c8c")
-		(property "Reference" "JP5"
+		(property "Reference" "JP802"
 			(at 158.496 124.968 90)
 			(effects
 				(font
@@ -4504,9 +4504,9 @@
 			(uuid "a41fcec8-95cc-4b14-bb37-405f7cf709d9")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP5")
+					(reference "JP802")
 					(unit 1)
 				)
 			)
@@ -4521,7 +4521,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "246d571a-b201-406a-8af6-a3c041187482")
-		(property "Reference" "R38"
+		(property "Reference" "R818"
 			(at 243.84 82.042 90)
 			(effects
 				(font
@@ -4529,7 +4529,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "1kΩ"
 			(at 248.666 82.042 0)
 			(effects
 				(font
@@ -4571,9 +4571,9 @@
 			(uuid "97820e8c-0cf4-437a-8535-7c28a25e9669")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R38")
+					(reference "R818")
 					(unit 1)
 				)
 			)
@@ -4588,7 +4588,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "252beb4c-f65e-42e8-82db-c75e5800c034")
-		(property "Reference" "#PWR0154"
+		(property "Reference" "#PWR0818"
 			(at 243.84 58.42 0)
 			(effects
 				(font
@@ -4638,7 +4638,7 @@
 		(instances
 			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR0154")
+					(reference "#PWR0818")
 					(unit 1)
 				)
 			)
@@ -4653,7 +4653,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "264ab2ec-27e6-49ad-afea-4e06cf4f38e3")
-		(property "Reference" "R28"
+		(property "Reference" "R808"
 			(at 165.1 141.732 90)
 			(effects
 				(font
@@ -4661,7 +4661,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "1kΩ"
 			(at 169.926 141.732 0)
 			(effects
 				(font
@@ -4703,9 +4703,9 @@
 			(uuid "bb4c9c88-8b3a-4508-be13-3ee218dbdd81")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R28")
+					(reference "R808")
 					(unit 1)
 				)
 			)
@@ -4721,7 +4721,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2a7f19bc-428e-42f5-bd07-d28cc6293ebd")
-		(property "Reference" "#PWR066"
+		(property "Reference" "#PWR0817"
 			(at 218.44 86.106 0)
 			(effects
 				(font
@@ -4769,9 +4769,9 @@
 			(uuid "720601ee-4642-46f0-8c37-3577178dfc54")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR066")
+					(reference "#PWR0817")
 					(unit 1)
 				)
 			)
@@ -4786,7 +4786,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "31beea91-6c57-44f0-af4e-f5a548efec29")
-		(property "Reference" "#PWR055"
+		(property "Reference" "#PWR0804"
 			(at 40.64 105.41 0)
 			(effects
 				(font
@@ -4834,9 +4834,9 @@
 			(uuid "f1f2dc72-09bc-4e1a-b9f3-166e1ab37342")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR055")
+					(reference "#PWR0804")
 					(unit 1)
 				)
 			)
@@ -4851,7 +4851,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3213600b-ef34-4d3c-8bca-1fdc8bf80deb")
-		(property "Reference" "R24"
+		(property "Reference" "R804"
 			(at 149.86 115.57 90)
 			(effects
 				(font
@@ -4859,7 +4859,7 @@
 				)
 			)
 		)
-		(property "Value" "75k"
+		(property "Value" "75kΩ"
 			(at 156.21 116.078 0)
 			(effects
 				(font
@@ -4910,9 +4910,9 @@
 			(uuid "b78cfb92-bd4a-43d1-a6cf-285a0273841c")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R24")
+					(reference "R804")
 					(unit 1)
 				)
 			)
@@ -4927,7 +4927,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "367b18aa-89e6-402f-b15f-1805eb9ea02a")
-		(property "Reference" "R37"
+		(property "Reference" "R817"
 			(at 243.84 70.612 90)
 			(effects
 				(font
@@ -4935,7 +4935,7 @@
 				)
 			)
 		)
-		(property "Value" "49.9"
+		(property "Value" "49.9Ω"
 			(at 243.84 72.39 90)
 			(effects
 				(font
@@ -4986,9 +4986,9 @@
 			(uuid "e0db7b2c-9688-435a-82bb-25019f1d30de")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R37")
+					(reference "R817")
 					(unit 1)
 				)
 			)
@@ -5003,7 +5003,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3b88e2ee-7390-494d-a336-9e0ca1f4bb06")
-		(property "Reference" "#PWR067"
+		(property "Reference" "#PWR0819"
 			(at 246.38 50.8 0)
 			(effects
 				(font
@@ -5051,9 +5051,9 @@
 			(uuid "134b38c0-cccb-47d0-91f1-408668dd778f")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR067")
+					(reference "#PWR0819")
 					(unit 1)
 				)
 			)
@@ -5064,11 +5064,11 @@
 		(at 167.64 116.84 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "5486659e-ae95-4ed6-80f5-3454003334af")
-		(property "Reference" "JP7"
+		(property "Reference" "JP804"
 			(at 165.1 115.57 90)
 			(effects
 				(font
@@ -5125,9 +5125,9 @@
 			(uuid "5fdb7bfc-aa15-41e4-8a39-a034cb4653e7")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP7")
+					(reference "JP804")
 					(unit 1)
 				)
 			)
@@ -5143,7 +5143,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "561aeb4f-2e4b-4688-bb29-2a52760e9d02")
-		(property "Reference" "#PWR068"
+		(property "Reference" "#PWR0820"
 			(at 248.92 76.2 0)
 			(effects
 				(font
@@ -5191,9 +5191,9 @@
 			(uuid "43cecd14-85a2-471a-b38a-3ec7b8966ee6")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR068")
+					(reference "#PWR0820")
 					(unit 1)
 				)
 			)
@@ -5204,11 +5204,11 @@
 		(at 161.036 61.468 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "5a56e682-a947-465e-8562-fad7ba09ec76")
-		(property "Reference" "JP4"
+		(property "Reference" "JP801"
 			(at 158.496 60.198 90)
 			(effects
 				(font
@@ -5265,9 +5265,9 @@
 			(uuid "7bdb285f-ac50-489b-91b7-af4cda95684d")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP4")
+					(reference "JP801")
 					(unit 1)
 				)
 			)
@@ -5282,7 +5282,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "66ed5eff-7527-4fc1-ac9f-f36ef252083e")
-		(property "Reference" "IC1"
+		(property "Reference" "U801"
 			(at 69.8814 86.36 90)
 			(effects
 				(font
@@ -5470,9 +5470,9 @@
 			(uuid "55c50249-3d44-4d85-a85c-d7d51a523c9b")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "IC1")
+					(reference "U801")
 					(unit 1)
 				)
 			)
@@ -5487,7 +5487,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6a7d422f-648c-4dcf-97b2-967fe662be2f")
-		(property "Reference" "R21"
+		(property "Reference" "R801"
 			(at 149.86 50.8 90)
 			(effects
 				(font
@@ -5495,7 +5495,7 @@
 				)
 			)
 		)
-		(property "Value" "75k"
+		(property "Value" "75kΩ"
 			(at 156.21 51.308 0)
 			(effects
 				(font
@@ -5546,9 +5546,9 @@
 			(uuid "65f9f7dc-2831-481b-baee-07c30f4b85e9")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R21")
+					(reference "R801")
 					(unit 1)
 				)
 			)
@@ -5563,7 +5563,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6dff426a-05be-41f4-b36d-4bb02ce50e04")
-		(property "Reference" "#PWR0155"
+		(property "Reference" "#PWR0810"
 			(at 177.8 118.11 0)
 			(effects
 				(font
@@ -5613,7 +5613,7 @@
 		(instances
 			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR0155")
+					(reference "#PWR0810")
 					(unit 1)
 				)
 			)
@@ -5628,7 +5628,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "6fd441cf-4b16-4c5a-8bf6-77763d62cdb8")
-		(property "Reference" "R32"
+		(property "Reference" "R812"
 			(at 177.8 141.732 90)
 			(effects
 				(font
@@ -5636,7 +5636,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "1kΩ"
 			(at 182.626 141.732 0)
 			(effects
 				(font
@@ -5678,9 +5678,9 @@
 			(uuid "286bd7e1-8d42-41a3-b97c-14a5c6b5cfa7")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R32")
+					(reference "R812")
 					(unit 1)
 				)
 			)
@@ -5695,7 +5695,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "73cb2f9f-e48e-4762-9e80-76197a197b5b")
-		(property "Reference" "R29"
+		(property "Reference" "R809"
 			(at 177.8 65.532 90)
 			(effects
 				(font
@@ -5703,7 +5703,7 @@
 				)
 			)
 		)
-		(property "Value" "49.9"
+		(property "Value" "49.9Ω"
 			(at 177.8 67.31 90)
 			(effects
 				(font
@@ -5754,9 +5754,9 @@
 			(uuid "88a8fe11-1667-4517-97de-e7ae1d5d583e")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R29")
+					(reference "R809")
 					(unit 1)
 				)
 			)
@@ -5771,7 +5771,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7a89899b-3b45-4271-b693-ca255a2fe7cd")
-		(property "Reference" "#PWR0153"
+		(property "Reference" "#PWR0809"
 			(at 177.8 53.34 0)
 			(effects
 				(font
@@ -5821,7 +5821,7 @@
 		(instances
 			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR0153")
+					(reference "#PWR0809")
 					(unit 1)
 				)
 			)
@@ -5832,11 +5832,11 @@
 		(at 227.076 66.548 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "7bde40e8-43cd-4a21-987e-207c45d31720")
-		(property "Reference" "JP12"
+		(property "Reference" "JP809"
 			(at 224.536 65.278 90)
 			(effects
 				(font
@@ -5893,9 +5893,9 @@
 			(uuid "a6e679c4-8da2-4778-b625-4808f0c61655")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP12")
+					(reference "JP809")
 					(unit 1)
 				)
 			)
@@ -5910,7 +5910,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8938c9f3-fe34-439e-aaec-9f3a59570998")
-		(property "Reference" "R22"
+		(property "Reference" "R802"
 			(at 149.86 61.214 90)
 			(effects
 				(font
@@ -5918,7 +5918,7 @@
 				)
 			)
 		)
-		(property "Value" "14k"
+		(property "Value" "14kΩ"
 			(at 155.956 61.214 0)
 			(effects
 				(font
@@ -5969,9 +5969,9 @@
 			(uuid "548e0a01-a7f8-46bf-b684-e87220eb2ccc")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R22")
+					(reference "R802")
 					(unit 1)
 				)
 			)
@@ -5988,7 +5988,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8ac5fc3a-48d3-4586-b159-4f7084b9a360")
-		(property "Reference" "#PWR053"
+		(property "Reference" "#PWR0802"
 			(at 36.322 119.38 0)
 			(effects
 				(font
@@ -6037,9 +6037,9 @@
 			(uuid "0c01532e-6e9a-45da-8a10-954e8b18df13")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR053")
+					(reference "#PWR0802")
 					(unit 1)
 				)
 			)
@@ -6054,7 +6054,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "954156fc-8c5b-4fe9-8067-c4ac8877458b")
-		(property "Reference" "R30"
+		(property "Reference" "R810"
 			(at 177.8 130.302 90)
 			(effects
 				(font
@@ -6062,7 +6062,7 @@
 				)
 			)
 		)
-		(property "Value" "49.9"
+		(property "Value" "49.9Ω"
 			(at 177.8 132.08 90)
 			(effects
 				(font
@@ -6113,9 +6113,9 @@
 			(uuid "ca4a12fd-e6f1-4b0d-a3d0-d8887c1dc57b")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R30")
+					(reference "R810")
 					(unit 1)
 				)
 			)
@@ -6130,7 +6130,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a312bcdd-5076-4904-92ed-70b3987612ae")
-		(property "Reference" "C85"
+		(property "Reference" "C807"
 			(at 181.61 108.458 90)
 			(effects
 				(font
@@ -6182,7 +6182,7 @@
 		(instances
 			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "C85")
+					(reference "C807")
 					(unit 1)
 				)
 			)
@@ -6198,7 +6198,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a55478db-d579-4d91-b537-89ecc134acf8")
-		(property "Reference" "J5"
+		(property "Reference" "J802"
 			(at 196.088 116.84 0)
 			(effects
 				(font
@@ -6207,7 +6207,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1053131104"
+		(property "Value" "1053131103"
 			(at 182.88 114.3 0)
 			(effects
 				(font
@@ -6254,9 +6254,9 @@
 			(uuid "6535466e-b7de-4043-be48-9790ea1ba343")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "J5")
+					(reference "J802")
 					(unit 1)
 				)
 			)
@@ -6267,11 +6267,11 @@
 		(at 167.64 52.07 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "adc0779b-2d84-498a-aec4-21195ee7b6c2")
-		(property "Reference" "JP6"
+		(property "Reference" "JP803"
 			(at 165.1 50.8 90)
 			(effects
 				(font
@@ -6328,9 +6328,9 @@
 			(uuid "0989e4c3-b3af-40c3-b724-e24e6295da1d")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP6")
+					(reference "JP803")
 					(unit 1)
 				)
 			)
@@ -6345,7 +6345,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "af7a3090-4cbf-4e02-b803-6e08d415aa80")
-		(property "Reference" "R36"
+		(property "Reference" "R816"
 			(at 231.14 82.042 90)
 			(effects
 				(font
@@ -6353,7 +6353,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "1kΩ"
 			(at 235.966 82.042 0)
 			(effects
 				(font
@@ -6395,9 +6395,9 @@
 			(uuid "a0dd7500-64d2-42dd-beab-476cf38d2696")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R36")
+					(reference "R816")
 					(unit 1)
 				)
 			)
@@ -6413,7 +6413,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b1b5ded8-d2bc-462b-9696-bf7fac2d31b7")
-		(property "Reference" "#PWR065"
+		(property "Reference" "#PWR0816"
 			(at 190.5 110.49 0)
 			(effects
 				(font
@@ -6461,9 +6461,9 @@
 			(uuid "49e33e78-34b8-418d-82c1-50fbd8992406")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR065")
+					(reference "#PWR0816")
 					(unit 1)
 				)
 			)
@@ -6474,11 +6474,11 @@
 		(at 233.68 57.15 90)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "b611345f-128f-403d-a660-45f2a954c6ae")
-		(property "Reference" "JP13"
+		(property "Reference" "JP810"
 			(at 231.14 55.88 90)
 			(effects
 				(font
@@ -6535,9 +6535,9 @@
 			(uuid "185b4d07-aa48-45cd-b920-886cc5cf6f52")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP13")
+					(reference "JP810")
 					(unit 1)
 				)
 			)
@@ -6552,7 +6552,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b75e6258-43b8-4986-9633-8ecfd29be46c")
-		(property "Reference" "R23"
+		(property "Reference" "R803"
 			(at 154.94 72.136 90)
 			(effects
 				(font
@@ -6560,7 +6560,7 @@
 				)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "10kΩ"
 			(at 150.368 72.136 90)
 			(effects
 				(font
@@ -6611,9 +6611,9 @@
 			(uuid "3b60ba7c-3d13-4ab0-9ac7-e2b4ebfb6d26")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R23")
+					(reference "R803")
 					(unit 1)
 				)
 			)
@@ -6628,7 +6628,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b75f26ac-9a2f-461b-a21f-537be4f665ae")
-		(property "Reference" "C26"
+		(property "Reference" "C802"
 			(at 44.45 105.41 0)
 			(effects
 				(font
@@ -6678,9 +6678,9 @@
 			(uuid "b8febf35-88a1-495e-a4a9-28c1270c0472")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "C26")
+					(reference "C802")
 					(unit 1)
 				)
 			)
@@ -6695,7 +6695,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b7ca208f-3402-4e50-bb09-3a302bd2193b")
-		(property "Reference" "R31"
+		(property "Reference" "R811"
 			(at 177.8 76.962 90)
 			(effects
 				(font
@@ -6703,7 +6703,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "1kΩ"
 			(at 182.626 76.962 0)
 			(effects
 				(font
@@ -6745,9 +6745,9 @@
 			(uuid "1daeb48d-a706-44df-928a-4f188c0631d3")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R31")
+					(reference "R811")
 					(unit 1)
 				)
 			)
@@ -6762,7 +6762,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b7e8a49d-2f50-4a43-92bd-fdd5d3552e68")
-		(property "Reference" "C83"
+		(property "Reference" "C806"
 			(at 181.61 43.688 90)
 			(effects
 				(font
@@ -6812,9 +6812,9 @@
 			(uuid "37b60c90-532d-4bf3-9d34-e0e5df90d78b")
 		)
 		(instances
-			(project ""
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "C83")
+					(reference "C806")
 					(unit 1)
 				)
 			)
@@ -6830,7 +6830,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bbe0dd01-da62-494e-9241-52bbae57d8d9")
-		(property "Reference" "#PWR063"
+		(property "Reference" "#PWR0814"
 			(at 182.88 138.43 0)
 			(effects
 				(font
@@ -6878,9 +6878,9 @@
 			(uuid "d44478d9-a98f-4132-8ac2-aa681c9262be")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR063")
+					(reference "#PWR0814")
 					(unit 1)
 				)
 			)
@@ -6896,7 +6896,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "be4dd8b5-95e6-4944-8c26-158962553f59")
-		(property "Reference" "#PWR058"
+		(property "Reference" "#PWR0807"
 			(at 152.4 81.026 0)
 			(effects
 				(font
@@ -6944,9 +6944,9 @@
 			(uuid "4a3b2772-4c3b-4030-b6ea-b82ef2810ba5")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR058")
+					(reference "#PWR0807")
 					(unit 1)
 				)
 			)
@@ -6957,11 +6957,11 @@
 		(at 237.49 74.422 180)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "c014ad4b-808c-4927-940a-84fc07925517")
-		(property "Reference" "JP14"
+		(property "Reference" "JP811"
 			(at 237.49 69.342 0)
 			(effects
 				(font
@@ -7012,9 +7012,9 @@
 			(uuid "3088ae36-8f32-428e-8f4c-ed4a09423991")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP14")
+					(reference "JP811")
 					(unit 1)
 				)
 			)
@@ -7030,7 +7030,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c221cc57-a244-4168-be68-bc0722facf68")
-		(property "Reference" "#PWR064"
+		(property "Reference" "#PWR0815"
 			(at 190.5 45.72 0)
 			(effects
 				(font
@@ -7078,9 +7078,9 @@
 			(uuid "3bc8c2e1-bc50-45c6-b6f6-04696d15ee6c")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR064")
+					(reference "#PWR0815")
 					(unit 1)
 				)
 			)
@@ -7095,7 +7095,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c60708ea-fa23-4e12-bcce-b6eef63d7032")
-		(property "Reference" "C25"
+		(property "Reference" "C801"
 			(at 40.64 116.84 0)
 			(effects
 				(font
@@ -7145,9 +7145,9 @@
 			(uuid "0d2a2b47-5a79-4f79-a376-c153393abef7")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "C25")
+					(reference "C801")
 					(unit 1)
 				)
 			)
@@ -7158,11 +7158,11 @@
 		(at 251.46 46.99 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "c7f9975c-9b32-4755-aae7-4564d24a02f5")
-		(property "Reference" "JP15"
+		(property "Reference" "JP812"
 			(at 251.46 44.45 90)
 			(effects
 				(font
@@ -7218,9 +7218,9 @@
 			(uuid "cb80be6f-88f9-4627-86dd-05816bdb5553")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP15")
+					(reference "JP812")
 					(unit 1)
 				)
 			)
@@ -7235,7 +7235,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "cca5fcf1-0a83-4a18-8186-5c6b3417658c")
-		(property "Reference" "R26"
+		(property "Reference" "R806"
 			(at 154.94 136.906 90)
 			(effects
 				(font
@@ -7243,7 +7243,7 @@
 				)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "10kΩ"
 			(at 150.368 136.906 90)
 			(effects
 				(font
@@ -7294,9 +7294,9 @@
 			(uuid "684cff15-600d-4848-8f49-2722bc55b09f")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R26")
+					(reference "R806")
 					(unit 1)
 				)
 			)
@@ -7311,7 +7311,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d04d1999-b651-424b-9e47-20955d3b5b9a")
-		(property "Reference" "R25"
+		(property "Reference" "R805"
 			(at 149.86 125.984 90)
 			(effects
 				(font
@@ -7319,7 +7319,7 @@
 				)
 			)
 		)
-		(property "Value" "14k"
+		(property "Value" "14kΩ"
 			(at 155.956 125.984 0)
 			(effects
 				(font
@@ -7370,9 +7370,9 @@
 			(uuid "ecca6642-493c-4608-b34d-fa7851164ea1")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R25")
+					(reference "R805")
 					(unit 1)
 				)
 			)
@@ -7389,7 +7389,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "d9eb75fc-8e41-4eaf-a35b-90521aa8995d")
-		(property "Reference" "#PWR054"
+		(property "Reference" "#PWR0803"
 			(at 40.64 101.6 0)
 			(effects
 				(font
@@ -7438,9 +7438,9 @@
 			(uuid "99c16506-3a6c-4605-aa7f-1a44706567c2")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR054")
+					(reference "#PWR0803")
 					(unit 1)
 				)
 			)
@@ -7451,11 +7451,11 @@
 		(at 185.42 41.91 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "daf9a433-4844-4c7c-ae28-99cf467bbd26")
-		(property "Reference" "JP10"
+		(property "Reference" "JP807"
 			(at 185.42 39.37 90)
 			(effects
 				(font
@@ -7511,9 +7511,9 @@
 			(uuid "88916c1d-041c-42a2-8a80-faece9f9ae80")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "JP10")
+					(reference "JP807")
 					(unit 1)
 				)
 			)
@@ -7528,7 +7528,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "df6de1db-fb21-428e-b984-427fa94a58b5")
-		(property "Reference" "R33"
+		(property "Reference" "R813"
 			(at 215.9 55.88 90)
 			(effects
 				(font
@@ -7536,7 +7536,7 @@
 				)
 			)
 		)
-		(property "Value" "75k"
+		(property "Value" "75kΩ"
 			(at 222.25 56.388 0)
 			(effects
 				(font
@@ -7587,9 +7587,9 @@
 			(uuid "cceec00c-e1f9-45fe-b1df-6f81e8991f78")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R33")
+					(reference "R813")
 					(unit 1)
 				)
 			)
@@ -7604,7 +7604,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e6a14b8d-8907-4120-931b-11d4e5167325")
-		(property "Reference" "R34"
+		(property "Reference" "R814"
 			(at 215.9 66.294 90)
 			(effects
 				(font
@@ -7612,7 +7612,7 @@
 				)
 			)
 		)
-		(property "Value" "14k"
+		(property "Value" "14kΩ"
 			(at 221.996 66.294 0)
 			(effects
 				(font
@@ -7663,9 +7663,9 @@
 			(uuid "bb96157e-ab4b-4ebc-8229-2d4634d76ded")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R34")
+					(reference "R814")
 					(unit 1)
 				)
 			)
@@ -7680,7 +7680,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e739cadb-d4f5-461e-8618-d13a6a43aecd")
-		(property "Reference" "C30"
+		(property "Reference" "C808"
 			(at 240.03 92.5717 90)
 			(effects
 				(font
@@ -7730,9 +7730,9 @@
 			(uuid "5eef8ced-e246-46d3-88bd-707f2cc65f4a")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "C30")
+					(reference "C808")
 					(unit 1)
 				)
 			)
@@ -7747,7 +7747,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e73f411c-5035-4e87-89fa-b05ac48293ee")
-		(property "Reference" "C29"
+		(property "Reference" "C805"
 			(at 173.99 152.2617 90)
 			(effects
 				(font
@@ -7797,9 +7797,9 @@
 			(uuid "aebcb104-b768-465c-a0d6-8d32c6debc71")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "C29")
+					(reference "C805")
 					(unit 1)
 				)
 			)
@@ -7815,7 +7815,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e9457d6c-4dfb-4299-addf-72ce091772e7")
-		(property "Reference" "J6"
+		(property "Reference" "J803"
 			(at 261.112 56.388 0)
 			(effects
 				(font
@@ -7824,7 +7824,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1053131104"
+		(property "Value" "1053131103"
 			(at 248.92 54.61 0)
 			(effects
 				(font
@@ -7871,9 +7871,9 @@
 			(uuid "82d66cef-397f-4af7-bd1d-45506c6cc1ab")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "J6")
+					(reference "J803")
 					(unit 1)
 				)
 			)
@@ -7888,7 +7888,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "eda0c5a2-a8e5-4367-89e1-bbba7ee9f64f")
-		(property "Reference" "R35"
+		(property "Reference" "R815"
 			(at 220.98 77.216 90)
 			(effects
 				(font
@@ -7896,7 +7896,7 @@
 				)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "10kΩ"
 			(at 216.408 77.216 90)
 			(effects
 				(font
@@ -7947,9 +7947,9 @@
 			(uuid "2d44265c-b14c-4bf5-b4fa-dfb9efa19333")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R35")
+					(reference "R815")
 					(unit 1)
 				)
 			)
@@ -7964,7 +7964,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f2317952-31d8-4d01-a689-cf98efb7df12")
-		(property "Reference" "C27"
+		(property "Reference" "C803"
 			(at 58.42 98.806 90)
 			(effects
 				(font
@@ -8014,9 +8014,9 @@
 			(uuid "2533bb18-bc7a-4692-b3d4-93c864495fcd")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "C27")
+					(reference "C803")
 					(unit 1)
 				)
 			)
@@ -8032,7 +8032,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f5e25e1e-f0a6-4f4e-862a-6530e63f4dbd")
-		(property "Reference" "#PWR059"
+		(property "Reference" "#PWR0808"
 			(at 152.4 145.796 0)
 			(effects
 				(font
@@ -8080,9 +8080,9 @@
 			(uuid "bdd67ff5-4669-402e-9268-b57acf429bb4")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR059")
+					(reference "#PWR0808")
 					(unit 1)
 				)
 			)
@@ -8098,7 +8098,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f6e60f4b-3117-44e5-8060-6e0ce203a2ee")
-		(property "Reference" "J4"
+		(property "Reference" "J801"
 			(at 194.818 52.07 0)
 			(effects
 				(font
@@ -8107,7 +8107,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1053131104"
+		(property "Value" "1053131103"
 			(at 182.88 49.53 0)
 			(effects
 				(font
@@ -8154,9 +8154,9 @@
 			(uuid "617bcf93-1251-45e1-a885-d0bebe9699b5")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "J4")
+					(reference "J801")
 					(unit 1)
 				)
 			)
@@ -8171,7 +8171,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f86f0b5b-33e5-4613-ab7d-b7b6fbf5ebb7")
-		(property "Reference" "C84"
+		(property "Reference" "C809"
 			(at 247.65 48.768 90)
 			(effects
 				(font
@@ -8223,7 +8223,7 @@
 		(instances
 			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "C84")
+					(reference "C809")
 					(unit 1)
 				)
 			)
@@ -8238,7 +8238,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f8c32ae1-e8a0-44b0-b51e-ea4e329db4d0")
-		(property "Reference" "R27"
+		(property "Reference" "R807"
 			(at 165.1 76.962 90)
 			(effects
 				(font
@@ -8246,7 +8246,7 @@
 				)
 			)
 		)
-		(property "Value" "1k"
+		(property "Value" "1kΩ"
 			(at 169.926 76.962 0)
 			(effects
 				(font
@@ -8288,9 +8288,9 @@
 			(uuid "61affc66-9a53-44d4-a61f-3876b4f90d25")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "R27")
+					(reference "R807")
 					(unit 1)
 				)
 			)
@@ -8305,7 +8305,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "f90c7336-3953-4216-8439-e46b5c55b10b")
-		(property "Reference" "#PWR052"
+		(property "Reference" "#PWR0801"
 			(at 36.322 111.76 0)
 			(effects
 				(font
@@ -8353,9 +8353,9 @@
 			(uuid "3d92f74d-4f04-4cbe-8f9c-11e49c09620f")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR052")
+					(reference "#PWR0801")
 					(unit 1)
 				)
 			)
@@ -8371,7 +8371,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fd50da86-cb45-4680-b94d-1cc7323e9e17")
-		(property "Reference" "#PWR069"
+		(property "Reference" "#PWR0821"
 			(at 256.54 50.8 0)
 			(effects
 				(font
@@ -8419,9 +8419,9 @@
 			(uuid "702b54c7-9565-4e77-ab21-8880e417d967")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "#PWR069")
+					(reference "#PWR0821")
 					(unit 1)
 				)
 			)
@@ -8436,7 +8436,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ff866267-994d-485f-ac65-cfd6c474f4d0")
-		(property "Reference" "C28"
+		(property "Reference" "C804"
 			(at 173.99 87.4917 90)
 			(effects
 				(font
@@ -8486,9 +8486,9 @@
 			(uuid "ec36001a-b5ca-4d8e-955f-477e180b4fff")
 		)
 		(instances
-			(project "RicardoTemplate"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/3af81d2a-0ad1-4f51-8454-076646dec8d9"
-					(reference "C28")
+					(reference "C804")
 					(unit 1)
 				)
 			)

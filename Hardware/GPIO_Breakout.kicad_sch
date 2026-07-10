@@ -1029,7 +1029,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7c9c7d32-57f9-4638-9dca-09cc9d6e4929")
-		(property "Reference" "#PWR0151"
+		(property "Reference" "#PWR01002"
 			(at 107.95 39.37 0)
 			(effects
 				(font
@@ -1078,9 +1078,9 @@
 			(uuid "c06db99b-61b1-4fa6-8391-73efda893504")
 		)
 		(instances
-			(project "Reggie"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/27542141-17da-4259-86dc-4e9093aea81a"
-					(reference "#PWR0151")
+					(reference "#PWR01002")
 					(unit 1)
 				)
 			)
@@ -1091,12 +1091,12 @@
 		(at 119.38 46.99 0)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
 		(dnp no)
 		(uuid "aa7288b3-7d39-49ea-b009-dc40441ee186")
-		(property "Reference" "J8"
-			(at 121.92 53.34 90)
+		(property "Reference" "J1001"
+			(at 122.428 46.7391 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1105,7 +1105,7 @@
 			)
 		)
 		(property "Value" "GPIO Breakout"
-			(at 124.4569 53.34 90)
+			(at 122.428 49.276 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1165,9 +1165,9 @@
 			(uuid "c31ab44a-5f45-4a92-a5d5-7d38ce18d3af")
 		)
 		(instances
-			(project "Reggie"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/27542141-17da-4259-86dc-4e9093aea81a"
-					(reference "J8")
+					(reference "J1001")
 					(unit 1)
 				)
 			)
@@ -1183,7 +1183,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "cc4e2b8f-ef54-4d88-ab5c-a383d0c20d7a")
-		(property "Reference" "D6"
+		(property "Reference" "D1001"
 			(at 67.31 39.37 0)
 			(effects
 				(font
@@ -1300,9 +1300,9 @@
 			(uuid "47abe54e-d4de-4e87-9be0-ef68f867e097")
 		)
 		(instances
-			(project "Reggie"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/27542141-17da-4259-86dc-4e9093aea81a"
-					(reference "D6")
+					(reference "D1001")
 					(unit 1)
 				)
 			)
@@ -1318,7 +1318,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "e39c72d9-cb94-48e5-811e-7e1f9f04b974")
-		(property "Reference" "#PWR0150"
+		(property "Reference" "#PWR01001"
 			(at 41.91 55.88 0)
 			(effects
 				(font
@@ -1366,9 +1366,9 @@
 			(uuid "b4b65044-16fe-4538-8d64-33709d91644b")
 		)
 		(instances
-			(project "Reggie"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/27542141-17da-4259-86dc-4e9093aea81a"
-					(reference "#PWR0150")
+					(reference "#PWR01001")
 					(unit 1)
 				)
 			)
@@ -1384,7 +1384,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f964185f-e813-4163-9fd5-4064be96c236")
-		(property "Reference" "#PWR0152"
+		(property "Reference" "#PWR01003"
 			(at 118.11 49.53 0)
 			(effects
 				(font
@@ -1433,9 +1433,9 @@
 			(uuid "82af6d10-bf0a-4c4b-ad42-1ff7be8b1f4b")
 		)
 		(instances
-			(project "Reggie"
+			(project "Heimdall"
 				(path "/7db990e4-92e1-4f99-b4d2-435bbec1ba83/27542141-17da-4259-86dc-4e9093aea81a"
-					(reference "#PWR0152")
+					(reference "#PWR01003")
 					(unit 1)
 				)
 			)
