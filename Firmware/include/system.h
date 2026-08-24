@@ -12,6 +12,7 @@
 
 #include <librrc/Remote/nrcremoteservo.h>
 #include <librrc/Remote/nrcremoteptap.h>
+#include <librrc/Remote/nrcremotethermocouple.h>
 
 #include "Commands/commands.h"
 #include "Config/systemflags_config.h"
@@ -21,6 +22,7 @@
 #include "Config/general_config.h"
 
 #include "States/idle.h"
+#include "Regulator/nrcheimdall.h"
 #include "Storage/sdfat_store.h"
 #include "Loggers/TelemetryLogger/telemetrylogframe.h"
 
@@ -39,9 +41,6 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         
     private:
 
-        LocalPWM _servo0_pwm;
-        NRCRemoteServo<LocalPWM> _servo0;
-
         SPIClass _sd_spi;       //SPI for the SD card
         SPIClass _sensor_spi;   //SPI for the sensors
 
@@ -51,8 +50,13 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         NRCRemotePTap _pt1;
         NRCRemotePTap _pt2;
 
-        MAX31856 _tc0;
-        MAX31856 _tc1;
+        MAX31856 _max0;
+        MAX31856 _max1;
+
+        NRCRemoteThermocouple<MAX31856> _tc0; 
+        NRCRemoteThermocouple<MAX31856> _tc1;
+
+        NRCHeimdall _regulator;
 
         SdFat_Store _primarysd;
 

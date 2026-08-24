@@ -9,6 +9,9 @@ namespace Services{
         PT0 = 11,
         PT1 = 12,
         PT2 = 13,
+        TC0 = 14,
+        TC1 = 15.
+        
     };
 
 };

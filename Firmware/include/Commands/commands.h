@@ -15,4 +15,6 @@ namespace Commands{
     
     void FreeRamCommand(ForwardDecl_SystemClass& system, const RnpPacketSerialized& packet);
 
+    void HeimdallTelemCommand(ForwardDecl_SystemClass& system, const RnpPacketSerialized& packet);
+
 }

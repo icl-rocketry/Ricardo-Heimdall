@@ -35,3 +35,28 @@ void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 	}
 	
 }
+
+
+void Commands::HeimdallTelemCommand(System& sm, const RnpPacketSerialized& packet)
+{	
+	SimpleCommandPacket commandpacket(packet);
+
+	HeimdallTelemPacket heimdalltelem;
+
+	heimdalltelem.header.type = static_cast<uint8_t>(115);
+	heimdalltelem.header.source = sm.networkmanager.getAddress();
+	heimdalltelem.header.source_service = sm.commandhandler.getServiceID();
+	heimdalltelem.header.destination = commandpacket.header.source;
+	heimdalltelem.header.destination_service = commandpacket.header.source_service;
+	heimdalltelem.header.uid = commandpacket.header.uid; 
+	heimdalltelem.FF_angle = sm.Heimdall.feedforward();
+	heimdalltelem.regAngle = sm.Heimdall.getRegAngle();
+	heimdalltelem.fuel_tankP = sm.Heimdall.getAvgP();
+	heimdalltelem.P_angle = sm.Heimdall.getPAngle();
+	heimdalltelem.Kp = sm.Heimdall.Kp();
+	heimdalltelem.system_status = sm.systemstatus.getStatus();
+	heimdalltelem.system_time = millis();
+	
+	sm.networkmanager.sendPacket(heimdalltelem);
+	
+}

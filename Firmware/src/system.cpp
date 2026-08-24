@@ -4,16 +4,17 @@
 System::System():
     RicCoreSystem(Commands::command_map,Commands::defaultEnabledCommands,Serial),
     _canbus(systemstatus,PinMap::TX_CAN,PinMap::RX_CAN,3),
-    _servo0_pwm(PinMap::SERVO_PWM),
-    _servo0(_servo0_pwm, networkmanager, "Srvo0"),
     _sd_spi(FSPI), // VSPI
     _sensor_spi(HSPI),
     _adc0(_sensor_spi, PinMap::ADC_CS, PinMap::ADC_CLK),
     _pt0(networkmanager, 0),
     _pt1(networkmanager, 1),
     _pt2(networkmanager, 2),
-    _tc0(_sensor_spi, PinMap::T_CS_0),
-    _tc1(_sensor_spi, PinMap::T_CS_1),
+    _max0(_sensor_spi, PinMap::T_CS_0),
+    _max1(_sensor_spi, PinMap::T_CS_1),
+    _tc0(_max0, networkmanager, "TC0"),
+    _tc1(_max1, networkmanager, "TC1"),
+    _regulator(networkmanager,PinMap::SERVO_PWM, _pt0, _pt1, _pt2, _tc0, _tc1),
     _primarysd(_sd_spi, PinMap::SD_CS,SD_SCK_MHZ(20),false,&systemstatus)
     {};
 
@@ -62,8 +63,6 @@ void System::systemSetup(){
     //needs the store mounted so it can open the log files
     initializeLoggers();
 
-    _servo0.setup();
-
     _adc0.setup();
     _adc0.setOSR(ADS131M04::OSROPT::OSR8192);
     _adc0.setGain(0,ADS131M04::GAIN::GAIN1);
@@ -77,27 +76,32 @@ void System::systemSetup(){
     _tc0.setup();
     _tc1.setup();
 
-    uint8_t servoservice0 = static_cast<uint8_t>(Services::ID::Servo0);
     uint8_t ptservice0 = static_cast<uint8_t>(Services::ID::PT0);
     uint8_t ptservice1 = static_cast<uint8_t>(Services::ID::PT1);
     uint8_t ptservice2 = static_cast<uint8_t>(Services::ID::PT2);
 
-    networkmanager.registerService(servoservice0,_servo0.getThisNetworkCallback());
+    uint8_t tcservice0 = static_cast<uint8_t>(Services::ID::TC0);
+    uint8_t tcservice1 = static_cast<uint8_t>(Services::ID::TC1);
+    
+
     networkmanager.registerService(ptservice0,_pt0.getThisNetworkCallback());
     networkmanager.registerService(ptservice1,_pt1.getThisNetworkCallback());
     networkmanager.registerService(ptservice2,_pt2.getThisNetworkCallback());
+    networkmanager.registerService(tcservice0,_tc0.getThisNetworkCallback());
+    networkmanager.registerService(tcservice1,_tc1.getThisNetworkCallback());
 
 };
 
 void System::systemUpdate(){
 
     _adc0.update();
-    _tc0.update();
-    _tc1.update();
-
+    
     _pt0.update(_adc0.getOutput(0));
     _pt1.update(_adc0.getOutput(1));
     _pt2.update(_adc0.getOutput(2));
+
+    _tc0.update();
+    _tc1.update();
 }
 
 void System::setupSPI(){
@@ -145,12 +149,12 @@ void System::logReadings()
     {
         TelemetryLogframe logframe;
 
-        logframe.ch0sens = _pt0.getPressure();
-        logframe.ch1sens = _pt0.getPressure();
-        logframe.ch2sens = _pt0.getPressure();
+        logframe.ch0sens = _pt0.getProcessed();
+        logframe.ch1sens = _pt0.getProcessed();
+        logframe.ch2sens = _pt0.getProcessed();
 
-        logframe.temp0 = _tc0.getTemp();
-        logframe.temp1 = _tc0.getTemp();
+        logframe.temp0 = _tc0.getProcessed();
+        logframe.temp1 = _tc0.getProcessed();
 
         logframe.timestamp = esp_timer_get_time();
         _prev_telemetry_log_time = esp_timer_get_time();
