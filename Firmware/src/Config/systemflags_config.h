@@ -10,6 +10,8 @@ enum class SYSTEM_FLAG:uint32_t{
     ERROR_SERIAL = (1 << 10),
     ERROR_CAN = (1<<11),
     ERROR_SD = (1<<19),
+    ERROR_PGOOD = (1<<20),
+    ERROR_VBOUNDS = (1<<21)
 };
 
 using system_flag_t = uint32_t;

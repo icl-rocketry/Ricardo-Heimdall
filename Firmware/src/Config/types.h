@@ -19,7 +19,8 @@
 
 #include "systemflags_config.h"
 #include "commands_config.h"
-
+#include <librrc/HAL/localpwm.h>
+#include <librrc/Remote/nrcremoteservo.h>
 namespace Types{
     using CoreTypes = RicCoreTypes<ForwardDecl_SystemClass,SYSTEM_FLAG,Commands::ID,256>;
     //any other useful aliases used in multiple places should be defined here

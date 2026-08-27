@@ -13,6 +13,7 @@
 #include <librrc/Remote/nrcremoteptap.h>
 #include <librrc/Remote/nrcremoteloadcell.h>
 #include <librrc/Remote/nrcremoteflowsensor.h>
+#include "SiC43x.h"
 
 #include "Commands/commands.h"
 
@@ -43,10 +44,12 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         //1 4-channel ADC:
         ADS131M04 ADC0;
 
-        //
+        //Pressure Sensors
         NRCRemotePTap FB_PT;
         NRCRemotePTap N2_PT;
 
+        SiC43x Buck;
+        //SD Card
         SdFat_Store primarysd;
 
     private:

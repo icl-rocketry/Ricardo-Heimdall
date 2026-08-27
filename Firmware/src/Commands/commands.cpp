@@ -15,8 +15,8 @@
 #include <libriccore/commands/commandhandler.h>
 
 #include "system.h"
-#include "Commands/processedsensorpacket.h"
-#include "Commands/rawADCPacket.h"
+#include "Commands/packets/processedsensorpacket.h"
+#include "Commands/packets/rawADCPacket.h"
 
 void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 {	

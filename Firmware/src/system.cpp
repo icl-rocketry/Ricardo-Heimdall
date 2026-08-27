@@ -32,24 +32,25 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),
                    FB_PT(networkmanager, 0),
                    N2_PT(networkmanager, 2),
+                   Buck(systemstatus, PinMap::BuckPGOOD, PinMap::BuckEN, true),
                    primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
 
 void System::systemSetup()
 {
-
+    //Base Ricardo setup
     Serial.setRxBufferSize(GeneralConfig::SerialRxSize);
     Serial.begin(GeneralConfig::SerialBaud);
   
-    // initialize statemachine with idle state
+    //Initialize statemachine with idle state
     statemachine.initalize(std::make_unique<Idle>(systemstatus, commandhandler));
 
+    //Can bus setup
     canbus.setup();
     networkmanager.setNodeType(NODETYPE::HUB);
     networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST, {1, 3});
     networkmanager.addInterface(&canbus);
 
-    // any other setup goes here
-
+    //Project specific feedback
     pinMode(PinMap::SdCs_1, OUTPUT);
     pinMode(PinMap::ADC0_Cs, OUTPUT);
     pinMode(PinMap::TC0_Cs, OUTPUT);
@@ -67,15 +68,13 @@ void System::systemSetup()
     // Thermocouples:
     TC0.setup();
     TC1.setup();
-    // ADCs:
+    // ADC:
     ADC0.setup();
-    // Turbine Flow Sensor:
-
     ADC0.setOSR(ADS131M04::OSROPT::OSR8192);
     ADC0.setGain(0,ADS131M04::GAIN::GAIN1);
     ADC0.setGain(1,ADS131M04::GAIN::GAIN1);
     ADC0.setGain(2,ADS131M04::GAIN::GAIN1);
-
+    
     serviceSetup();
 
     remoteSensorSetup();
