@@ -1,4 +1,17 @@
-#include "Storage/sdfat_store.h"
+#include "sdfat_store.h"
+
+#include <libriccore/storage/storebase.h>
+#include <libriccore/riccoretypes.h>
+#include <libriccore/riccorelogging.h>
+
+#include <SPI.h>
+#include <SdFat.h>
+
+#include "Config/types.h"
+#include "Config/systemflags_config.h"
+
+#include "sdfat_file.h"
+
 
 SdFat_Store::SdFat_Store(SPIClass &spi,const uint8_t cs,const uint32_t frequency,RicCoreThread::Lock_t &spiBusLock,bool dedicatedSPI,Types::CoreTypes::SystemStatus_t* systemstatus):
 StoreBase(spiBusLock),

@@ -18,11 +18,11 @@ dependencies:
       type: service
     version: 1.4.12
   espressif/esp-modbus:
-    component_hash: 5d5e90b9e55721a8a194b301ad8102d4affb647f47b74cd413ff7d1ce2c1169c
+    component_hash: e42ebfdfc9d8e46821a915b4c1a5c6465c44dbd4e1bca10531e26f4adc7acc42
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 1.0.18
+    version: 1.0.17
   espressif/esp-serial-flasher:
     component_hash: dcc42a16712a1a636509cf0bf90e14032d7f2141784b533613b267b6aa318d52
     source:
@@ -66,11 +66,11 @@ dependencies:
       type: service
     version: 1.0.1
   espressif/esp_modem:
-    component_hash: 71c9f54fc512c60d93ea9763377ceb1d5b575a4616f3f3344440b97e2a38da29
+    component_hash: 681d7c8417ce0f2a11a562c6998b7b379a4847be41d84673c11c0c7a6b00e918
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 1.4.3
+    version: 1.3.0
   espressif/esp_rainmaker:
     component_hash: f89a4759347f3909417fb33059452f36c86befae9d10bda78b5417b7a5d19d11
     source:
@@ -90,11 +90,11 @@ dependencies:
       type: service
     version: 1.2.0
   espressif/esp_secure_cert_mgr:
-    component_hash: 0b83e150f48d6839f0a0a8753850be55a51cc298cfca7658f21d355d5f41dd67
+    component_hash: 5d9175b416f751ba6a7cb35bdf092f0af85658ce06c4a592c7c541d8017ebeb9
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 2.9.3
+    version: 2.5.0
   espressif/jsmn:
     component_hash: d80350c41bbaa827c98a25b6072df00884e72f54885996fab4a4f0aebce6b6c3
     source:
@@ -114,17 +114,17 @@ dependencies:
       type: service
     version: 1.0.3
   espressif/libsodium:
-    component_hash: d4066b373fc6d4c5196db42aeea7faef4ac7f3080af96c2b74e2476c08b78dc1
+    component_hash: 25b968723c584a2742ca36cebe5a7ef049c6767e059f7b1e1eec69946019025d
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 1.0.22~1
+    version: 1.0.20~2
   espressif/mdns:
-    component_hash: e81ca7a7f53ea34e78274df054da692c272e1315572876b237b1748e267c013b
+    component_hash: d36b265164be5139f92de993f08f5ecaa0de0c0acbf84deee1f10bb5902d04ff
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 1.11.3
+    version: 1.4.3
   espressif/network_provisioning:
     component_hash: ef2e10182fd1861e68b821491916327c25416ca7ae70e5a6e43313dbc71fe993
     source:
@@ -149,11 +149,11 @@ dependencies:
       type: idf
     version: 5.3.1
   joltwallet/littlefs:
-    component_hash: 3af20a3d75c49db9dc2286fd50862c34055c9f578419ad1f2bf7ed3ed01391fe
+    component_hash: a023b819eff7a7740d61ae40b8e0c53dfe32843a99bc4aa6554867f3fc5091d3
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 1.22.3
-manifest_hash: 11ced7fe65e7816c83c963f6e2f7a9a7b57b33cdf80903e34d7e8f843c480dea
+    version: 1.16.1
+manifest_hash: 0684bb290959174ded38acb5b104020362e845fa736262e9cd12d2d511bc9479
 target: esp32s3
 version: 1.0.0

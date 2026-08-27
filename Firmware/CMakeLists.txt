@@ -1,4 +1,5 @@
 cmake_minimum_required(VERSION 3.16.0)
-set(PROJECT_VER "3.0")
+set(PROJECT_VER "4.0-DEV")
 include($ENV{IDF_PATH}/tools/cmake/project.cmake)
-project(Ricardo-Heimdall)
+# message(STATUS $ENV{IDF_PATH})
+project(Ricardo-Kermit)

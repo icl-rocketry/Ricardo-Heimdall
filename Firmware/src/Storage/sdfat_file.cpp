@@ -1,4 +1,14 @@
-#include "Storage/sdfat_file.h"
+#include "sdfat_file.h"
+
+#include <SdFat.h>
+#include <libriccore/storage/wrappedfile.h>
+#include <libriccore/threading/riccorethread.h>
+#include <libriccore/threading/scopedlock.h>
+
+
+#include "sdfat_store.h"
+
+
 
 SdFat_WrappedFile::SdFat_WrappedFile(FsFile file, store_fd fileDesc, SdFat_Store& store, FILE_MODE mode,size_t maxQueueSize):
 WrappedFile(store,fileDesc,mode,maxQueueSize),

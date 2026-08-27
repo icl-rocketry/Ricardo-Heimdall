@@ -1,125 +1,110 @@
 #include "system.h"
 
+#include <memory>
 
-System::System():
-    RicCoreSystem(Commands::command_map,Commands::defaultEnabledCommands,Serial),
-    _canbus(systemstatus,PinMap::TX_CAN,PinMap::RX_CAN,3),
-    _sd_spi(FSPI), // VSPI
-    _sensor_spi(HSPI),
-    _adc0(_sensor_spi, PinMap::ADC_CS, PinMap::ADC_CLK),
-    _pt0(networkmanager, 0),
-    _pt1(networkmanager, 1),
-    _pt2(networkmanager, 2),
-    _max0(_sensor_spi, PinMap::T_CS_0),
-    _max1(_sensor_spi, PinMap::T_CS_1),
-    _tc0(_max0, networkmanager, "TC0"),
-    _tc1(_max1, networkmanager, "TC1"),
-    _regulator(networkmanager,PinMap::SERVO_PWM, _pt0, _pt1, _pt2, _tc0, _tc1),
-    _primarysd(_sd_spi, PinMap::SD_CS,SD_SCK_MHZ(20),false,&systemstatus)
-    {};
+#include <libriccore/riccoresystem.h>
 
+#include <HardwareSerial.h>
 
-void System::systemSetup(){
-    
+#include "Config/systemflags_config.h"
+#include "Config/commands_config.h"
+#include "Config/pinmap_config.h"
+#include "Config/general_config.h"
+#include "Config/services_config.h"
+
+#include "Commands/commands.h"
+
+#include "States/idle.h"
+
+#include <cstdlib>
+
+#include "Loggers/TelemetryLogger/telemetrylogframe.h"
+
+static constexpr int VSPI_BUS_NUM = 0;
+static constexpr int HSPI_BUS_NUM = 1;
+
+System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabledCommands, Serial),
+                   canbus(systemstatus, PinMap::TxCan, PinMap::RxCan, 3),
+                   SDSPI(VSPI_BUS_NUM),
+                   SNSRSPI(HSPI_BUS_NUM),
+                   TC0(SNSRSPI, PinMap::TC0_Cs),
+                   TC1(SNSRSPI, PinMap::TC1_Cs),
+                   ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),
+                   FB_PT(networkmanager, 0),
+                   N2_PT(networkmanager, 2),
+                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
+
+void System::systemSetup()
+{
+
     Serial.setRxBufferSize(GeneralConfig::SerialRxSize);
     Serial.begin(GeneralConfig::SerialBaud);
-   
-    //initialize statemachine with idle state
-    statemachine.initalize(std::make_unique<Idle>(systemstatus,commandhandler));
-    
-    _canbus.setup(); 
+  
+    // initialize statemachine with idle state
+    statemachine.initalize(std::make_unique<Idle>(systemstatus, commandhandler));
+
+    canbus.setup();
     networkmanager.setNodeType(NODETYPE::HUB);
     networkmanager.setNoRouteAction(NOROUTE_ACTION::BROADCAST, {1, 3});
-    networkmanager.addInterface(&_canbus);
+    networkmanager.addInterface(&canbus);
 
-    // TODO: these should be done in the drivers not here
-    //ADC
-    pinMode(PinMap::ADC_DRDY, INPUT);
+    // any other setup goes here
 
-    pinMode(PinMap::T_CS_0, OUTPUT);
-    pinMode(PinMap::T_CS_1, OUTPUT);
-    digitalWrite(PinMap::T_CS_0, HIGH);
-    digitalWrite(PinMap::T_CS_1, HIGH);
-
-
-    // to be integrated into the driver
-    pinMode(PinMap::T_FAULT_0, INPUT);
-    pinMode(PinMap::T_FAULT_1, INPUT);
-    pinMode(PinMap::T_DRDY_0, INPUT);
-    pinMode(PinMap::T_DRDY_1, INPUT);
-
-    //SD card
-    pinMode(PinMap::SD_DET, INPUT);
+    pinMode(PinMap::SdCs_1, OUTPUT);
+    pinMode(PinMap::ADC0_Cs, OUTPUT);
+    pinMode(PinMap::TC0_Cs, OUTPUT);
+    pinMode(PinMap::TC1_Cs, OUTPUT);
     pinMode(PinMap::SD_EN, OUTPUT);
 
-    //Buck converter
-    pinMode(PinMap::BUCK_EN, OUTPUT);
-    pinMode(PinMap::BUCK_PGOOD, INPUT);
+    digitalWrite(PinMap::SdCs_1, HIGH);
+    digitalWrite(PinMap::ADC0_Cs, HIGH);
+    digitalWrite(PinMap::TC0_Cs, HIGH);
+    digitalWrite(PinMap::TC1_Cs, HIGH);
+    digitalWrite(PinMap::SD_EN, LOW);
 
     setupSPI();
 
-    _primarysd.setup();
+    // Thermocouples:
+    TC0.setup();
+    TC1.setup();
+    // ADCs:
+    ADC0.setup();
+    // Turbine Flow Sensor:
 
-    //needs the store mounted so it can open the log files
+    ADC0.setOSR(ADS131M04::OSROPT::OSR8192);
+    ADC0.setGain(0,ADS131M04::GAIN::GAIN1);
+    ADC0.setGain(1,ADS131M04::GAIN::GAIN1);
+    ADC0.setGain(2,ADS131M04::GAIN::GAIN1);
+
+    serviceSetup();
+
+    remoteSensorSetup();
+
+    primarysd.setup();
+
     initializeLoggers();
-
-    _adc0.setup();
-    _adc0.setOSR(ADS131M04::OSROPT::OSR8192);
-    _adc0.setGain(0,ADS131M04::GAIN::GAIN1);
-    _adc0.setGain(1,ADS131M04::GAIN::GAIN1);
-    _adc0.setGain(2,ADS131M04::GAIN::GAIN1);
-
-    _pt0.setup();
-    _pt1.setup();
-    _pt2.setup();
-
-    _tc0.setup();
-    _tc1.setup();
-
-    uint8_t ptservice0 = static_cast<uint8_t>(Services::ID::PT0);
-    uint8_t ptservice1 = static_cast<uint8_t>(Services::ID::PT1);
-    uint8_t ptservice2 = static_cast<uint8_t>(Services::ID::PT2);
-
-    uint8_t tcservice0 = static_cast<uint8_t>(Services::ID::TC0);
-    uint8_t tcservice1 = static_cast<uint8_t>(Services::ID::TC1);
-    
-
-    networkmanager.registerService(ptservice0,_pt0.getThisNetworkCallback());
-    networkmanager.registerService(ptservice1,_pt1.getThisNetworkCallback());
-    networkmanager.registerService(ptservice2,_pt2.getThisNetworkCallback());
-    networkmanager.registerService(tcservice0,_tc0.getThisNetworkCallback());
-    networkmanager.registerService(tcservice1,_tc1.getThisNetworkCallback());
-
 };
 
-void System::systemUpdate(){
+void System::systemUpdate()
+{
+    deviceUpdate();
 
-    _adc0.update();
-    
-    _pt0.update(_adc0.getOutput(0));
-    _pt1.update(_adc0.getOutput(1));
-    _pt2.update(_adc0.getOutput(2));
+    remoteSensorUpdate();
 
-    _tc0.update();
-    _tc1.update();
-}
+    logReadings();
+};
 
-void System::setupSPI(){
-    _sd_spi.begin(PinMap::VSPI_SCLK,PinMap::VSPI_MISO,PinMap::VSPI_MOSI);
-    _sd_spi.setFrequency(20e6);
-    _sd_spi.setBitOrder(MSBFIRST);
-    _sd_spi.setDataMode(SPI_MODE0);
-
-    _sensor_spi.begin(PinMap::HSPI_SCLK, PinMap::HSPI_MISO, PinMap::HSPI_MOSI);
-    _sensor_spi.setFrequency(5000000);
-    _sensor_spi.setBitOrder(MSBFIRST);
-    _sensor_spi.setDataMode(SPI_MODE1);
+void System::serviceSetup()
+{
+    networkmanager.registerService(static_cast<uint8_t>(Services::ID::FB_PT), FB_PT.getThisNetworkCallback());
+    // networkmanager.registerService(static_cast<uint8_t>(Services::ID::Middle_PT), PT1.getThisNetworkCallback());
+    networkmanager.registerService(static_cast<uint8_t>(Services::ID::N2_PT), N2_PT.getThisNetworkCallback());
 }
 
 void System::initializeLoggers()
 {
     // check if sd card is mounted
-    if (_primarysd.getState() != StoreBase::STATE::NOMINAL)
+    if (primarysd.getState() != StoreBase::STATE::NOMINAL)
     {
         loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::SYS>().initialize(nullptr, networkmanager);
 
@@ -128,38 +113,75 @@ void System::initializeLoggers()
 
     // open log files
     // get unique directory for logs
-    std::string log_directory_path = _primarysd.generateUniquePath(_log_path, "");
+    std::string log_directory_path = primarysd.generateUniquePath(log_path, "");
     // make new directory
-    _primarysd.mkdir(log_directory_path);
+    primarysd.mkdir(log_directory_path);
 
-    std::unique_ptr<WrappedFile> syslogfile = _primarysd.open(log_directory_path + "/syslog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END));
-    std::unique_ptr<WrappedFile> telemetrylogfile = _primarysd.open(log_directory_path + "/telemetrylog.csv", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END),100);
+    std::unique_ptr<WrappedFile> syslogfile = primarysd.open(log_directory_path + "/syslog.txt", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END));
+    std::unique_ptr<WrappedFile> telemetrylogfile = primarysd.open(log_directory_path + "/telemetrylog.csv", static_cast<FILE_MODE>(O_WRITE | O_CREAT | O_AT_END),100);
 
     // intialize sys logger
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::SYS>().initialize(std::move(syslogfile), networkmanager);
 
     // initialize telemetry logger
-    std::string file_header = "ch0sens,ch1sens,ch2sens,tc0(C),tc1(C),time(us)";
+    std::string file_header = "fb_pt(bar),n2_pt(bar),tc0(C),tc1(C),time(us)";
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::TELEMETRY>().initialize(std::move(telemetrylogfile),file_header,[](std::string_view msg){RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(msg);});
+}
+
+void System::deviceUpdate()
+{
+
+    ADC0.update();
+
+    TC0.update();
+    TC1.update();
+}
+
+void System::remoteSensorUpdate()
+{
+
+    FB_PT.update(ADC0.getOutput(fb_pt_adc_ch));
+    N2_PT.update(ADC0.getOutput(n2_pt_adc_ch));
 }
 
 void System::logReadings()
 {
-    if (esp_timer_get_time() - _prev_telemetry_log_time > _telemetry_log_delta)
+    if (esp_timer_get_time() - prev_telemetry_log_time > telemetry_log_delta)
     {
         TelemetryLogframe logframe;
 
-        logframe.ch0sens = _pt0.getProcessed();
-        logframe.ch1sens = _pt0.getProcessed();
-        logframe.ch2sens = _pt0.getProcessed();
+        logframe.ch0sens = FB_PT.getPressure();
+        // logframe.ch1sens = PT1.getPressure();
+        logframe.ch2sens = N2_PT.getPressure();
 
-        logframe.temp0 = _tc0.getProcessed();
-        logframe.temp1 = _tc0.getProcessed();
+        logframe.temp0 = TC0.getTemp();
+        logframe.temp1 = TC1.getTemp();
 
         logframe.timestamp = esp_timer_get_time();
-        _prev_telemetry_log_time = esp_timer_get_time();
+        prev_telemetry_log_time = esp_timer_get_time();
 
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::TELEMETRY>(logframe);
-
     }
+
+    if((primarysd.getError() > 0) && !systemstatus.flagSet(SYSTEM_FLAG::ERROR_SD)){
+        systemstatus.newFlag(SYSTEM_FLAG::ERROR_SD, "SD Card Failed with error: " + std::to_string(primarysd.getError()));
+    };
+}
+
+void System::setupSPI(){
+    SDSPI.begin(PinMap::SD_SCLK,PinMap::SD_MISO,PinMap::SD_MOSI);
+    SDSPI.setFrequency(20e6);
+    SDSPI.setBitOrder(MSBFIRST);
+    SDSPI.setDataMode(SPI_MODE0);
+
+    SNSRSPI.begin(PinMap::SNSR_SCLK, PinMap::SNSR_MISO, PinMap::SNSR_MOSI);
+    SNSRSPI.setFrequency(5e6);
+    SNSRSPI.setBitOrder(MSBFIRST);
+    SNSRSPI.setDataMode(SPI_MODE1);
+}
+
+void System::remoteSensorSetup(){
+    FB_PT.setup();
+    // PT1.setup();
+    N2_PT.setup();
 }

@@ -1,5 +1,16 @@
-#include "Loggers/TelemetryLogger/telemetrylogger.h"
+#include "telemetrylogger.h"
 
+#include <libriccore/logging/loggers/loggerbase.h>
+
+#include <memory>
+#include <string>
+
+
+#include <libriccore/storage/wrappedfile.h>
+
+#include "telemetrylogframe.h"
+
+#include <Arduino.h>
 
 
 TelemetryLogger::TelemetryLogger():
