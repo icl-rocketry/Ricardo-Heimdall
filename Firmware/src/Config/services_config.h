@@ -23,7 +23,7 @@ namespace Services{
         FB_PT = 20,
         Middle_PT = 21,
         N2_PT = 22,
-        Servo = 99
+        Reg_Servo = 30
     };
 
 };

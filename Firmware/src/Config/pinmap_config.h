@@ -20,8 +20,8 @@ namespace PinMap{
     static constexpr int SD_SCLK = 36;
     static constexpr int SD_MISO = 37;
     static constexpr int SD_MOSI = 35;
-    static constexpr int SdDet_1 = 33;
-    static constexpr int SdCs_1 = 34;
+    static constexpr int SdDet_0 = 33;
+    static constexpr int SdCs_0 = 34;
     static constexpr int SD_EN = 38;
 
     static constexpr int TxCan = 42;

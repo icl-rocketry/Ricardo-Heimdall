@@ -14,6 +14,7 @@
 #include <librrc/Remote/nrcremoteloadcell.h>
 #include <librrc/Remote/nrcremoteflowsensor.h>
 #include "SiC43x.h"
+#include <nrcgreg/nrcgreg.h>
 
 #include "Commands/commands.h"
 
@@ -49,6 +50,10 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         NRCRemotePTap N2_PT;
 
         SiC43x Buck;
+
+        //Greg
+        NRCGreg Heimdall;
+        
         //SD Card
         SdFat_Store primarysd;
 

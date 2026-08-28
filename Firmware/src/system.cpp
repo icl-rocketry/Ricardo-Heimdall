@@ -33,7 +33,8 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    FB_PT(networkmanager, 0),
                    N2_PT(networkmanager, 2),
                    Buck(systemstatus, PinMap::BuckPGOOD, PinMap::BuckEN, true),
-                   primarysd(SDSPI,PinMap::SdCs_1,SD_SCK_MHZ(20),false,&systemstatus){};
+                   Heimdall(networkmanager, PinMap::ServoPWM, 0, FB_PT, N2_PT, Buck),
+                   primarysd(SDSPI,PinMap::SdCs_0,SD_SCK_MHZ(20),false,&systemstatus){};
 
 void System::systemSetup()
 {
@@ -51,13 +52,13 @@ void System::systemSetup()
     networkmanager.addInterface(&canbus);
 
     //Project specific feedback
-    pinMode(PinMap::SdCs_1, OUTPUT);
+    pinMode(PinMap::SdCs_0, OUTPUT);
     pinMode(PinMap::ADC0_Cs, OUTPUT);
     pinMode(PinMap::TC0_Cs, OUTPUT);
     pinMode(PinMap::TC1_Cs, OUTPUT);
     pinMode(PinMap::SD_EN, OUTPUT);
 
-    digitalWrite(PinMap::SdCs_1, HIGH);
+    digitalWrite(PinMap::SdCs_0, HIGH);
     digitalWrite(PinMap::ADC0_Cs, HIGH);
     digitalWrite(PinMap::TC0_Cs, HIGH);
     digitalWrite(PinMap::TC1_Cs, HIGH);
@@ -74,7 +75,7 @@ void System::systemSetup()
     ADC0.setGain(0,ADS131M04::GAIN::GAIN1);
     ADC0.setGain(1,ADS131M04::GAIN::GAIN1);
     ADC0.setGain(2,ADS131M04::GAIN::GAIN1);
-    
+
     serviceSetup();
 
     remoteSensorSetup();
@@ -82,6 +83,8 @@ void System::systemSetup()
     primarysd.setup();
 
     initializeLoggers();
+
+    Heimdall.setup();
 };
 
 void System::systemUpdate()
@@ -91,6 +94,8 @@ void System::systemUpdate()
     remoteSensorUpdate();
 
     logReadings();
+
+    Heimdall.update();
 };
 
 void System::serviceSetup()
@@ -181,6 +186,5 @@ void System::setupSPI(){
 
 void System::remoteSensorSetup(){
     FB_PT.setup();
-    // PT1.setup();
     N2_PT.setup();
 }
