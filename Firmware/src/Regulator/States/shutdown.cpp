@@ -1,5 +1,7 @@
 #include "Regulator/States/shutdown.h"
 
+#include "Regulator/nrcheimdall.h"
+
 Shutdown::Shutdown(Heimdall::DefaultStateInit& DefaultInitParams):
 State(HEIMDALL_FLAGS::STATE_SHUTDOWN,DefaultInitParams.heimdallstatus),
 _servoAdaptor(DefaultInitParams.servoAdaptor),

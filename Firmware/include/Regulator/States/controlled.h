@@ -19,8 +19,9 @@
 #include "Config/systemflags_config.h"
 #include "Config/types.h"
 #include "Regulator/heimdalltypes.h"
-#include "Regulator/nrcheimdall.h"
 #include "Regulator/States/shutdown.h"
+
+class NRCHeimdall;
 
 class Controlled : public Types::EREGTypes::State_t
 {

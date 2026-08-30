@@ -1,5 +1,7 @@
 #include "Regulator/States/controlled.h"
 
+#include "Regulator/nrcheimdall.h"
+
 Controlled::Controlled(Heimdall::DefaultStateInit& DefaultInitParams, NRCHeimdall& Heimdall):
 State(HEIMDALL_FLAGS::STATE_CONTROLLED,DefaultInitParams.heimdallstatus),
 _servoAdaptor(DefaultInitParams.servoAdaptor),

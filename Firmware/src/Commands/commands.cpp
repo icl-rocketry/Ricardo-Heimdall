@@ -36,27 +36,53 @@ void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 	
 }
 
-
-void Commands::HeimdallTelemCommand(System& sm, const RnpPacketSerialized& packet)
-{	
+void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
+{
 	SimpleCommandPacket commandpacket(packet);
 
-	HeimdallTelemPacket heimdalltelem;
+	ProcessedSensorPacket processedSensorPacket;
 
-	heimdalltelem.header.type = static_cast<uint8_t>(115);
-	heimdalltelem.header.source = sm.networkmanager.getAddress();
-	heimdalltelem.header.source_service = sm.commandhandler.getServiceID();
-	heimdalltelem.header.destination = commandpacket.header.source;
-	heimdalltelem.header.destination_service = commandpacket.header.source_service;
-	heimdalltelem.header.uid = commandpacket.header.uid; 
-	heimdalltelem.FF_angle = sm.Heimdall.feedforward();
-	heimdalltelem.regAngle = sm.Heimdall.getRegAngle();
-	heimdalltelem.fuel_tankP = sm.Heimdall.getAvgP();
-	heimdalltelem.P_angle = sm.Heimdall.getPAngle();
-	heimdalltelem.Kp = sm.Heimdall.Kp();
-	heimdalltelem.system_status = sm.systemstatus.getStatus();
-	heimdalltelem.system_time = millis();
-	
-	sm.networkmanager.sendPacket(heimdalltelem);
-	
+	// auto raw_sensors = _sm->AnalogSensors;
+
+	processedSensorPacket.header.type = 103;
+	processedSensorPacket.header.source = sm.networkmanager.getAddress();
+	processedSensorPacket.header.source_service = sm.commandhandler.getServiceID();
+	processedSensorPacket.header.destination = commandpacket.header.source;
+	processedSensorPacket.header.destination_service = commandpacket.header.source_service;
+	processedSensorPacket.header.uid = commandpacket.header.uid;
+	processedSensorPacket.system_time = millis();
+
+	processedSensorPacket.ch0sens = sm._pt0.getProcessed();
+	processedSensorPacket.ch1sens = sm._pt1.getProcessed();
+	processedSensorPacket.ch2sens = sm._pt2.getProcessed();
+
+	processedSensorPacket.temp0 = sm._tc0.getProcessed();
+	processedSensorPacket.temp1 = sm._tc0.getProcessed();
+
+	processedSensorPacket.system_status = sm.systemstatus.getStatus();
+
+	sm.networkmanager.sendPacket(processedSensorPacket);
 }
+
+void Commands::rawADCCommand(System& sm, const RnpPacketSerialized& packet)
+{
+	SimpleCommandPacket commandpacket(packet);
+
+	RawADCPacket rawSensors;
+
+	rawSensors.header.type = 104;
+	rawSensors.header.source = sm.networkmanager.getAddress();
+	rawSensors.header.source_service = sm.commandhandler.getServiceID();
+	rawSensors.header.destination = commandpacket.header.source;
+	rawSensors.header.destination_service = commandpacket.header.source_service;
+	rawSensors.header.uid = commandpacket.header.uid;
+	rawSensors.system_time = millis();
+
+	rawSensors.ch0 = sm._adc0.getOutput(0);
+	rawSensors.ch1 = sm._adc0.getOutput(1);
+	rawSensors.ch2 = sm._adc0.getOutput(2); 
+
+	rawSensors.system_status = sm.systemstatus.getStatus();
+
+	sm.networkmanager.sendPacket(rawSensors);
+};

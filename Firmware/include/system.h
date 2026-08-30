@@ -10,7 +10,6 @@
 
 #include <librrc/HAL/localpwm.h>
 
-#include <librrc/Remote/nrcremoteservo.h>
 #include <librrc/Remote/nrcremoteptap.h>
 #include <librrc/Remote/nrcremotethermocouple.h>
 
@@ -39,8 +38,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         CanBus<SYSTEM_FLAG> _canbus;
         
         
-    private:
-
+        
         SPIClass _sd_spi;       //SPI for the SD card
         SPIClass _sensor_spi;   //SPI for the sensors
 
@@ -56,10 +54,12 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         NRCRemoteThermocouple<MAX31856> _tc0; 
         NRCRemoteThermocouple<MAX31856> _tc1;
 
-        NRCHeimdall _regulator;
+        NRCHeimdall _heimdall;
 
         SdFat_Store _primarysd;
 
+    private:
+    
         void setupSPI();
         void initializeLoggers();
         void logReadings();

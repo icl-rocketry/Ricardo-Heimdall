@@ -1,5 +1,7 @@
 #include "Regulator/States/halfabort.h"
 
+#include "Regulator/nrcheimdall.h"
+
 Halfabort::Halfabort(Heimdall::DefaultStateInit& DefaultInitParams, uint32_t HalfAbortAngle):
 State(HEIMDALL_FLAGS::STATE_HALFABORT,DefaultInitParams.heimdallstatus),
 _servoAdaptor(DefaultInitParams.servoAdaptor),

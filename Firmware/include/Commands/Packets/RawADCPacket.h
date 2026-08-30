@@ -5,30 +5,32 @@
 
 #include <vector>
 
-class HeimdallTelemPacket : public RnpPacket{
+class RawADCPacket : public RnpPacket{
     private:
     //serializer framework
         static constexpr auto getSerializer()
         {
             auto ret = RnpSerializer(
-                &HeimdallTelemPacket::servoVoltage,
-                &HeimdallTelemPacket::system_status,
-                &HeimdallTelemPacket::system_time
-            );
+                &RawADCPacket::ch0, 
+                &RawADCPacket::ch1,
+                &RawADCPacket::ch2, 
+                &RawADCPacket::system_status, 
+                &RawADCPacket::system_time
 
+            );
             return ret;
         }
         
     public:
-        ~HeimdallTelemPacket();
+        ~RawADCPacket();
 
-        HeimdallTelemPacket();
+        RawADCPacket();
         /**
          * @brief Deserialize Telemetry Packet
          * 
          * @param data 
          */
-        HeimdallTelemPacket(const RnpPacketSerialized& packet);
+        RawADCPacket(const RnpPacketSerialized& packet);
 
         /**
          * @brief Serialize Telemetry Packet
@@ -37,9 +39,19 @@ class HeimdallTelemPacket : public RnpPacket{
          */
         void serialize(std::vector<uint8_t>& buf) override;
 
-        float servoVoltage;
+        
+        //packet header
+        //PacketHeader header{static_cast<uint8_t>(packet::TELEMETRY); unit32_t packet_size()};
+
+        //ADC channels
+        int32_t ch0;
+        int32_t ch1; 
+        int32_t ch2; 
+
+        //system details
         uint32_t system_status;
         uint64_t system_time;
+
 
         static constexpr size_t size(){
             return getSerializer().member_size();

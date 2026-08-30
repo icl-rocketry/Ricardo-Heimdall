@@ -5,7 +5,12 @@
 #include <libriccore/systemstatus/systemstatus.h>
 #include <libriccore/fsm/state.h>
 #include <libriccore/fsm/statemachine.h>
+
+#include <librrc/HAL/localpwm.h>
+#include <librrc/Remote/nrcremoteservo.h>
+
 #include <libriccore/drivers/sensors/MAX31856.h>
+#include <librrc/Remote/nrcremotethermocouple.h>
 
 /**
  * @brief Templated struct with type aliases inside to provide convient type access. Some of the template paramters might require

@@ -19,7 +19,8 @@
 #include "Config/systemflags_config.h"
 #include "Config/types.h"
 #include "Regulator/heimdalltypes.h"
-#include "Regulator/nrcheimdall.h"
+
+class NRCHeimdall;
 
 class Debug : public Types::EREGTypes::State_t
 {

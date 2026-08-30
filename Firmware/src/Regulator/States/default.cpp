@@ -1,5 +1,7 @@
 #include "Regulator/States/default.h"
 
+#include "Regulator/nrcheimdall.h"
+
 Default::Default(Heimdall::DefaultStateInit& DefaultInitParams):
 State(HEIMDALL_FLAGS::STATE_DEFAULT,DefaultInitParams.heimdallstatus),
 _servoAdaptor(DefaultInitParams.servoAdaptor),

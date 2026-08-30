@@ -1,21 +1,21 @@
-#include "Commands/packets/HeimdallTelemPacket.h"
+#include "Commands/Packets/RawADCPacket.h"
 
-HeimdallTelemPacket::~HeimdallTelemPacket()
+RawADCPacket::~RawADCPacket()
 {};
 
-HeimdallTelemPacket::HeimdallTelemPacket():
+RawADCPacket::RawADCPacket():
 RnpPacket(0,
           104,
           size())
 {};
 
-HeimdallTelemPacket::HeimdallTelemPacket(const RnpPacketSerialized& packet):
+RawADCPacket::RawADCPacket(const RnpPacketSerialized& packet):
 RnpPacket(packet,size())
 {
     getSerializer().deserialize(*this,packet.getBody());
 };
 
-void HeimdallTelemPacket::serialize(std::vector<uint8_t>& buf){
+void RawADCPacket::serialize(std::vector<uint8_t>& buf){
     RnpPacket::serialize(buf);
 	size_t bufsize = buf.size();
 	buf.resize(bufsize + size());

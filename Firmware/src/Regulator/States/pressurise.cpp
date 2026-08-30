@@ -1,5 +1,7 @@
 #include "Regulator/States/pressurise.h"
 
+#include "Regulator/nrcheimdall.h"
+
 Pressurise::Pressurise(Heimdall::DefaultStateInit& DefaultInitParams, NRCHeimdall& Heimdall):
 State(HEIMDALL_FLAGS::STATE_PRESSURISE,DefaultInitParams.heimdallstatus),
 _Heimdall(Heimdall),

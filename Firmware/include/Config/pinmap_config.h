@@ -34,9 +34,9 @@ namespace PinMap{
     static constexpr uint8_t VSPI_MISO = 37;
     static constexpr uint8_t SD_EN = 38;
 
-    static constexpr uint8_t ADC_CLK = 38;
-    static constexpr uint8_t BUCK_PGOOD = 48;
+    static constexpr uint8_t ADC_CLK = 45;
     static constexpr uint8_t SERVO_PWM = 47;
+    static constexpr uint8_t BUCK_PGOOD = 48;
 
 
 

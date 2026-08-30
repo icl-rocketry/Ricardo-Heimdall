@@ -14,7 +14,7 @@ System::System():
     _max1(_sensor_spi, PinMap::T_CS_1),
     _tc0(_max0, networkmanager, "TC0"),
     _tc1(_max1, networkmanager, "TC1"),
-    _regulator(networkmanager,PinMap::SERVO_PWM, _pt0, _pt1, _pt2, _tc0, _tc1),
+    _heimdall(networkmanager,PinMap::SERVO_PWM, _pt0, _pt1, _pt2, _tc0, _tc1),
     _primarysd(_sd_spi, PinMap::SD_CS,SD_SCK_MHZ(20),false,&systemstatus)
     {};
 
@@ -76,6 +76,8 @@ void System::systemSetup(){
     _tc0.setup();
     _tc1.setup();
 
+    uint8_t heimdallservice = static_cast<uint8_t>(Services::ID::Heimdall);
+
     uint8_t ptservice0 = static_cast<uint8_t>(Services::ID::PT0);
     uint8_t ptservice1 = static_cast<uint8_t>(Services::ID::PT1);
     uint8_t ptservice2 = static_cast<uint8_t>(Services::ID::PT2);
@@ -84,6 +86,7 @@ void System::systemSetup(){
     uint8_t tcservice1 = static_cast<uint8_t>(Services::ID::TC1);
     
 
+    networkmanager.registerService(heimdallservice,_heimdall.getThisNetworkCallback());
     networkmanager.registerService(ptservice0,_pt0.getThisNetworkCallback());
     networkmanager.registerService(ptservice1,_pt1.getThisNetworkCallback());
     networkmanager.registerService(ptservice2,_pt2.getThisNetworkCallback());
@@ -95,13 +98,15 @@ void System::systemSetup(){
 void System::systemUpdate(){
 
     _adc0.update();
-    
+
     _pt0.update(_adc0.getOutput(0));
     _pt1.update(_adc0.getOutput(1));
     _pt2.update(_adc0.getOutput(2));
 
     _tc0.update();
     _tc1.update();
+
+    _heimdall.update();
 }
 
 void System::setupSPI(){

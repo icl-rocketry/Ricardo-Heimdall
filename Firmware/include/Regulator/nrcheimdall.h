@@ -57,8 +57,8 @@ class NRCHeimdall : public NRCRemoteActuatorBase<NRCHeimdall>
 
         //Getters
         uint32_t getServoClosedAngle(){return _servoClosedAngle;};
-        float getPressurantP(); // n2
-        float getTankP(); // ox/fuel
+        float getPressurantP() { return _pt0.getProcessed(); }; // n2
+        float getTankP() { return _pt0.getProcessed(); }; // ox/fuel
         uint32_t getServoAngle(){return _servo.getValue();};
         float getPAngle(){return _P_angle;};
 
@@ -97,7 +97,6 @@ class NRCHeimdall : public NRCRemoteActuatorBase<NRCHeimdall>
         MovingAvg _tankAvg;
 
         void execute_impl(packetptr_t packetptr);
-        void override_impl(packetptr_t packetptr);
         void extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID commandID, packetptr_t packetptr);
 
 

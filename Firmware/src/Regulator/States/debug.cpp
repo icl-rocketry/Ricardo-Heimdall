@@ -1,5 +1,7 @@
 #include "Regulator/States/debug.h"
 
+#include "Regulator/nrcheimdall.h"
+
 Debug::Debug(Heimdall::DefaultStateInit& DefaultInitParams):
 State(HEIMDALL_FLAGS::STATE_DEBUG,DefaultInitParams.heimdallstatus),
 _servoAdaptor(DefaultInitParams.servoAdaptor),
