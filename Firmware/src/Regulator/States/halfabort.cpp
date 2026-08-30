@@ -2,18 +2,18 @@
 
 Halfabort::Halfabort(Heimdall::DefaultStateInit& DefaultInitParams, uint32_t HalfAbortAngle):
 State(HEIMDALL_FLAGS::STATE_HALFABORT,DefaultInitParams.heimdallstatus),
-m_regAdapter(DefaultInitParams.regAdapter),
-m_regClosedAngle(DefaultInitParams.regClosedAngle),
-m_regHalfAbortAngle(HalfAbortAngle)
+_servoAdaptor(DefaultInitParams.servoAdaptor),
+_servoClosedAngle(DefaultInitParams.servoClosedAngle),
+_servoHalfAbortAngle(HalfAbortAngle)
 {};
 
 void Halfabort::initialize()
 {
     Types::EREGTypes::State_t::initialize(); // call parent initialize first!
 
-    m_regAdapter.arm(0); //Arm the servo
-    m_regAdapter.execute(m_regHalfAbortAngle); //Drive the E-Reg to the halfabort predefined angle
-    m_regAdapter.disarm(); //No reason to keep actuator armed
+    _servoAdaptor.arm(0); //Arm the servo
+    _servoAdaptor.execute(_servoHalfAbortAngle); //Drive the E-Reg to the halfabort predefined angle
+    _servoAdaptor.disarm(); //No reason to keep actuator armed
 };
 
 Types::EREGTypes::State_ptr_t Halfabort::update()

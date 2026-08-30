@@ -2,17 +2,17 @@
 
 Shutdown::Shutdown(Heimdall::DefaultStateInit& DefaultInitParams):
 State(HEIMDALL_FLAGS::STATE_SHUTDOWN,DefaultInitParams.heimdallstatus),
-m_regAdapter(DefaultInitParams.regAdapter),
-m_regClosedAngle(DefaultInitParams.regClosedAngle)
+_servoAdaptor(DefaultInitParams.servoAdaptor),
+_servoClosedAngle(DefaultInitParams.servoClosedAngle)
 {};
 
 void Shutdown::initialize()
 {
     Types::EREGTypes::State_t::initialize(); // call parent initialize first!
 
-    m_regAdapter.arm(0); //Arm the servo
-    m_regAdapter.execute(m_regClosedAngle); //Drive the E-Reg to its closed position.
-    m_regAdapter.disarm(); //No reason to keep actuator armed
+    _servoAdaptor.arm(0); //Arm the servo
+    _servoAdaptor.execute(_servoClosedAngle); //Drive the E-Reg to its closed position.
+    _servoAdaptor.disarm(); //No reason to keep actuator armed
 };
 
 Types::EREGTypes::State_ptr_t Shutdown::update()

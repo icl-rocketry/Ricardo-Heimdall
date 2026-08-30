@@ -5,6 +5,7 @@
 #include <libriccore/systemstatus/systemstatus.h>
 #include <libriccore/fsm/state.h>
 #include <libriccore/fsm/statemachine.h>
+#include <libriccore/drivers/sensors/MAX31856.h>
 
 /**
  * @brief Templated struct with type aliases inside to provide convient type access. Some of the template paramters might require
@@ -23,29 +24,16 @@ enum class HEIMDALL_FLAGS : uint32_t
     STATE_DEBUG = (1 << 5),
 
     // critical messages
-    ERROR_CRITICALOVP = (1 << 6),   // Critical overpressure
-    ERROR_HALFABORT = (1 << 7), // Half abort flag - can be triggered by overpressure or multiple sensor disconnects
+    ERROR_CRITICALOVP = (1 << 6),       // Critical overpressure
+    ERROR_HALFABORT = (1 << 7),         // Half abort flag - can be triggered by overpressure or multiple sensor disconnects
     // Local fuel tank codes
-    ERROR_FUELTANKP_LOCAL = (1 << 8),     // Abort triggered by some local fuel tank error
-    ERROR_FTP_LOCAL_DC = (1 << 9),        // Trigerred by disconnect
-    ERROR_FTP_LOCAL_COVP = (1 << 10),     // Critical Overpressure
-    ERROR_FTP_LOCAL_HOVP = (1 << 11),     // Half abort overpressure
-    // Remote fuel tank codes
-    ERROR_FUELTANKP_REMOTE = (1 << 12),    // Abort triggered by some remote fuel tank error
-    ERROR_FTP_REMOTE_DC = (1 << 13),        // Disconnect
-    ERROR_FTP_REMOTE_NORESPONSE = (1 << 14),// No response
-    ERROR_FTP_REMOTE_COVP = (1 << 15),       // Critical Overpressure
-    ERROR_FTP_REMOTE_HOVP = (1 << 16),
-    // Ox tank error codes
-    ERROR_OXTANKP_REMOTE = (1 << 17),      // Some ox tank error
-    ERROR_OXP_REMOTE_DC = (1 << 18),        // Disconnect
-    ERROR_OXP_REMOTE_NORESPONSE = (1 << 19),// No response
-    ERROR_OXP_REMOTE_COVP = (1 << 20),       // Critical Overpressure
-    ERROR_OXP_REMOTE_HOVP = (1 << 21),       
+    ERROR_TANKP = (1 << 8),             // Abort triggered by some local fuel tank error
+    ERROR_TANKP_DC = (1 << 9),          // Trigerred by disconnect
+    ERROR_TANKP_COVP = (1 << 10),       // Critical Overpressure
+    ERROR_TANKP_HOVP = (1 << 11),       // Half abort overpressure
     // Nitrogen tank error codes
-    ERROR_N2P_REMOTE = (1 << 22),          // Some NITROGEN tank error
-    ERROR_N2P_REMOTE_DC = (1 << 23),        // Disconnect
-    ERROR_N2P_REMOTE_NORESPONSE = (1 << 24),// No response
+    ERROR_PRESSURANTP = (1 << 12),      // Some n2 tank error
+    ERROR_PRESSURANTP_DC = (1 << 13),   // Disconnect
 };
 
 template <typename HEIMDALL_FLAGS_T>
@@ -70,8 +58,8 @@ namespace Heimdall
     struct DefaultStateInit
     {
         Types::EREGTypes::SystemStatus_t &heimdallstatus;
-        Types::ServoAdapter_t &regAdapter;
-        const uint32_t regClosedAngle;
+        Types::ServoAdapter_t &servoAdaptor;
+        const uint32_t servoClosedAngle;
     };
     
     struct PressuriseParams

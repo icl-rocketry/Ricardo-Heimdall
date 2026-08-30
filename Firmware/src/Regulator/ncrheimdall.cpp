@@ -3,139 +3,117 @@
 // Setup for the E-Reg Controller
 void NRCHeimdall::setup()
 {
-    m_regServo.setup();
-    m_regServo.setAngleLims(0, 850);
-    m_HeimdallMachine.initalize(std::make_unique<Default>(m_DefaultStateParams));
+    _servo.setup();
+    _servo.setAngleLims(0, 850);
+    _HeimdallMachine.initalize(std::make_unique<Default>(_DefaultStateParams));
 }
 
+//old
 float NRCHeimdall::feedforward()
 {
-    float FF = m_FF_0 + m_FF_Alpha / m_PressTankPoller.getVal();
-    return std::max(std::min(FF, m_FF_max), m_FF_min); // Set bounds on FF angle before returning.
+    float FF = _FF_0 + _FF_Alpha / getPressurantP();
+    return std::max(std::min(FF, _FF_max), _FF_min); // Set bounds on FF angle before returning.
 }
+
+// new
+// float NRCHeimdall::feedforward()
+// {
+//     float FF = _FF_0 + _FF_Alpha / getPressurantP();
+//     return std::max(std::min(FF, _FF_max), _FF_min); // Set bounds on FF angle before returning.
+// }
 
 float NRCHeimdall::Kp()
 {
-    float Kp = m_Kp_0 + m_Kp_Beta / m_PressTankPoller.getVal();
+    float Kp = _Kp_0 + _Kp_Beta / getPressurantP();
 
-    return std::max(std::min(Kp, m_Kp_max), m_Kp_min); // Set bounds on Kp before returning.
+    return std::max(std::min(Kp, _Kp_max), _Kp_min); // Set bounds on Kp before returning.
 }
 
 uint32_t NRCHeimdall::nextAngle()
 {
 
-    float error = m_P_setpoint - getFuelTankP(); // Calculate error in tank pressure
+    float error = _P_setpoint - getTankP(); // Calculate error in tank pressure
 
-    m_P_angle = (float)Kp() * (float)error;
+    _P_angle = (float)Kp() * (float)error;
 
-    uint32_t reg_angle = static_cast<uint32_t>((m_P_angle + feedforward()) * 10.0f);
+    uint32_t servo_angle = static_cast<uint32_t>((_P_angle + feedforward()) * 10.0f);
 
-    return std::max(std::min(reg_angle, m_regMaxOpenAngle), m_regMinOpenAngle); // Set bounds on angle during operation.
+    return std::max(std::min(servo_angle, _servoMaxOpenAngle), _servoMinOpenAngle); // Set bounds on angle during operation.
 }
 
 uint32_t lastlog;
 
 void NRCHeimdall::update()
 {
-    _value = m_HeimdallStatus.getStatus();
+    _value = _HeimdallStatus.getStatus();
 
-    if (this->_state.flagSet(LIBRRC::COMPONENT_STATUS_FLAGS::DISARMED) && !m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT))
+    if (this->_state.flagSet(LIBRRC::COMPONENT_STATUS_FLAGS::DISARMED) && !_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT))
     {
-        m_HeimdallMachine.changeState(std::make_unique<Default>(m_DefaultStateParams)); // Return to defualt if the engine is disarmed
+        _HeimdallMachine.changeState(std::make_unique<Default>(_DefaultStateParams)); // Return to defualt if the engine is disarmed
     }
 
-    if (this->_state.flagSet(LIBRRC::COMPONENT_STATUS_FLAGS::NOMINAL))
-    {
-        if (millis() - m_lastPollSlow > 500)
-        {
-            try
-            {
-                m_PressTankPoller.update();
-                m_FuelTankPoller.update();
-                m_OxTankPoller.update();
-            }
-            catch (const std::exception &e)
-            {}
-            m_lastPollSlow = millis();
-        }
-    }
+    _tankAvg.update(getTankP());
 
-    m_FuelTankAvg.update(m_FuelPT.getPressure());
+    _HeimdallMachine.update();
 
-    m_HeimdallMachine.update();
-
-    updateRemoteP();
 
     checkPressures();
 }
 
 void NRCHeimdall::shutdown()
 {
-    m_HeimdallMachine.changeState(std::make_unique<Shutdown>(m_DefaultStateParams));
+    _HeimdallMachine.changeState(std::make_unique<Shutdown>(_DefaultStateParams));
 }
 
 void NRCHeimdall::halfabort()
 {
-    m_HeimdallMachine.changeState(std::make_unique<Halfabort>(m_DefaultStateParams, m_FF_min * 10));
+    _HeimdallMachine.changeState(std::make_unique<Halfabort>(_DefaultStateParams, _FF_min * 10));
 }
 
 void NRCHeimdall::checkPressures()
 {
-    // Check if any sensors are below the disconnect threshold
-    checkDisconnect(m_FuelPT.getPressure(), HEIMDALL_FLAGS::ERROR_FTP_LOCAL_DC, "Local fuel tank PT");
-    checkDisconnect(m_PressTankPoller.getVal(), HEIMDALL_FLAGS::ERROR_N2P_REMOTE_DC, "Remote nitrogen PT");
-    checkDisconnect(m_FuelTankPoller.getVal(), HEIMDALL_FLAGS::ERROR_FTP_REMOTE_DC, "Remote fuel tank PT");
-    checkDisconnect(m_OxTankPoller.getVal(), HEIMDALL_FLAGS::ERROR_OXP_REMOTE_DC, "Remote ox tank PT");
+    // Check if any sensors are disconnect 
+    checkDisconnect(getTankP(), HEIMDALL_FLAGS::ERROR_TANKP_DC, "Tank PT");
+    checkDisconnect(getPressurantP(), HEIMDALL_FLAGS::ERROR_PRESSURANTP_DC, "Pressurant PT");
 
     // Check if any sensors are above the critical overpressure threshold
-    checkCOverPressure(m_FuelPT.getPressure(), HEIMDALL_FLAGS::ERROR_FTP_LOCAL_COVP, "Local fuel tank PT");
-    checkCOverPressure(m_FuelTankPoller.getVal(), HEIMDALL_FLAGS::ERROR_FTP_REMOTE_COVP, "Remote fuel tank PT");
-    checkCOverPressure(m_OxTankPoller.getVal(), HEIMDALL_FLAGS::ERROR_OXP_REMOTE_COVP, "Remote ox tank PT");
+    checkCOverPressure(getTankP(), HEIMDALL_FLAGS::ERROR_TANKP_COVP, "Tank PT");
 
     // Check if any sensors are above the half abort overpressure threshold
-    checkHOverPressure(m_FuelPT.getPressure(), HEIMDALL_FLAGS::ERROR_FTP_LOCAL_HOVP, "Local fuel tank PT");
-    checkHOverPressure(m_FuelTankPoller.getVal(), HEIMDALL_FLAGS::ERROR_FTP_REMOTE_HOVP, "Remote fuel tank PT");
-    checkHOverPressure(m_OxTankPoller.getVal(), HEIMDALL_FLAGS::ERROR_OXP_REMOTE_HOVP, "Remote ox tank PT");
+    checkHOverPressure(getTankP(), HEIMDALL_FLAGS::ERROR_TANKP_HOVP, "Tank PT");
 
     // Assert the generic flags if any of the specific error flags are set
-    checkGenericPTFlag(HEIMDALL_FLAGS::ERROR_FUELTANKP_LOCAL, "fuel tank local", HEIMDALL_FLAGS::ERROR_FTP_LOCAL_COVP, HEIMDALL_FLAGS::ERROR_FTP_LOCAL_DC, HEIMDALL_FLAGS::ERROR_FTP_LOCAL_HOVP);
-    checkGenericPTFlag(HEIMDALL_FLAGS::ERROR_FUELTANKP_REMOTE, "fuel tank remote", HEIMDALL_FLAGS::ERROR_FTP_REMOTE_COVP, HEIMDALL_FLAGS::ERROR_FTP_REMOTE_DC, HEIMDALL_FLAGS::ERROR_FTP_REMOTE_HOVP, HEIMDALL_FLAGS::ERROR_FTP_REMOTE_NORESPONSE);
-    checkGenericPTFlag(HEIMDALL_FLAGS::ERROR_OXTANKP_REMOTE, "ox tank", HEIMDALL_FLAGS::ERROR_OXP_REMOTE_COVP, HEIMDALL_FLAGS::ERROR_OXP_REMOTE_DC, HEIMDALL_FLAGS::ERROR_OXP_REMOTE_HOVP, HEIMDALL_FLAGS::ERROR_OXP_REMOTE_NORESPONSE);
-    checkGenericPTFlag(HEIMDALL_FLAGS::ERROR_N2P_REMOTE, "n2 tank", HEIMDALL_FLAGS::ERROR_N2P_REMOTE_DC, HEIMDALL_FLAGS::ERROR_N2P_REMOTE_NORESPONSE);
+    checkGenericPTFlag(HEIMDALL_FLAGS::ERROR_TANKP, "tank", HEIMDALL_FLAGS::ERROR_TANKP_DC, HEIMDALL_FLAGS::ERROR_TANKP_COVP, HEIMDALL_FLAGS::ERROR_TANKP_HOVP);
+    checkGenericPTFlag(HEIMDALL_FLAGS::ERROR_PRESSURANTP, "pressurant", HEIMDALL_FLAGS::ERROR_PRESSURANTP_DC);
 
 
-    if (m_HeimdallStatus.flagSetOr(HEIMDALL_FLAGS::ERROR_FTP_LOCAL_COVP, HEIMDALL_FLAGS::ERROR_FTP_REMOTE_COVP, HEIMDALL_FLAGS::ERROR_OXP_REMOTE_COVP) && !m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_CRITICALOVP))
+    if (_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_TANKP_COVP) && !_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_CRITICALOVP))
     {
-        m_HeimdallStatus.newFlag(HEIMDALL_FLAGS::ERROR_CRITICALOVP, "One or more pressures above the critical threshold!");
+        _HeimdallStatus.newFlag(HEIMDALL_FLAGS::ERROR_CRITICALOVP, "Tank pressure is above the critical threshold!");
     }
 
-    if (m_HeimdallStatus.flagSetOr(HEIMDALL_FLAGS::ERROR_FTP_LOCAL_HOVP, HEIMDALL_FLAGS::ERROR_FTP_REMOTE_HOVP, HEIMDALL_FLAGS::ERROR_OXP_REMOTE_HOVP) && !m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_HALFABORT))
+    if (_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_TANKP_HOVP) && !_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_HALFABORT))
     {
-        m_HeimdallStatus.newFlag(HEIMDALL_FLAGS::ERROR_HALFABORT, "One or more pressures above the half abort threshold!");
+        _HeimdallStatus.newFlag(HEIMDALL_FLAGS::ERROR_HALFABORT, "Tank pressure is above the half abort threshold!");
     }
-    if ((m_DC_count > 2 || m_NORESP_count > 2) && !m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_HALFABORT))
+    if (_HeimdallStatus.flagSetOr(HEIMDALL_FLAGS::ERROR_TANKP_DC, HEIMDALL_FLAGS::ERROR_PRESSURANTP_DC) && !_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_HALFABORT))
     {
-        m_HeimdallStatus.newFlag(HEIMDALL_FLAGS::ERROR_HALFABORT, "Half abort triggered by sensor disconnects or sensors not responding!");
+        _HeimdallStatus.newFlag(HEIMDALL_FLAGS::ERROR_HALFABORT, "Half abort triggered by sensor disconnects or sensors not responding!");
     }
-    // else
-    // {
-    //     m_HeimdallStatus.deleteFlag(HEIMDALL_FLAGS::ERROR_HALFABORT, "No half abort conditions are true.");
-    // }
 
-
-    if (m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_CRITICALOVP))
+    if (_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_CRITICALOVP))
     {
-        if (m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT))
+        if (_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT))
         {
             return;
         }
-        // shutdown(); // Abort in the case of a critical overpressure event.
+        shutdown(); // Abort in the case of a critical overpressure event.
         return;
     }
 
-    if (m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_HALFABORT) && m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_CONTROLLED))
+    if (_HeimdallStatus.flagSet(HEIMDALL_FLAGS::ERROR_HALFABORT) && _HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_CONTROLLED))
     {
-        if (m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT))
+        if (_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT))
         {
             return;
         }
@@ -147,63 +125,61 @@ void NRCHeimdall::checkPressures()
 
 void NRCHeimdall::checkDisconnect(float value, HEIMDALL_FLAGS err_flag, std::string err_name) // will be current sensor so should be able to detect DC
 {
-    if (value < m_P_disconnect)
+    if (value < _P_disconnect)
     {
-        if (!m_HeimdallStatus.flagSet(err_flag))
+        if (!_HeimdallStatus.flagSet(err_flag))
         {
-            m_HeimdallStatus.newFlag(err_flag, err_name + std::string(" disconnected!"));
-            m_DC_count += 1; // Iterate counter that keeps track of how many sensors have disconnected
+            _HeimdallStatus.newFlag(err_flag, err_name + std::string(" disconnected!"));
         }
     }
 
-    else if (value > m_P_disconnect && m_HeimdallStatus.flagSet(err_flag))
+    else if (value > _P_disconnect && _HeimdallStatus.flagSet(err_flag))
     {
-        m_HeimdallStatus.deleteFlag(err_flag, err_name + std::string(" reading back in expected range!"));
-        m_DC_count -= 1;
+        _HeimdallStatus.deleteFlag(err_flag, err_name + std::string(" reading back in expected range!"));
     }
 }
 
 void NRCHeimdall::checkCOverPressure(float value, HEIMDALL_FLAGS err_flag, std::string err_name)
 {
-    if (value > m_P_full_abort)
+    if (value > _P_full_abort)
     {
-        if (!m_HeimdallStatus.flagSet(err_flag))
+        if (!_HeimdallStatus.flagSet(err_flag))
         {
-            m_HeimdallStatus.newFlag(err_flag, err_name + std::string(" exceeded critical pressure!"));
+            _HeimdallStatus.newFlag(err_flag, err_name + std::string(" exceeded critical pressure!"));
         }
     }
 
-    else if (value < m_P_full_abort && m_HeimdallStatus.flagSet(err_flag))
+    else if (value < _P_full_abort && _HeimdallStatus.flagSet(err_flag))
     {
-        m_HeimdallStatus.deleteFlag(err_flag, err_name + std::string(" reading back below critical pressure!"));
+        _HeimdallStatus.deleteFlag(err_flag, err_name + std::string(" reading back below critical pressure!"));
     }
 }
 
 void NRCHeimdall::checkHOverPressure(float value, HEIMDALL_FLAGS err_flag, std::string err_name)
 {
-    if (value > m_P_half_abort)
+    if (value > _P_half_abort)
     {
-        if (!m_HeimdallStatus.flagSet(err_flag))
+        if (!_HeimdallStatus.flagSet(err_flag))
         {
-            m_HeimdallStatus.newFlag(err_flag, err_name + std::string(" exceeded half abort pressure!"));
+            _HeimdallStatus.newFlag(err_flag, err_name + std::string(" exceeded half abort pressure!"));
         }
     }
 
-    else if (value < m_P_half_abort && m_HeimdallStatus.flagSet(err_flag))
+    else if (value < _P_half_abort && _HeimdallStatus.flagSet(err_flag))
     {
-        m_HeimdallStatus.deleteFlag(err_flag, err_name + std::string(" reading back below half abort pressure!"));
+        _HeimdallStatus.deleteFlag(err_flag, err_name + std::string(" reading back below half abort pressure!"));
     }
 }
 
 template <typename... Flags>
 void NRCHeimdall::checkGenericPTFlag(HEIMDALL_FLAGS generic_flag, std::string err_name, Flags... err_flags)
 {
-    if (m_HeimdallStatus.flagSetOr(err_flags...) && !m_HeimdallStatus.flagSet(generic_flag))
+    if (_HeimdallStatus.flagSetOr(err_flags...) && !_HeimdallStatus.flagSet(generic_flag))
     {
-        m_HeimdallStatus.newFlag(generic_flag, std::string("One or more errors found with ") + err_name + std::string("!"));
+        _HeimdallStatus.newFlag(generic_flag, std::string("One or more errors found with ") + err_name + std::string("!"));
     }
-    else if (!m_HeimdallStatus.flagSetOr(err_flags...) && m_HeimdallStatus.flagSet(generic_flag)){
-        m_HeimdallStatus.deleteFlag(generic_flag, std::string("Component ") + err_name + std::string(" is no longer in error state!"));
+    else if (!_HeimdallStatus.flagSetOr(err_flags...) && _HeimdallStatus.flagSet(generic_flag)){
+        _HeimdallStatus.deleteFlag(generic_flag, std::string("Component ") + err_name + std::string(" is no longer in error state!"));
     }
 }
 
@@ -215,39 +191,39 @@ void NRCHeimdall::execute_impl(packetptr_t packetptr)
     {
     case 1: // Controlled command
     {
-        if (!m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT)) // Can only go to the controlled state from default.
+        if (!_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT)) // Can only go to the controlled state from default.
         {
             break;
         }
-        m_HeimdallMachine.changeState(std::make_unique<Controlled>(m_DefaultStateParams, *this)); // Can always shut down
+        _HeimdallMachine.changeState(std::make_unique<Controlled>(_DefaultStateParams, *this)); // Can always shut down
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("Test Start");
         break;
     }
     case 2: // Shutdown command
     {
-        m_HeimdallMachine.changeState(std::make_unique<Shutdown>(m_DefaultStateParams)); // Can always shut down
+        _HeimdallMachine.changeState(std::make_unique<Shutdown>(_DefaultStateParams)); // Can always shut down
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("ShutDown");
         break;
     }
     case 3: // Debug command
     {
-        if (!m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT)) // Can only debug from default.
+        if (!_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT)) // Can only debug from default.
         {
             break;
         }
         // DEBUG COMMAND
-        m_HeimdallMachine.changeState(std::make_unique<Debug>(m_DefaultStateParams));
+        _HeimdallMachine.changeState(std::make_unique<Debug>(_DefaultStateParams));
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("Entered debug");
         break;
     }
     case 4: // Pressurise command
     {
-        if (!m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT)) // Can only pressurise from default.
+        if (!_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEFAULT)) // Can only pressurise from default.
         {
             break;
         }
 
-        m_HeimdallMachine.changeState(std::make_unique<Pressurise>(m_DefaultStateParams, *this));
+        _HeimdallMachine.changeState(std::make_unique<Pressurise>(_DefaultStateParams, *this));
         RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("Pressurisation Start");
         break;
     }
@@ -262,9 +238,9 @@ void NRCHeimdall::extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID co
     {
     case 6:
     {
-        if (m_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEBUG))
+        if (_HeimdallStatus.flagSet(HEIMDALL_FLAGS::STATE_DEBUG))
         {
-            m_regAdapter.execute(command_packet.arg);
+            _servoAdaptor.execute(command_packet.arg);
         }
         else
         {
@@ -273,13 +249,13 @@ void NRCHeimdall::extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID co
     }
     case 7: // command to set pressurise angle
     {
-        if (command_packet.arg > (m_regPressuriseAngle + 50))
+        if (command_packet.arg > (_servoPressuriseAngle + 50))
         {
             break;
         }
         else
         {
-            m_regPressuriseAngle = command_packet.arg;
+            _servoPressuriseAngle = command_packet.arg;
         }
         break;
     }

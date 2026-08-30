@@ -2,26 +2,26 @@
 
 Pressurise::Pressurise(Heimdall::DefaultStateInit& DefaultInitParams, NRCHeimdall& Heimdall):
 State(HEIMDALL_FLAGS::STATE_PRESSURISE,DefaultInitParams.heimdallstatus),
-m_Heimdall(Heimdall),
-m_DefaultInitParams(DefaultInitParams)
+_Heimdall(Heimdall),
+_DefaultStateParams(DefaultInitParams)
 {};
 
 void Pressurise::initialize()
 {
     Types::EREGTypes::State_t::initialize(); // call parent initialize first!
-    m_DefaultInitParams.regAdapter.arm(0);
+    _DefaultStateParams.servoAdaptor.arm(0);
 };
 
 Types::EREGTypes::State_ptr_t Pressurise::update()
 {
-    m_PressuriseParams = m_Heimdall.getPressuriseParams();
+    _PressuriseParams = _Heimdall.getPressuriseParams();
 
     // Open reg valve to filling angle. Hold open until _lptankP reaches P_set and then close
-    m_DefaultInitParams.regAdapter.execute(m_PressuriseParams.PressAngle);
+    _DefaultStateParams.servoAdaptor.execute(_PressuriseParams.PressAngle);
 
-    if (m_PressuriseParams.OxTankP >= (m_PressuriseParams.P_Setpoint + m_PressuriseParams.P_extra))
+    if (_PressuriseParams.OxTankP >= (_PressuriseParams.P_Setpoint + _PressuriseParams.P_extra))
     {
-        return std::make_unique<Default>(m_DefaultInitParams);
+        return std::make_unique<Default>(_DefaultStateParams);
     }
 
     return nullptr;
