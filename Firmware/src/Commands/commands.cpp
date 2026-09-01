@@ -4,9 +4,9 @@
  * @brief Implementation of commands for system
  * @version 0.1
  * @date 2023-06-17
- * 
+ *
  * @copyright Copyright (c) 2023
- * 
+ *
  */
 
 #include "commands.h"
@@ -19,7 +19,7 @@
 #include "Commands/packets/rawADCPacket.h"
 
 void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
-{	
+{
 
 	// ESP_LOGI("ch", "%s", "deserialize");
 
@@ -34,7 +34,7 @@ void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 	// this is not great as it assumes a single command handler with the same service ID
 	// would be better if we could pass some context through the function paramters so it has an idea who has called it
 	// or make it much clearer that only a single command handler should exist in the system
-		message.header.source_service = sm.commandhandler.getServiceID(); 
+		message.header.source_service = sm.commandhandler.getServiceID();
 		message.header.destination_service = packet.header.source_service;
 		message.header.source = packet.header.destination;
 		message.header.destination = packet.header.source;
@@ -44,14 +44,14 @@ void Commands::FreeRamCommand(System& sm, const RnpPacketSerialized& packet)
 	else if (commandpacket.arg == 1)
 	{
 		BasicDataPacket<uint32_t,0,105> responsePacket(freeram);
-		responsePacket.header.source_service = sm.commandhandler.getServiceID(); 
+		responsePacket.header.source_service = sm.commandhandler.getServiceID();
 		responsePacket.header.destination_service = packet.header.source_service;
 		responsePacket.header.source = packet.header.destination;
 		responsePacket.header.destination = packet.header.source;
 		responsePacket.header.uid = packet.header.uid;
-		sm.networkmanager.sendPacket(responsePacket);	
+		sm.networkmanager.sendPacket(responsePacket);
 	}
-	
+
 }
 
 
@@ -71,10 +71,8 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 	processedSensorPacket.header.uid = commandpacket.header.uid;
 	processedSensorPacket.system_time = millis();
 
-	// processedSensorPacket.ch0sens = sm.CPT0.getPressure();
-	// processedSensorPacket.ch1sens = sm.CPT1.getPressure();
-	// processedSensorPacket.ch2sens = sm.Thrust.getWeight();
-	// processedSensorPacket.ch3sens = sm.Mass.getWeight();
+	processedSensorPacket.ch0sens = sm.FB_PT.getProcessed();
+	processedSensorPacket.ch2sens = sm.N2_PT.getProcessed();
 
 	processedSensorPacket.temp0 = sm.TC0.getTemp();
 	processedSensorPacket.temp1 = sm.TC1.getTemp();
@@ -100,7 +98,7 @@ void Commands::rawADCCommand(System& sm, const RnpPacketSerialized& packet)
 
 	rawSensors.ch0 = sm.ADC0.getOutput(0);
 	rawSensors.ch1 = sm.ADC0.getOutput(1);
-	rawSensors.ch2 = sm.ADC0.getOutput(2); 
+	rawSensors.ch2 = sm.ADC0.getOutput(2);
 	rawSensors.ch3 = sm.ADC0.getOutput(3);
 
 	rawSensors.system_status = sm.systemstatus.getStatus();

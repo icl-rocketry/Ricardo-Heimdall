@@ -58,30 +58,48 @@ float NRCGreg::getFeedbackP()
 
 float NRCGreg::feedforward()
 {
-    float FF = m_FF_0 + m_FF_Alpha / m_N2PT.getPressure();
+    const float n2_press = m_N2PT.getPressure();
+    if (n2_press <= 1.0f) {
+        return m_FF_max;
+    }
+    float FF = m_FF_0 + m_FF_Alpha / n2_press;
     return std::max(std::min(FF, m_FF_max), m_FF_min); // Set bounds on FF angle before returning.
 }
 
 float NRCGreg::Kp()
 {
-    float Kp = m_Kp_0 + m_Kp_Beta / m_N2PT.getPressure();
+    const float n2_press = m_N2PT.getPressure();
+    if (n2_press <= 1.0f) {
+        return m_FF_max;
+    }
+
+    float Kp = m_Kp_0 + m_Kp_Beta / n2_press;
 
     return std::max(std::min(Kp, m_Kp_max), m_Kp_min); // Set bounds on Kp before returning.
 }
 
+// uint32_t NRCGreg::nextAngle()
+// {
+
+//     float error = m_P_setpoint - getFeedbackP(); // Calculate error in tank pressure
+
+//     m_P_angle = (float)Kp() * (float)error;
+
+//     uint32_t reg_angle = static_cast<uint32_t>((m_P_angle + feedforward()) * 10.0f);
+
+//     return std::max(std::min(reg_angle, m_regMaxOpenAngle), m_regMinOpenAngle); // Set bounds on angle during operation.
+// }
+
 uint32_t NRCGreg::nextAngle()
 {
+    const float error = m_P_setpoint - getFeedbackP();
+    m_P_angle = Kp() * error;
 
-    float error = m_P_setpoint - getFeedbackP(); // Calculate error in tank pressure
-
-    m_P_angle = (float)Kp() * (float)error;
-
-    uint32_t reg_angle = static_cast<uint32_t>((m_P_angle + feedforward()) * 10.0f);
-
-    return std::max(std::min(reg_angle, m_regMaxOpenAngle), m_regMinOpenAngle); // Set bounds on angle during operation.
+    // This change prevents unsigned integer casting underflow.
+    const float target_angle_scaled = (m_P_angle + feedforward()) * 10.0f;
+    const float clamped_angle = std::clamp(target_angle_scaled, static_cast<float>(m_regMinOpenAngle), static_cast<float>(m_regMaxOpenAngle));
+    return static_cast<uint32_t>(clamped_angle);
 }
-
-uint32_t lastlog;
 
 void NRCGreg::update()
 {
@@ -128,13 +146,21 @@ void NRCGreg::checkPressures()
         m_GregStatus.newFlag(GREG_FLAGS::ERROR_CRITICALOVP, "One or more pressures above the critical threshold!");
     }
 
-    if (m_GregStatus.flagSet(GREG_FLAGS::ERROR_CRITICALOVP))
+    // if (m_GregStatus.flagSet(GREG_FLAGS::ERROR_CRITICALOVP))
+    // {
+    //     if (m_GregStatus.flagSet(GREG_FLAGS::STATE_DEFAULT))
+    //     {
+    //         return;
+    //     }
+    //     shutdown(); // Abort in the case of a critical overpressure event.
+    //     return;
+    // }
+
+    if (m_GregStatus.flagSet(GREG_FLAGS::ERROR_CRITICALOVP) &&
+        !m_GregStatus.flagSet(GREG_FLAGS::STATE_SHUTDOWN) &&
+        !m_GregStatus.flagSet(GREG_FLAGS::STATE_DEFAULT))
     {
-        if (m_GregStatus.flagSet(GREG_FLAGS::STATE_DEFAULT))
-        {
-            return;
-        }
-        shutdown(); // Abort in the case of a critical overpressure event.
+        shutdown();
         return;
     }
 
@@ -271,10 +297,7 @@ void NRCGreg::extendedCommandHandler_impl(const NRCPacket::NRC_COMMAND_ID comman
         {
             m_regAdapter.execute(command_packet.arg);
         }
-        else
-        {
-            break;
-        }
+        break;
     }
     case 7: // command to set pressurise angle
     {
