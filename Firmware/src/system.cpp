@@ -41,7 +41,7 @@ void System::systemSetup()
     //Base Ricardo setup
     Serial.setRxBufferSize(GeneralConfig::SerialRxSize);
     Serial.begin(GeneralConfig::SerialBaud);
-  
+
     //Initialize statemachine with idle state
     statemachine.initalize(std::make_unique<Idle>(systemstatus, commandhandler));
 
@@ -57,6 +57,9 @@ void System::systemSetup()
     pinMode(PinMap::TC0_Cs, OUTPUT);
     pinMode(PinMap::TC1_Cs, OUTPUT);
     pinMode(PinMap::SD_EN, OUTPUT);
+
+    pinMode(PinMap::BuckEN, OUTPUT);
+    pinMode(PinMap::BuckPGOOD, INPUT);
 
     digitalWrite(PinMap::SdCs_0, HIGH);
     digitalWrite(PinMap::ADC0_Cs, HIGH);
@@ -100,6 +103,7 @@ void System::systemUpdate()
 
 void System::serviceSetup()
 {
+    networkmanager.registerService(static_cast<uint8_t>(Services::ID::Heimdall), Heimdall.getThisNetworkCallback());
     networkmanager.registerService(static_cast<uint8_t>(Services::ID::FB_PT), FB_PT.getThisNetworkCallback());
     // networkmanager.registerService(static_cast<uint8_t>(Services::ID::Middle_PT), PT1.getThisNetworkCallback());
     networkmanager.registerService(static_cast<uint8_t>(Services::ID::N2_PT), N2_PT.getThisNetworkCallback());
