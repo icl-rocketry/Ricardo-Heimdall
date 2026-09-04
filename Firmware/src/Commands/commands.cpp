@@ -14,6 +14,8 @@
 #include <librnp/rnp_packet.h>
 #include <libriccore/commands/commandhandler.h>
 
+#include "Commands/packets/GregTelemPacket.h"
+
 #include "system.h"
 #include "Commands/packets/processedsensorpacket.h"
 #include "Commands/packets/rawADCPacket.h"
@@ -59,27 +61,26 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 {
 	SimpleCommandPacket commandpacket(packet);
 
-	ProcessedSensorPacket processedSensorPacket;
+	GregTelemPacket gregTelem;
 
-	// auto raw_sensors = _sm->AnalogSensors;
+	gregTelem.header.type = 103;
+	gregTelem.header.source = sm.networkmanager.getAddress();
+	gregTelem.header.source_service = sm.commandhandler.getServiceID();
+	gregTelem.header.destination = commandpacket.header.source;
+	gregTelem.header.destination_service = commandpacket.header.source_service;
+	gregTelem.header.uid = commandpacket.header.uid;
+	gregTelem.system_time = millis();
 
-	processedSensorPacket.header.type = 103;
-	processedSensorPacket.header.source = sm.networkmanager.getAddress();
-	processedSensorPacket.header.source_service = sm.commandhandler.getServiceID();
-	processedSensorPacket.header.destination = commandpacket.header.source;
-	processedSensorPacket.header.destination_service = commandpacket.header.source_service;
-	processedSensorPacket.header.uid = commandpacket.header.uid;
-	processedSensorPacket.system_time = millis();
+	gregTelem.FF_angle = sm.Heimdall.getFF();
+	gregTelem.fuel_tankP = sm.FB_PT.getProcessed();
+	gregTelem.n2_tankP = sm.N2_PT.getProcessed();
+	gregTelem.regAngle = sm.Heimdall.getRegAngle();
+	gregTelem.Kp = sm.Heimdall.getKp();
+	gregTelem.tc0= sm.TC0.getTemp();
+	gregTelem.tc1 = sm.TC1.getTemp();
+	gregTelem.system_status = sm.systemstatus.getStatus();
 
-	processedSensorPacket.ch0sens = sm.FB_PT.getProcessed();
-	processedSensorPacket.ch2sens = sm.N2_PT.getProcessed();
-
-	processedSensorPacket.temp0 = sm.TC0.getTemp();
-	processedSensorPacket.temp1 = sm.TC1.getTemp();
-
-	processedSensorPacket.system_status = sm.systemstatus.getStatus();
-
-	sm.networkmanager.sendPacket(processedSensorPacket);
+	sm.networkmanager.sendPacket(gregTelem);
 }
 
 void Commands::rawADCCommand(System& sm, const RnpPacketSerialized& packet)

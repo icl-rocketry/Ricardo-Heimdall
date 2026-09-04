@@ -15,39 +15,45 @@ class GregTelemPacket : public RnpPacket{
             auto ret = RnpSerializer(
                 &GregTelemPacket::FF_angle,
                 &GregTelemPacket::fuel_tankP,
+                &GregTelemPacket::n2_tankP,
                 &GregTelemPacket::regAngle,
                 &GregTelemPacket::P_angle,
                 &GregTelemPacket::Kp,
+                &GregTelemPacket::tc0,
+                &GregTelemPacket::tc1,
                 &GregTelemPacket::system_status,
                 &GregTelemPacket::system_time
             );
 
             return ret;
         }
-        
+
     public:
         ~GregTelemPacket();
 
         GregTelemPacket();
         /**
          * @brief Deserialize Telemetry Packet
-         * 
-         * @param data 
+         *
+         * @param data
          */
         GregTelemPacket(const RnpPacketSerialized& packet);
 
         /**
          * @brief Serialize Telemetry Packet
-         * 
-         * @param buf 
+         *
+         * @param buf
          */
         void serialize(std::vector<uint8_t>& buf) override;
 
         float FF_angle;
         float fuel_tankP;
+        float n2_tankP;
         uint32_t regAngle;
         float P_angle;
         float Kp;
+        float tc0;
+        float tc1;
         uint32_t system_status;
         uint64_t system_time;
 

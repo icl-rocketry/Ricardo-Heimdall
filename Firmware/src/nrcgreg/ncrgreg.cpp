@@ -63,7 +63,16 @@ float NRCGreg::feedforward()
         return m_FF_max;
     }
     float FF = m_FF_0 + m_FF_Alpha / n2_press;
-    return std::max(std::min(FF, m_FF_max), m_FF_min); // Set bounds on FF angle before returning.
+    m_savedFF = std::max(std::min(FF, m_FF_max), m_FF_min);;
+    return m_savedFF; // Set bounds on FF angle before returning.
+}
+
+float NRCGreg::getFF() {
+    return m_savedFF;
+}
+
+float NRCGreg::getKp() {
+    return m_savedKp;
 }
 
 float NRCGreg::Kp()
@@ -75,7 +84,9 @@ float NRCGreg::Kp()
 
     float Kp = m_Kp_0 + m_Kp_Beta / n2_press;
 
-    return std::max(std::min(Kp, m_Kp_max), m_Kp_min); // Set bounds on Kp before returning.
+    m_savedKp = std::max(std::min(Kp, m_Kp_max), m_Kp_min);
+
+    return m_savedKp; // Set bounds on Kp before returning.
 }
 
 // uint32_t NRCGreg::nextAngle()
@@ -98,6 +109,7 @@ uint32_t NRCGreg::nextAngle()
     // This change prevents unsigned integer casting underflow.
     const float target_angle_scaled = (m_P_angle + feedforward()) * 10.0f;
     const float clamped_angle = std::clamp(target_angle_scaled, static_cast<float>(m_regMinOpenAngle), static_cast<float>(m_regMaxOpenAngle));
+
     return static_cast<uint32_t>(clamped_angle);
 }
 

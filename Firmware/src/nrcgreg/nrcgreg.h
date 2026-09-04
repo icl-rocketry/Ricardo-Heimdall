@@ -6,9 +6,9 @@
  * @brief The greg class is responsible for all control related to the E-Reg.
  * @version 0.1
  * @date 2024-09-05
- * 
+ *
  * @copyright Copyright (c) 2024
- * 
+ *
  */
 
 #include <librrc/Remote/nrcremoteactuatorbase.h>
@@ -26,7 +26,7 @@
 #include <libriccore/filtering/movingAvg.h>
 #include <SiC43x.h>
 #include "gregtypes.h"
-    
+
 // template <RicCoreLoggingConfig::LOGGERS LOGGING_TARGET = RicCoreLoggingConfig::LOGGERS::SYS>
 class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
 {
@@ -41,7 +41,7 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
                     SiC43x& Buck
                     ):
             NRCRemoteActuatorBase(networkmanager),
-            m_networkmanager(networkmanager),      
+            m_networkmanager(networkmanager),
             m_reg_PWM(regServoGPIO,regServoChannel),
             m_regServo(m_reg_PWM,networkmanager,"Srvo0",0,0,1800,500,2500,0,1800), //! All angles x10 for better precision.
             m_regAdapter(0,m_regServo,[](const std::string& msg){RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(msg);}),
@@ -77,9 +77,9 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         float getPAngle(){return m_P_angle;};
 
         Greg::PressuriseParams getPressuriseParams(){
-            Greg::PressuriseParams Params = {getFeedbackP(), 
-            m_regPressuriseAngle, 
-            m_P_setpoint, 
+            Greg::PressuriseParams Params = {getFeedbackP(),
+            m_regPressuriseAngle,
+            m_P_setpoint,
             m_P_press_extra};
             return Params;
         }
@@ -91,6 +91,9 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         void buckManager();
         void buckOn();
         void buckOff(uint32_t deadline);
+
+        float getFF();
+        float getKp();
 
     protected:
 
@@ -124,7 +127,7 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         void checkHOverPressure(float sensorvalue, GREG_FLAGS err_flag, std::string err_name);
         template<typename... Flags>
         void checkGenericPTFlag(GREG_FLAGS generic_flag, std::string err_name, Flags... err_flags); //Method asserts generic_flag if any of err_flags input are asserted, and deasserts generic if no err_flags are asserted.
- 
+
         //Helpers to aid state transitions
         void shutdown();
         void halfabort();
@@ -156,6 +159,9 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         float m_P_disconnect = -10; //Below this value, the PT is considered disconnected.
         float m_P_half_abort = 57.5; //Above this value, a half abort will be triggered.
         float m_P_full_abort = 63; //Above this value, a full abort will be triggered.
+
+        float m_savedFF = 0;
+        float m_savedKp = 0;
 
         //        --- HARDWARE LIMITS ---
         //! NOTE - All angles are x10 to allow for 0.1 degree precision in servo movements while still using integers
