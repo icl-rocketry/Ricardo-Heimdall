@@ -144,29 +144,14 @@ void NRCGreg::checkPressures()
     checkDisconnect(m_N2PT.getPressure(), GREG_FLAGS::ERROR_N2P_DC, "Local nitrogen PT");
 
     // Check if any sensors are above the critical overpressure threshold
-    checkCOverPressure(getFeedbackP(), GREG_FLAGS::ERROR_FBP_COVP, "Feedback PT");
+    checkCOverPressure(getFeedbackP(), GREG_FLAGS::ERROR_CRITICALOVP, "Feedback PT - One or more pressures above the critical threshold!");
 
     // Check if any sensors are above the half abort overpressure threshold
-    checkHOverPressure(getFeedbackP(), GREG_FLAGS::ERROR_FBP_COVP, "Feedback PT");
+    checkHOverPressure(getFeedbackP(), GREG_FLAGS::ERROR_HALFABORT, "Feedback PT - One or more pressures above the halfabort threshold!");
 
     // Assert the generic flags if any of the specific error flags are set
-    checkGenericPTFlag(GREG_FLAGS::ERROR_FEEDBACK_P, "feedback pressure local", GREG_FLAGS::ERROR_FBP_COVP, GREG_FLAGS::ERROR_FBP_DC, GREG_FLAGS::ERROR_FBP_HOVP);
+    checkGenericPTFlag(GREG_FLAGS::ERROR_FEEDBACK_P, "feedback pressure local", GREG_FLAGS::ERROR_FBP_DC);
     checkGenericPTFlag(GREG_FLAGS::ERROR_N2_P, "n2 tank", GREG_FLAGS::ERROR_N2P_DC);
-
-    if (m_GregStatus.flagSetOr(GREG_FLAGS::ERROR_FBP_COVP) && !m_GregStatus.flagSet(GREG_FLAGS::ERROR_CRITICALOVP))
-    {
-        m_GregStatus.newFlag(GREG_FLAGS::ERROR_CRITICALOVP, "One or more pressures above the critical threshold!");
-    }
-
-    // if (m_GregStatus.flagSet(GREG_FLAGS::ERROR_CRITICALOVP))
-    // {
-    //     if (m_GregStatus.flagSet(GREG_FLAGS::STATE_DEFAULT))
-    //     {
-    //         return;
-    //     }
-    //     shutdown(); // Abort in the case of a critical overpressure event.
-    //     return;
-    // }
 
     if (m_GregStatus.flagSet(GREG_FLAGS::ERROR_CRITICALOVP) &&
         !m_GregStatus.flagSet(GREG_FLAGS::STATE_SHUTDOWN) &&
@@ -176,12 +161,8 @@ void NRCGreg::checkPressures()
         return;
     }
 
-    if (m_GregStatus.flagSet(GREG_FLAGS::ERROR_HALFABORT) && m_GregStatus.flagSet(GREG_FLAGS::STATE_CONTROLLED))
+    if (m_GregStatus.flagSetOr(GREG_FLAGS::ERROR_HALFABORT, GREG_FLAGS::ERROR_FEEDBACK_P, GREG_FLAGS::ERROR_N2_P) && m_GregStatus.flagSet(GREG_FLAGS::STATE_CONTROLLED))
     {
-        if (m_GregStatus.flagSet(GREG_FLAGS::STATE_DEFAULT))
-        {
-            return;
-        }
         halfabort(); // Abort if any of the half abort conditions are met
         return;
     }

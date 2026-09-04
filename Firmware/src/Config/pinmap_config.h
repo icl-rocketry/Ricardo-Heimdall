@@ -13,7 +13,7 @@ namespace PinMap{
 
     static constexpr int TC0_Cs = 7;
     static constexpr int TC1_Cs = 8;
-    
+
     static constexpr int ADC0_Cs = 2;
     static constexpr int ADC_CLK = 45;
 
@@ -31,4 +31,5 @@ namespace PinMap{
     static constexpr int BuckPGOOD = 48;
     static constexpr int ServoPWM = 47;
 
+    static constexpr int BuckSense = 13;
 };

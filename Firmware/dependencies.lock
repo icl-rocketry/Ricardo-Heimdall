@@ -18,11 +18,11 @@ dependencies:
       type: service
     version: 1.4.12
   espressif/esp-modbus:
-    component_hash: e42ebfdfc9d8e46821a915b4c1a5c6465c44dbd4e1bca10531e26f4adc7acc42
+    component_hash: 5d5e90b9e55721a8a194b301ad8102d4affb647f47b74cd413ff7d1ce2c1169c
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 1.0.17
+    version: 1.0.18
   espressif/esp-serial-flasher:
     component_hash: dcc42a16712a1a636509cf0bf90e14032d7f2141784b533613b267b6aa318d52
     source:
@@ -66,11 +66,11 @@ dependencies:
       type: service
     version: 1.0.1
   espressif/esp_modem:
-    component_hash: 681d7c8417ce0f2a11a562c6998b7b379a4847be41d84673c11c0c7a6b00e918
+    component_hash: 71c9f54fc512c60d93ea9763377ceb1d5b575a4616f3f3344440b97e2a38da29
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 1.3.0
+    version: 1.4.3
   espressif/esp_rainmaker:
     component_hash: f89a4759347f3909417fb33059452f36c86befae9d10bda78b5417b7a5d19d11
     source:
@@ -114,11 +114,11 @@ dependencies:
       type: service
     version: 1.0.3
   espressif/libsodium:
-    component_hash: 25b968723c584a2742ca36cebe5a7ef049c6767e059f7b1e1eec69946019025d
+    component_hash: d4066b373fc6d4c5196db42aeea7faef4ac7f3080af96c2b74e2476c08b78dc1
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 1.0.20~2
+    version: 1.0.22~1
   espressif/mdns:
     component_hash: 3ba256ac95e07c274be53cbd73f06cb846c403b61e8fbdf1be57bdb79db7a63e
     source:
@@ -149,11 +149,11 @@ dependencies:
       type: idf
     version: 5.3.1
   joltwallet/littlefs:
-    component_hash: a023b819eff7a7740d61ae40b8e0c53dfe32843a99bc4aa6554867f3fc5091d3
+    component_hash: 3af20a3d75c49db9dc2286fd50862c34055c9f578419ad1f2bf7ed3ed01391fe
     source:
       service_url: https://api.components.espressif.com/
       type: service
-    version: 1.16.1
-manifest_hash: 11ced7fe65e7816c83c963f6e2f7a9a7b57b33cdf80903e34d7e8f843c480dea
+    version: 1.22.3
+manifest_hash: 0684bb290959174ded38acb5b104020362e845fa736262e9cd12d2d511bc9479
 target: esp32s3
 version: 1.0.0
