@@ -8,6 +8,7 @@ private:
     static constexpr auto getSerializer()
     {
         auto ret = RnpSerializer(
+            &TelemetryLogframe::cmdAngle,
             &TelemetryLogframe::ch0sens,
             &TelemetryLogframe::ch2sens,
             &TelemetryLogframe::temp0,
@@ -18,9 +19,9 @@ private:
     }
 
 public:
+    float cmdAngle;
     float ch0sens,ch2sens;
     float temp0,temp1;
-
 
     uint64_t timestamp;
 

@@ -19,7 +19,7 @@ void NRCGreg::setup()
 {
     m_regServo.setup();
     buckOn();
-    m_regServo.setAngleLims(0, m_regMaxOpenAngle);
+    m_regServo.setAngleLims(m_regMinOpenAngle, m_regMaxOpenAngle);
     buckOff(1000); // turn buck off after 2 seconds
     m_GregMachine.initalize(std::make_unique<Default>(m_DefaultStateParams));
     m_networkmanager.registerService(static_cast<uint8_t>(Services::ID::Reg_Servo),m_regServo.getThisNetworkCallback());
@@ -107,7 +107,7 @@ uint32_t NRCGreg::nextAngle()
     m_P_angle = Kp() * error;
 
     // This change prevents unsigned integer casting underflow.
-    const float target_angle_scaled = (m_P_angle + feedforward()) * 10.0f;
+    const float target_angle_scaled = (m_P_angle + feedforward()) * 10.0f + m_regClosedAngle;
     const float clamped_angle = std::clamp(target_angle_scaled, static_cast<float>(m_regMinOpenAngle), static_cast<float>(m_regMaxOpenAngle));
 
     return static_cast<uint32_t>(clamped_angle);
@@ -129,7 +129,7 @@ void NRCGreg::update()
 
 void NRCGreg::shutdown()
 {
-    m_GregMachine.changeState(std::make_unique<Shutdown>(m_DefaultStateParams));
+    m_GregMachine.changeState(std::make_unique<Shutdown>(m_DefaultStateParams, m_networkmanager));
 }
 
 void NRCGreg::halfabort()
@@ -249,7 +249,7 @@ void NRCGreg::execute_impl(packetptr_t packetptr)
     }
     case 2: // Shutdown command
     {
-        m_GregMachine.changeState(std::make_unique<Shutdown>(m_DefaultStateParams)); // Can always shut down
+        m_GregMachine.changeState(std::make_unique<Shutdown>(m_DefaultStateParams, m_networkmanager)); // Can always shut down
         // RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("ShutDown");
         break;
     }

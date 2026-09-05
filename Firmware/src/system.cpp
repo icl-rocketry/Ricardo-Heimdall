@@ -132,7 +132,7 @@ void System::initializeLoggers()
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::SYS>().initialize(std::move(syslogfile), networkmanager);
 
     // initialize telemetry logger
-    std::string file_header = "fb_pt(bar),n2_pt(bar),tc0(C),tc1(C),time(us)";
+    std::string file_header = "cmd_angle(deg),fb_pt(bar),n2_pt(bar),tc0(C),tc1(C),time(us)";
     loggerhandler.retrieve_logger<RicCoreLoggingConfig::LOGGERS::TELEMETRY>().initialize(std::move(telemetrylogfile),file_header,[](std::string_view msg){RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>(msg);});
 }
 
@@ -161,6 +161,8 @@ void System::logReadings()
         logframe.ch0sens = FB_PT.getPressure();
         // logframe.ch1sens = PT1.getPressure();
         logframe.ch2sens = N2_PT.getPressure();
+
+        logframe.cmdAngle = Heimdall.getRegAngle();
 
         logframe.temp0 = TC0.getTemp();
         logframe.temp1 = TC1.getTemp();
