@@ -19,7 +19,7 @@ void NRCGreg::setup()
 {
     m_regServo.setup();
     buckOn();
-    m_regServo.setAngleLims(0, m_regMaxOpenAngle);
+    m_regServo.setAngleLims(m_regClosedAngle, m_regMaxOpenAngle);
     buckOff(1000); // turn buck off after 2 seconds
     m_GregMachine.initalize(std::make_unique<Default>(m_DefaultStateParams));
     m_networkmanager.registerService(static_cast<uint8_t>(Services::ID::Reg_Servo),m_regServo.getThisNetworkCallback());
@@ -27,9 +27,9 @@ void NRCGreg::setup()
 
 void NRCGreg::buckOn()
 {
-    m_Buck.setEN(true);
-    m_buckOffTime = std::numeric_limits<uint32_t>::max();
-    m_prevBuckTime = millis();
+    m_Buck.setEN(false);
+    // m_buckOffTime = std::numeric_limits<uint32_t>::max();
+    // m_prevBuckTime = millis();
 }
 
 void NRCGreg::buckOff(uint32_t deadline)
@@ -47,7 +47,7 @@ void NRCGreg::buckManager()
 
     if (millis() > m_buckOffTime)
     {
-        m_Buck.setEN(false);
+        // m_Buck.setEN(false);
     }
 }
 
@@ -60,13 +60,14 @@ float NRCGreg::feedforward()
 {
     const float n2_press_pascal = std::max(m_N2PT.getPressure(),0.0f) * 10e+5;
 
-    float current_CdA = (m_ox_m_dot/m_ox_Rho) * (1/std::sqrt(n2_press_pascal)) * 0.673f;
+    float current_CdA = (m_propMDot / m_propRho) * (1.0 / std::sqrt(n2_press_pascal)) * 0.673f;
 
     current_CdA *= m_Kc; // correction factor when we didnt have cda measurements
 
-    float m = 1.4424e+06f; float c = 19.5771;
+    float m = 1.4424e+06f;
+    float c = 19.5771 + (static_cast<float>(m_regClosedAngle) / 10.0);
 
-    float FF_angle = m*current_CdA + c;
+    float FF_angle = m * current_CdA + c;
 
     m_savedFF_angle = std::clamp(FF_angle, m_FF_min, m_FF_max);
     return m_savedFF_angle; // Set bounds on FF angle before returning.
@@ -74,7 +75,7 @@ float NRCGreg::feedforward()
 
 float NRCGreg::proportional()
 {
-    const float non_dimensional_error = 1 - (getFeedbackP()/m_P_setpoint);
+    const float non_dimensional_error = 1 - (getFeedbackP() / m_P_setpoint);
 
     const float angle_difference = (static_cast<float>(m_regFullBoreAngle) - static_cast<float>(m_regMinOpenAngle)) / 10;
 

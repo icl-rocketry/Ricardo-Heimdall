@@ -43,14 +43,14 @@ void Shutdown::initialize()
     stark_shutdown.header.uid = 0;
     m_networkmanager.sendPacket(stark_shutdown);
 
-    static constexpr uint8_t OTHER_EREG_ADDRESS = 12;
+    const uint8_t otherEregAddress = m_DefaultInitParams.Greg.isOxReg ? 12 : 11;
 
     // Send shutdown command to the other ereg
     SimpleCommandPacket ereg_shutdown(2, 2);
     ereg_shutdown.header.source_service = static_cast<uint8_t>(Services::ID::Heimdall);
     ereg_shutdown.header.destination_service = 10;
     ereg_shutdown.header.source = 1;
-    ereg_shutdown.header.destination = OTHER_EREG_ADDRESS;
+    ereg_shutdown.header.destination = otherEregAddress;
     ereg_shutdown.header.uid = 0;
     m_networkmanager.sendPacket(ereg_shutdown);
 };
