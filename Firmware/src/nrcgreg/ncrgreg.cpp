@@ -82,6 +82,7 @@ float NRCGreg::proportional()
 
     m_savedProportional_angle = std::clamp(proportional_angle, m_proportional_min, m_proportional_max); // Clamp the proportional angle to be within the range of 0 to angle_difference
 
+    return m_savedProportional_angle;
 }
 
 float NRCGreg::getFF() {
