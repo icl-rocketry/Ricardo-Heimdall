@@ -157,7 +157,7 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         // Operating pressure limits
         float m_P_disconnect = -10; //Below this value, the PT is considered disconnected.
         float m_P_half_abort = 53; //Above this value, a half abort will be triggered.
-        float m_P_full_abort = 60; //Above this value, a full abort will be triggered.
+        float m_P_full_abort = 4; //Above this value, a full abort will be triggered.
 
         float m_savedFF_angle = 0;
         float m_savedProportional_angle = 0;
