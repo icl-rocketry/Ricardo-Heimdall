@@ -56,14 +56,14 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         //Controller functions
 
         /**
+        * @brief Function that calculates the proportional angle based on input pressure.
+        * @return proportional angle as a float. */
+        float proportional();
+
+        /**
         * @brief Function that calculates the feedforward angle based on input pressure.
         * @return feedforward angle as a float. */
         float feedforward();
-
-        /**
-        * @brief Function that calculates the proportional gain based on input pressure.
-        * @return KP as a float */
-        float Kp();
 
         /**
         * @brief Function that calculates the next angle the controller should move to.
@@ -140,37 +140,37 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
 
         // ---------- Controller Parameters ----------
         // FF Params
-        float m_FF_min = 41.0;
-        float m_FF_max = 57.0;
-        float m_FF_0 = 34.0;
-        float m_FF_Alpha = 8608.0;
+        float m_FF_min = 13.0; // deg
+        float m_FF_max = 28.0; // deg
 
-        // KP calculation Params
-        float m_Kp_min = 2.0;
-        float m_Kp_max = 3.0;
-        float m_Kp_0 = 1.143;
-        float m_Kp_Beta = 222.9;
+        // Proportional Params
+        float m_proportional_min = -10.0; // deg
+        float m_proportional_max =  10.0; // deg
 
+        float m_Kp = 1;
+        float m_Kc = 1;
+        
         // Controller setpoints
-        float m_P_setpoint = 50; //Running pressure setpoint.
+        float m_P_setpoint = 45; //Running pressure setpoint.
         float m_P_press_extra = 1.5; //Extra pressure to add during pressurisation to make sure setpoint is reached.
 
         // Operating pressure limits
         float m_P_disconnect = -10; //Below this value, the PT is considered disconnected.
-        float m_P_half_abort = 57.5; //Above this value, a half abort will be triggered.
-        float m_P_full_abort = 63; //Above this value, a full abort will be triggered.
+        float m_P_half_abort = 53; //Above this value, a half abort will be triggered.
+        float m_P_full_abort = 60; //Above this value, a full abort will be triggered.
 
-        float m_savedFF = 0;
-        float m_savedKp = 0;
+        float m_savedFF_angle = 0;
+        float m_savedProportional_angle = 0;
 
         //        --- HARDWARE LIMITS ---
         //! NOTE - All angles are x10 to allow for 0.1 degree precision in servo movements while still using integers
         const uint32_t m_regClosedAngle = 0;
-        const uint32_t m_regMaxOpenAngle = 580;
-        const uint32_t m_regMaxOpenFirstStart = 500; //Lower maximum angle during the starting period of the controlled state to prevent pressure spikes.sss
-        const uint32_t m_regMinOpenAngle = 410;
-        const uint32_t m_halfAbortAngle = 430;
-        uint32_t m_regPressuriseAngle = 380;
+        const uint32_t m_regMaxOpenAngle = 300;
+        const uint32_t m_regMaxOpenFirstStart = 180; //Lower maximum angle during the starting period of the controlled state to prevent pressure spikes.
+        const uint32_t m_regFullBoreAngle = 450;
+        const uint32_t m_regMinOpenAngle = 130; // cracking angle
+        const uint32_t m_halfAbortAngle = 180; 
+         uint32_t m_regPressuriseAngle = 130;
 
         uint32_t m_prevBuckTime = 0;
         uint32_t m_buckOffTime = 0;
@@ -186,5 +186,8 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
 
         //Half abort timeout
         uint32_t m_halfAbortTimeout = 500; //After this timeout, the half abort can be exited and normal operation resumed.
+
+        float m_ox_Rho = 963; //SI
+        float m_ox_m_dot = 2.35; //SI
 
 };

@@ -58,36 +58,41 @@ float NRCGreg::getFeedbackP()
 
 float NRCGreg::feedforward()
 {
-    const float n2_press = m_N2PT.getPressure();
-    if (n2_press <= 1.0f) {
-        return m_FF_max;
-    }
-    float FF = m_FF_0 + m_FF_Alpha / n2_press;
-    m_savedFF = std::max(std::min(FF, m_FF_max), m_FF_min);;
-    return m_savedFF; // Set bounds on FF angle before returning.
+    const float n2_press_pascal = std::max(m_N2PT.getPressure(),0.0f) * 10e+5;
+
+    float current_CdA = (m_ox_m_dot/m_ox_Rho) * (1/std::sqrt(n2_press_pascal)) * 0.673f;
+
+    current_CdA *= m_Kc; // correction factor when we didnt have cda measurements
+
+    float m = 1.4424e+06f; float c = 19.5771;
+
+    float FF_angle = m*current_CdA + c;
+    
+    m_savedFF_angle = std::clamp(FF_angle, m_FF_min, m_FF_max);
+    return m_savedFF_angle; // Set bounds on FF angle before returning.
+}
+
+float NRCGreg::proportional() 
+{
+    const float non_dimensional_error = 1 - (getFeedbackP()/m_P_setpoint);
+
+    const float angle_difference = (static_cast<float>(m_regFullBoreAngle) - static_cast<float>(m_regMinOpenAngle)) / 10;
+
+    float proportional_angle = m_Kp * non_dimensional_error * angle_difference;
+
+    m_savedProportional_angle = std::clamp(proportional_angle, m_proportional_min, m_proportional_max); // Clamp the proportional angle to be within the range of 0 to angle_difference
+
 }
 
 float NRCGreg::getFF() {
-    return m_savedFF;
+    return m_savedFF_angle;
 }
 
 float NRCGreg::getKp() {
-    return m_savedKp;
+    return m_savedProportional_angle;
 }
 
-float NRCGreg::Kp()
-{
-    const float n2_press = m_N2PT.getPressure();
-    if (n2_press <= 1.0f) {
-        return m_FF_max;
-    }
 
-    float Kp = m_Kp_0 + m_Kp_Beta / n2_press;
-
-    m_savedKp = std::max(std::min(Kp, m_Kp_max), m_Kp_min);
-
-    return m_savedKp; // Set bounds on Kp before returning.
-}
 
 // uint32_t NRCGreg::nextAngle()
 // {
@@ -103,11 +108,8 @@ float NRCGreg::Kp()
 
 uint32_t NRCGreg::nextAngle()
 {
-    const float error = m_P_setpoint - getFeedbackP();
-    m_P_angle = Kp() * error;
-
     // This change prevents unsigned integer casting underflow.
-    const float target_angle_scaled = (m_P_angle + feedforward()) * 10.0f + m_regClosedAngle;
+    const float target_angle_scaled = (proportional() + feedforward()) * 10.0f;
     const float clamped_angle = std::clamp(target_angle_scaled, static_cast<float>(m_regMinOpenAngle), static_cast<float>(m_regMaxOpenAngle));
 
     return static_cast<uint32_t>(clamped_angle);
