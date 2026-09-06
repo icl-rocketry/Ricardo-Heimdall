@@ -19,7 +19,7 @@ void NRCGreg::setup()
 {
     m_regServo.setup();
     buckOn();
-    m_regServo.setAngleLims(m_regMinOpenAngle, m_regMaxOpenAngle);
+    // m_regServo.setAngleLims(m_regMinOpenAngle, m_regMaxOpenAngle);
     buckOff(1000); // turn buck off after 2 seconds
     m_GregMachine.initalize(std::make_unique<Default>(m_DefaultStateParams));
     m_networkmanager.registerService(static_cast<uint8_t>(Services::ID::Reg_Servo),m_regServo.getThisNetworkCallback());
@@ -134,7 +134,7 @@ void NRCGreg::shutdown()
 
 void NRCGreg::halfabort()
 {
-    m_GregMachine.changeState(std::make_unique<Halfabort>(m_DefaultStateParams, m_FF_min * 10));
+    m_GregMachine.changeState(std::make_unique<Halfabort>(m_DefaultStateParams, m_halfAbortAngle));
 }
 
 void NRCGreg::checkPressures()
