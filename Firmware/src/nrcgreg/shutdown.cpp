@@ -43,7 +43,7 @@ void Shutdown::initialize()
     stark_shutdown.header.uid = 0;
     m_networkmanager.sendPacket(stark_shutdown);
 
-    static constexpr uint8_t OTHER_EREG_ADDRESS = 11;
+    static constexpr uint8_t OTHER_EREG_ADDRESS = 12;
 
     // Send shutdown command to the other ereg
     SimpleCommandPacket ereg_shutdown(2, 2);
