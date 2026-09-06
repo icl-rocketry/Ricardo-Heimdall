@@ -19,7 +19,7 @@ void NRCGreg::setup()
 {
     m_regServo.setup();
     buckOn();
-    // m_regServo.setAngleLims(m_regMinOpenAngle, m_regMaxOpenAngle);
+    m_regServo.setAngleLims(0, m_regMaxOpenAngle);
     buckOff(1000); // turn buck off after 2 seconds
     m_GregMachine.initalize(std::make_unique<Default>(m_DefaultStateParams));
     m_networkmanager.registerService(static_cast<uint8_t>(Services::ID::Reg_Servo),m_regServo.getThisNetworkCallback());
@@ -67,12 +67,12 @@ float NRCGreg::feedforward()
     float m = 1.4424e+06f; float c = 19.5771;
 
     float FF_angle = m*current_CdA + c;
-    
+
     m_savedFF_angle = std::clamp(FF_angle, m_FF_min, m_FF_max);
     return m_savedFF_angle; // Set bounds on FF angle before returning.
 }
 
-float NRCGreg::proportional() 
+float NRCGreg::proportional()
 {
     const float non_dimensional_error = 1 - (getFeedbackP()/m_P_setpoint);
 

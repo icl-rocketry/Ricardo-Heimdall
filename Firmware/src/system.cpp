@@ -33,7 +33,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    FB_PT(networkmanager, 0),
                    N2_PT(networkmanager, 2),
                    Buck(systemstatus, PinMap::BuckPGOOD, PinMap::BuckEN, true),
-                   Heimdall(networkmanager, PinMap::ServoPWM, 0, FB_PT, N2_PT, Buck),
+                   Heimdall(networkmanager, PinMap::ServoPWM, 50, FB_PT, N2_PT, Buck),
                    primarysd(SDSPI,PinMap::SdCs_0,SD_SCK_MHZ(20),false,&systemstatus){};
 
 void System::systemSetup()
