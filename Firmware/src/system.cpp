@@ -28,11 +28,11 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    SDSPI(VSPI_BUS_NUM),
                    SNSRSPI(HSPI_BUS_NUM),
                    TC0(SNSRSPI, PinMap::TC0_Cs),
-                   TC1(SNSRSPI, PinMap::TC1_Cs),
-                   ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK),
+                //    TC1(SNSRSPI, PinMap::TC1_Cs),
+                   ADC0(SNSRSPI, PinMap::ADC0_Cs, PinMap::ADC_CLK,2),
                    FB_PT(networkmanager, 0),
                    N2_PT(networkmanager, 2),
-                   Buck(systemstatus, PinMap::BuckPGOOD, PinMap::BuckEN, true),
+                   Buck(systemstatus),
                    Heimdall(networkmanager, PinMap::ServoPWM, 50, FB_PT, N2_PT, Buck),
                    primarysd(SDSPI,PinMap::SdCs_0,SD_SCK_MHZ(20),false,&systemstatus){};
 
@@ -55,29 +55,29 @@ void System::systemSetup()
     pinMode(PinMap::SdCs_0, OUTPUT);
     pinMode(PinMap::ADC0_Cs, OUTPUT);
     pinMode(PinMap::TC0_Cs, OUTPUT);
-    pinMode(PinMap::TC1_Cs, OUTPUT);
-    pinMode(PinMap::SD_EN, OUTPUT);
+    // pinMode(PinMap::TC1_Cs, OUTPUT);
+    // pinMode(PinMap::SD_EN, OUTPUT);
 
-    pinMode(PinMap::BuckEN, OUTPUT);
-    pinMode(PinMap::BuckPGOOD, INPUT);
+    // pinMode(PinMap::BuckEN, OUTPUT);
+    // pinMode(PinMap::BuckPGOOD, INPUT);
 
     digitalWrite(PinMap::SdCs_0, HIGH);
     digitalWrite(PinMap::ADC0_Cs, HIGH);
     digitalWrite(PinMap::TC0_Cs, HIGH);
-    digitalWrite(PinMap::TC1_Cs, HIGH);
-    digitalWrite(PinMap::SD_EN, LOW);
+    // digitalWrite(PinMap::TC1_Cs, HIGH);
+    // digitalWrite(PinMap::SD_EN, LOW);
 
     setupSPI();
 
     // Thermocouples:
     TC0.setup();
-    TC1.setup();
+    // TC1.setup();
     // ADC:
     ADC0.setup();
-    ADC0.setOSR(ADS131M04::OSROPT::OSR8192);
-    ADC0.setGain(0,ADS131M04::GAIN::GAIN1);
-    ADC0.setGain(1,ADS131M04::GAIN::GAIN1);
-    ADC0.setGain(2,ADS131M04::GAIN::GAIN1);
+    ADC0.setOSR(ADS131M06::OSROPT::OSR8192);
+    ADC0.setGain(0,ADS131M06::GAIN::GAIN1);
+    ADC0.setGain(1,ADS131M06::GAIN::GAIN1);
+    ADC0.setGain(2,ADS131M06::GAIN::GAIN1);
 
     serviceSetup();
 
@@ -119,7 +119,7 @@ void System::initializeLoggers()
         return;
     }
 
-    // open log files
+    // open log files   
     // get unique directory for logs
     std::string log_directory_path = primarysd.generateUniquePath(log_path, "");
     // make new directory
@@ -142,7 +142,7 @@ void System::deviceUpdate()
     ADC0.update();
 
     TC0.update();
-    TC1.update();
+    // TC1.update();
 }
 
 void System::remoteSensorUpdate()
@@ -165,7 +165,7 @@ void System::logReadings()
         logframe.cmdAngle = Heimdall.getRegAngle();
 
         logframe.temp0 = TC0.getTemp();
-        logframe.temp1 = TC1.getTemp();
+        // logframe.temp1 = TC1.getTemp();
 
         logframe.timestamp = esp_timer_get_time();
         prev_telemetry_log_time = esp_timer_get_time();
@@ -185,7 +185,7 @@ void System::setupSPI(){
     SDSPI.setDataMode(SPI_MODE0);
 
     SNSRSPI.begin(PinMap::SNSR_SCLK, PinMap::SNSR_MISO, PinMap::SNSR_MOSI);
-    SNSRSPI.setFrequency(5e6);
+    SNSRSPI.setFrequency(5000000);
     SNSRSPI.setBitOrder(MSBFIRST);
     SNSRSPI.setDataMode(SPI_MODE1);
 }

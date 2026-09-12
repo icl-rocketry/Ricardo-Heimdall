@@ -77,7 +77,7 @@ void Commands::TelemetryCommand(System& sm, const RnpPacketSerialized& packet)
 	gregTelem.regAngle = sm.Heimdall.getRegAngle();
 	gregTelem.Kp = sm.Heimdall.getKp();
 	gregTelem.tc0= sm.TC0.getTemp();
-	gregTelem.tc1 = sm.TC1.getTemp();
+	// gregTelem.tc1 = sm.TC1.getTemp();
 	gregTelem.system_status = sm.systemstatus.getStatus();
 
 	sm.networkmanager.sendPacket(gregTelem);

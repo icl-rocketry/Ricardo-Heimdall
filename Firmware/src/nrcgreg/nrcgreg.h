@@ -95,7 +95,7 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         float getFF();
         float getKp();
 
-        const bool isOxReg = false;
+        const bool isOxReg = true;
     protected:
 
         //Networking

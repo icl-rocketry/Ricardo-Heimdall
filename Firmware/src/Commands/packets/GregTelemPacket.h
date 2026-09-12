@@ -19,7 +19,7 @@ class GregTelemPacket : public RnpPacket{
                 &GregTelemPacket::regAngle,
                 &GregTelemPacket::P_angle,
                 &GregTelemPacket::Kp,
-                &GregTelemPacket::tc0,
+                // &GregTelemPacket::tc0,
                 &GregTelemPacket::tc1,
                 &GregTelemPacket::system_status,
                 &GregTelemPacket::system_time
