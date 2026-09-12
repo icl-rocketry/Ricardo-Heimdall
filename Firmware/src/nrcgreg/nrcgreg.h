@@ -95,7 +95,7 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         float getFF();
         float getKp();
 
-        const bool isOxReg = true;
+        const bool isOxReg = false;
     protected:
 
         //Networking
@@ -139,20 +139,15 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
 
         Greg::DefaultStateInit m_DefaultStateParams = {m_GregStatus, m_regAdapter, m_regClosedAngle, *this};
 
-        // ---------- Controller Parameters ----------
-        // FF Params
-        const float m_FF_min = 13.0 + static_cast<float>(m_regClosedAngle) / 10; // deg
-        const float m_FF_max = 28.0 + static_cast<float>(m_regClosedAngle) / 10; // deg
-
         // Proportional Params
-        float m_proportional_min = -10.0; // deg
-        float m_proportional_max =  10.0; // deg
+        float m_proportional_min = -15.0; // deg
+        float m_proportional_max =  15.0; // deg
 
-        const float m_oxKp = 1;
-        const float m_oxKc = 1;
+        const float m_oxKc = 1.4;
+        const float m_fuelKc = 1.4;
 
-        const float m_fuelKp = 1;
-        const float m_fuelKc = 1;
+        const float m_fuelKp = 1.2;
+        const float m_oxKp = 1.2;
 
         const float m_Kp = isOxReg ? m_oxKp : m_fuelKp;
         const float m_Kc = isOxReg ? m_oxKc : m_fuelKc;
@@ -167,7 +162,7 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         // Operating pressure limits
         float m_P_disconnect = -10; //Below this value, the PT is considered disconnected.
         float m_P_half_abort = 53; //Above this value, a half abort will be triggered.
-        float m_P_full_abort = 4; //Above this value, a full abort will be triggered.
+        float m_P_full_abort = 60; //Above this value, a full abort will be triggered.
 
         float m_savedFF_angle = 0;
         float m_savedProportional_angle = 0;
@@ -177,7 +172,7 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
 
         const uint32_t m_fuelRegClosedAngle = 950;
         const uint32_t m_fuelRegMaxOpenAngle = 1400;
-        const uint32_t m_fuelRegMaxOpenFirstStart = m_fuelRegMinOpenAngle + 50; //Lower maximum angle during the starting period of the controlled state to prevent pressure spikes.
+        const uint32_t m_fuelRegMaxOpenFirstStart = m_fuelRegMinOpenAngle + 50; // Lower maximum angle during the starting period of the controlled state to prevent pressure spikes.
         const uint32_t m_fuelRegFullBoreAngle = 1400;
         const uint32_t m_fuelRegMinOpenAngle = 1080; // cracking angle
         const uint32_t m_fuelHalfAbortAngle = m_fuelRegMinOpenAngle + 50;
@@ -223,4 +218,8 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         const float m_propRho = isOxReg ? m_oxRho : m_fuelRho; //SI
         const float m_propMDot = isOxReg ? m_oxMDot : m_fuelMDot; //SI
 
+        // ---------- Controller Parameters ----------
+        // FF Params
+        const float m_FF_min = 13.0 + (static_cast<float>(m_regClosedAngle) / 10.0); // deg
+        const float m_FF_max = 33.0 + (static_cast<float>(m_regClosedAngle) / 10.0); // deg
 };

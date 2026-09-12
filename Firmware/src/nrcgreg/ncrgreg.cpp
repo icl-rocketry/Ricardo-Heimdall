@@ -111,6 +111,7 @@ float NRCGreg::getKp() {
 uint32_t NRCGreg::nextAngle()
 {
     // This change prevents unsigned integer casting underflow.
+    // t = (10 + 28) * 10
     const float target_angle_scaled = (proportional() + feedforward()) * 10.0f;
     const float clamped_angle = std::clamp(target_angle_scaled, static_cast<float>(m_regMinOpenAngle), static_cast<float>(m_regMaxOpenAngle));
 

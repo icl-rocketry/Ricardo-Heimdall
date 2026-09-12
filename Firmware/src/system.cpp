@@ -119,7 +119,7 @@ void System::initializeLoggers()
         return;
     }
 
-    // open log files   
+    // open log files
     // get unique directory for logs
     std::string log_directory_path = primarysd.generateUniquePath(log_path, "");
     // make new directory

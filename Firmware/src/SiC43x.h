@@ -34,7 +34,7 @@ public:
      * @param LowResistor Resistance value of potential divider resistor connected to the low side
      */
 
-    SiC43x(Types::CoreTypes::SystemStatus_t &systemstatus, int8_t PGood = -1, int8_t EN = -1, bool defaultEN = 0, bool invertEN = 0, int8_t VRead = -1, float HighResistor = 0, float LowResistor = 1) : 
+    SiC43x(Types::CoreTypes::SystemStatus_t &systemstatus, int8_t PGood = -1, int8_t EN = -1, bool defaultEN = 0, bool invertEN = 0, int8_t VRead = -1, float HighResistor = 0, float LowResistor = 1) :
         m_systemstatus(systemstatus),
         m_PGoodPin(PGood),
         m_ENPin(EN),
@@ -68,8 +68,10 @@ public:
      */
     void setEN(bool Bucklevel)
     {
-        bool pinLevel = m_invertEN ^ Bucklevel;
-        digitalWrite(m_ENPin, pinLevel);
+        if (m_ENPin >= 0) {
+            bool pinLevel = m_invertEN ^ Bucklevel;
+            digitalWrite(m_ENPin, pinLevel);
+        }
     };
 
     /**
