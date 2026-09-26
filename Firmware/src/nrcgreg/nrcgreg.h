@@ -181,11 +181,11 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         const uint32_t m_fuelHalfAbortAngle = m_fuelRegMinOpenAngle + 50;
         const uint32_t m_fuelRegPressuriseAngle = m_fuelRegMinOpenAngle;
 
-        const uint32_t m_oxRegClosedAngle = 0;
-        const uint32_t m_oxRegMaxOpenAngle = 450; // full bore
+        const uint32_t m_oxRegClosedAngle = 1130;
+        const uint32_t m_oxRegMaxOpenAngle = 1580; // full bore
         const uint32_t m_oxRegMaxOpenFirstStart = m_oxRegMinOpenAngle + 50; //Lower maximum angle during the starting period of the controlled state to prevent pressure spikes.
-        const uint32_t m_oxRegFullBoreAngle = 450;
-        const uint32_t m_oxRegMinOpenAngle = 130; // cracking angle
+        const uint32_t m_oxRegFullBoreAngle = 1580;
+        const uint32_t m_oxRegMinOpenAngle = 1260; // cracking angle
         const uint32_t m_oxHalfAbortAngle = m_oxRegMinOpenAngle + 50;
         const uint32_t m_oxRegPressuriseAngle = m_oxRegMinOpenAngle;
 

@@ -29,7 +29,7 @@ namespace PinMap{
     static constexpr int TxCan = 42;
     static constexpr int RxCan = 41;
 
-    // static constexpr int BuckEN = 21;
+    static constexpr int BuckEN = 21;
     static constexpr int BuckPGOOD = 48;
     static constexpr int ServoPWM = 47;
 

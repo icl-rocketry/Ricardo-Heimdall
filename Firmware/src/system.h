@@ -8,7 +8,8 @@
 
 #include <libriccore/networkinterfaces/can/canbus.h>
 
-#include <libriccore/drivers/adc/ADS131M06.h>
+// #include <libriccore/drivers/adc/ADS131M06.h>
+#include <libriccore/drivers/adc/ADS131M04.h>
 #include <libriccore/drivers/sensors/MAX31856.h>
 #include <librrc/Remote/nrcremoteptap.h>
 #include <librrc/Remote/nrcremoteloadcell.h>
@@ -29,7 +30,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
     public:
 
         System();
-        
+
         void systemSetup();
 
         void systemUpdate();
@@ -43,7 +44,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         MAX31856 TC0;
         // MAX31856 TC1;
         //1 4-channel ADC:
-        ADS131M06 ADC0;
+        ADS131M04 ADC0;
 
         //Pressure Sensors
         NRCRemotePTap FB_PT;
@@ -53,7 +54,7 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
 
         //Greg
         NRCGreg Heimdall;
-        
+
         //SD Card
         SdFat_Store primarysd;
 
@@ -70,11 +71,9 @@ class System : public RicCoreSystem<System,SYSTEM_FLAG,Commands::ID>
         const std::string log_path = "/Logs";
         const std::string config_path = "/Config";
 
-        static constexpr uint8_t fb_pt_adc_ch = 4;
-        static constexpr uint8_t n2_pt_adc_ch = 5;
-        
+        static constexpr uint8_t fb_pt_adc_ch = 0;
+        static constexpr uint8_t n2_pt_adc_ch = 2;
+
         uint32_t telemetry_log_delta = 1000;
         uint32_t prev_telemetry_log_time;
-
-
 };

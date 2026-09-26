@@ -33,6 +33,7 @@ System::System() : RicCoreSystem(Commands::command_map, Commands::defaultEnabled
                    FB_PT(networkmanager, 0),
                    N2_PT(networkmanager, 2),
                    Buck(systemstatus),
+                //    Buck(systemstatus, PinMap::BuckPGOOD, PinMap::BuckEN, true),
                    Heimdall(networkmanager, PinMap::ServoPWM, 50, FB_PT, N2_PT, Buck),
                    primarysd(SDSPI,PinMap::SdCs_0,SD_SCK_MHZ(20),false,&systemstatus){};
 
@@ -74,10 +75,10 @@ void System::systemSetup()
     // TC1.setup();
     // ADC:
     ADC0.setup();
-    ADC0.setOSR(ADS131M06::OSROPT::OSR8192);
-    ADC0.setGain(0,ADS131M06::GAIN::GAIN1);
-    ADC0.setGain(1,ADS131M06::GAIN::GAIN1);
-    ADC0.setGain(2,ADS131M06::GAIN::GAIN1);
+    ADC0.setOSR(ADS131M04::OSROPT::OSR8192);
+    ADC0.setGain(0,ADS131M04::GAIN::GAIN1);
+    ADC0.setGain(1,ADS131M04::GAIN::GAIN1);
+    ADC0.setGain(2,ADS131M04::GAIN::GAIN1);
 
     serviceSetup();
 
