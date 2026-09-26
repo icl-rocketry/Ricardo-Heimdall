@@ -153,11 +153,14 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         const float m_Kc = isOxReg ? m_oxKc : m_fuelKc;
 
         // Controller setpoints
-        const float m_oxPSetpoint = 45;
+        const float m_oxPSetpoint = 50;
         const float m_fuelPSetpoint = 45;
 
         const float m_P_setpoint = isOxReg ? m_oxPSetpoint : m_fuelPSetpoint; // Running pressure setpoint.
-        float m_P_press_extra = 1.5; //Extra pressure to add during pressurisation to make sure setpoint is reached.
+
+        const float m_OxP_press_extra = 1.5;
+        const float m_FuelP_press_extra = 5;
+        const float m_P_press_extra = isOxReg ? m_OxP_press_extra :m_FuelP_press_extra; //Extra pressure to add during pressurisation to make sure setpoint is reached.
 
         // Operating pressure limits
         float m_P_disconnect = -10; //Below this value, the PT is considered disconnected.
@@ -198,10 +201,7 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         uint32_t m_buckOffTime = 0;
 
         //Variables to log out
-        float m_P_angle;
-
-        //Variable to track which pressure source we're using for the controller. 0 is local, 1 is remote.
-        bool m_P_source = 0;
+        float m_P_angle { 0.0 };
 
         //Variables to track how many sensors have disconnected or are not responding
         uint8_t m_DC_count = 0;
@@ -215,8 +215,8 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         const float m_fuelRho = 790.0;
         const float m_fuelMDot = 0.79;
 
-        const float m_propRho = isOxReg ? m_oxRho : m_fuelRho; //SI
-        const float m_propMDot = isOxReg ? m_oxMDot : m_fuelMDot; //SI
+        const float m_propRho = isOxReg ? m_oxRho : m_fuelRho; // SI
+        const float m_propMDot = isOxReg ? m_oxMDot : m_fuelMDot; // SI
 
         // ---------- Controller Parameters ----------
         // FF Params
