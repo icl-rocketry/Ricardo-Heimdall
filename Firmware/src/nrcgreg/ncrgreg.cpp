@@ -254,7 +254,9 @@ void NRCGreg::execute_impl(packetptr_t packetptr)
     }
     case 2: // Shutdown command
     {
-        m_GregMachine.changeState(std::make_unique<Shutdown>(m_DefaultStateParams, m_networkmanager)); // Can always shut down
+        if (m_GregMachine.getCurrentStateID() != GREG_FLAGS::STATE_SHUTDOWN) {
+            m_GregMachine.changeState(std::make_unique<Shutdown>(m_DefaultStateParams, m_networkmanager)); // Can always shut down
+        }
         // RicCoreLogging::log<RicCoreLoggingConfig::LOGGERS::SYS>("ShutDown");
         break;
     }
