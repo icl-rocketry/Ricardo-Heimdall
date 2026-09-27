@@ -31,6 +31,28 @@ void Shutdown::initialize()
     m_regAdapter.disarm(); //No reason to keep actuator armed
 
     m_DefaultInitParams.Greg.buckOff(2000);
+
+    static constexpr uint8_t STARK_ADDDRESS = 10;
+
+    // Send shutdown command to the engine
+    SimpleCommandPacket stark_shutdown(2, 2);
+    stark_shutdown.header.source_service = static_cast<uint8_t>(Services::ID::Heimdall);
+    stark_shutdown.header.destination_service = 10;
+    stark_shutdown.header.source = 1;
+    stark_shutdown.header.destination = STARK_ADDDRESS;
+    stark_shutdown.header.uid = 0;
+    m_networkmanager.sendPacket(stark_shutdown);
+
+    const uint8_t otherEregAddress = m_DefaultInitParams.Greg.isOxReg ? 12 : 11;
+
+    // Send shutdown command to the other ereg
+    SimpleCommandPacket ereg_shutdown(2, 2);
+    ereg_shutdown.header.source_service = static_cast<uint8_t>(Services::ID::Heimdall);
+    ereg_shutdown.header.destination_service = 10;
+    ereg_shutdown.header.source = 1;
+    ereg_shutdown.header.destination = otherEregAddress;
+    ereg_shutdown.header.uid = 0;
+    m_networkmanager.sendPacket(ereg_shutdown);
 };
 
 Types::EREGTypes::State_ptr_t Shutdown::update()
