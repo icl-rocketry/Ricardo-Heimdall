@@ -98,6 +98,7 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         const bool isOxReg = false;
     protected:
 
+
         //Networking
         RnpNetworkManager &m_networkmanager;
         friend class NRCRemoteActuatorBase;
@@ -153,8 +154,8 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         const float m_Kc = isOxReg ? m_oxKc : m_fuelKc;
 
         // Controller setpoints
-        const float m_oxPSetpoint = 4;
-        const float m_fuelPSetpoint = 4;
+        const float m_oxPSetpoint = 50;
+        const float m_fuelPSetpoint = 45;
 
         const float m_P_setpoint = isOxReg ? m_oxPSetpoint : m_fuelPSetpoint; // Running pressure setpoint.
 
