@@ -153,8 +153,8 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         const float m_Kc = isOxReg ? m_oxKc : m_fuelKc;
 
         // Controller setpoints
-        const float m_oxPSetpoint = 50;
-        const float m_fuelPSetpoint = 45;
+        const float m_oxPSetpoint = 4;
+        const float m_fuelPSetpoint = 4;
 
         const float m_P_setpoint = isOxReg ? m_oxPSetpoint : m_fuelPSetpoint; // Running pressure setpoint.
 
@@ -173,19 +173,19 @@ class NRCGreg : public NRCRemoteActuatorBase<NRCGreg>
         //        --- HARDWARE LIMITS ---
         //! NOTE - All angles are x10 to allow for 0.1 degree precision in servo movements while still using integers
 
-        const uint32_t m_fuelRegClosedAngle = 950;
-        const uint32_t m_fuelRegMaxOpenAngle = 1400;
+        const uint32_t m_fuelRegClosedAngle = 980;
+        const uint32_t m_fuelRegMaxOpenAngle = 1360;
         const uint32_t m_fuelRegMaxOpenFirstStart = m_fuelRegMinOpenAngle + 50; // Lower maximum angle during the starting period of the controlled state to prevent pressure spikes.
-        const uint32_t m_fuelRegFullBoreAngle = 1400;
-        const uint32_t m_fuelRegMinOpenAngle = 1080; // cracking angle
+        const uint32_t m_fuelRegFullBoreAngle = 1430;
+        const uint32_t m_fuelRegMinOpenAngle = 1110; // cracking angle
         const uint32_t m_fuelHalfAbortAngle = m_fuelRegMinOpenAngle + 50;
         const uint32_t m_fuelRegPressuriseAngle = m_fuelRegMinOpenAngle;
 
-        const uint32_t m_oxRegClosedAngle = 1130;
-        const uint32_t m_oxRegMaxOpenAngle = 1580; // full bore
+        const uint32_t m_oxRegClosedAngle = 1165;
+        const uint32_t m_oxRegMaxOpenAngle = 1545; // full bore
         const uint32_t m_oxRegMaxOpenFirstStart = m_oxRegMinOpenAngle + 50; //Lower maximum angle during the starting period of the controlled state to prevent pressure spikes.
-        const uint32_t m_oxRegFullBoreAngle = 1580;
-        const uint32_t m_oxRegMinOpenAngle = 1260; // cracking angle
+        const uint32_t m_oxRegFullBoreAngle = 1615;
+        const uint32_t m_oxRegMinOpenAngle = 1295; // cracking angle
         const uint32_t m_oxHalfAbortAngle = m_oxRegMinOpenAngle + 50;
         const uint32_t m_oxRegPressuriseAngle = m_oxRegMinOpenAngle;
 
